@@ -7,7 +7,7 @@
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="widget">
               <h3 class="block-title">
-                <img src="assets/img/logo.png" class="img-responsive" alt="Footer Logo">
+                <img src="user_assets/img/logo.png" class="img-responsive" alt="Footer Logo">
               </h3>
               <div class="textwidget">
                 <p> Description Here.</p>
