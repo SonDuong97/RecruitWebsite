@@ -56,10 +56,10 @@
           <div class="row">         
             <div class="col-md-12">
               <div class="breadcrumb-wrapper">
-                <h2 class="product-title">My Account</h2>
+                <h2 class="product-title">Đăng nhập</h2>
                 <ol class="breadcrumb">
-                  <li><a href="#"><i class="ti-home"></i> Home</a></li>
-                  <li class="current">My Account</li>
+                  <li><a href="{{ route('home') }}"><i class="ti-home"></i> Trang chủ</a></li>
+                  <li class="current">Đăng nhập</li>
                 </ol>
               </div>
             </div>
@@ -67,18 +67,22 @@
         </div>
       </div>
       <!-- Page Header End -->   
-
+      
       <section class="section text-center" >
       <div class="container">
         <!-- login page here   -->
         <div class="row">
           <div class="col-sm-6 col-xs-12">
               <div class="form cms-e-section">
-                  <form id="frmEmployerLogin" name="frmEmployerLogin" action="employer-login.html" method="post" autocomplete="off">
+                @if(isset($error))
+                    <p class="error">{!!$error!!}</p>
+                @endif
+                  <form id="frmEmployerLogin" name="frmEmployerLogin" method="post" action="{{route('auth')}}">
+                      @csrf
                       <input type="hidden" name="employer_login" value="1" />
                       <div class="form-group">
                           <label class="control-label" for="email">
-                              <span class="wc-editable" data-pk="front_label_email" data-type="text">Enter your email address</span>:</label>
+                              <span class="wc-editable" data-pk="front_label_email" data-type="text">Địa chỉ email</span>:</label>
                           <input type="email" name="email" id="email" class="form-control required email" maxlength="255" autocomplete="email" data-msg-required="Email is required."
                               data-msg-email="Email is invalid." />
                           <div class="help-block with-errors">
@@ -88,7 +92,7 @@
 
                       <div class="form-group">
                           <label class="control-label" for="password">
-                              <span class="wc-editable" data-pk="front_label_password" data-type="text">Password</span>: </label>
+                              <span class="wc-editable" data-pk="front_label_password" data-type="text">Mật khẩu</span>: </label>
                           <input type="password" name="password" id="password" autocomplete="current-password" class="form-control required" data-msg-required="Password is required."
                           />
                           <div class="help-block with-errors">
@@ -98,11 +102,11 @@
 
                       <div class="form-actions">
                           <button type="submit" class="btn btn-primary btn-lg">
-                              <span class="wc-editable" data-pk="front_btn_login" data-type="action">Login</span>
+                              <span class="wc-editable" data-pk="front_btn_login" data-type="action">Đăng nhập</span>
                           </button>
 
                           <a href="forget-password.html">
-                              <span class="wc-editable" data-pk="front_link_forgot_password" data-type="text">Forgot password</span>
+                              <span class="wc-editable" data-pk="front_link_forgot_password" data-type="text">Quên mật khẩu</span>
                           </a>
                       </div>
                   </form>
@@ -113,11 +117,11 @@
 
               <div class="box cms-e-section">
                   <div class="box-title">
-                      <span class="wc-editable" data-pk="front_dont_have_account" data-type="text">Don't Have an Account?</span>
+                      <span class="wc-editable" data-pk="front_dont_have_account" data-type="text">Bạn chưa có tài khoản?</span>
                   </div>
 
                   <a href="signup.html" class="btn btn-primary btn-lg">
-                      <span class="wc-editable" data-pk="front_register" data-type="text">Register</span>
+                      <span class="wc-editable" data-pk="front_register" data-type="text">Đăng kí</span>
                   </a>
               </div>
           </div>
