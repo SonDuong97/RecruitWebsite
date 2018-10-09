@@ -38,7 +38,8 @@
 
   <!-- Color CSS Styles  -->
   <link rel="stylesheet" type="text/css" href="user_assets/css/colors/red.css" media="screen" />
-
+  
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 
 </head>
