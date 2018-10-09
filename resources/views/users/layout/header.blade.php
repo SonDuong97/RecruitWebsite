@@ -105,10 +105,9 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12">
-                <h1>Find the job that fits your life</h1>
+                <h1>Tìm công việc phù hợp với bạn</h1>
                 <br>
-                <h2>More than
-                  <strong>12</strong> jobs are waiting to Kickstart your career!</h2>
+                <h2>Nhiều công việc đang chờ bạn!</h2>
                   <div class="content">
                     <form method="" action="">
                       <div class="row">

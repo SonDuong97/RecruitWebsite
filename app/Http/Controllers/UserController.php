@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     //
     public function home(){
-    	return view('users.layout.layout');
+    	$member = User::where('deleted','=','false')->count();
+    	return view('users.home',['member'=>$member]);
     }
 
     public function showLogin(){
@@ -24,11 +25,13 @@ class UserController extends Controller
 		$password = $request['password'];
 		if(Auth::attempt(['email'=>$email,'password'=>$password])){
 			$userLogin = Auth::user();
-			if($userLogin->deleted_at==0)
+			if($userLogin->deleted==true){
+				return view('login',['error'=>"Tài khoản này đã bị vô hiệu hóa."]);
+			}
 			return redirect()->route('home');
 		}
 		else {
-			return view('login',['error'=>"Đăng nhập thất bại.<br>Kiểm tra lại email hoặc mật khẩu."]);
+			return view('login',['error'=>"Kiểm tra lại email hoặc mật khẩu."]);
 		}
 	}
 

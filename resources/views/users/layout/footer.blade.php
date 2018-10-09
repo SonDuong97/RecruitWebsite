@@ -9,36 +9,33 @@
               <h3 class="block-title">
                 <img src="user_assets/img/logo.png" class="img-responsive" alt="Footer Logo">
               </h3>
-              <div class="textwidget">
-                <p> Description Here.</p>
-              </div>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="widget">
-              <h3 class="block-title">Quick Links</h3>
+              <h3 class="block-title">Đội ngũ phát triển</h3>
               <ul class="menu">
                 <li>
-                  <a href="#">About Us</a>
+                  <a href="https://www.facebook.com/duongson2911" target="_blank">Dương Ngọc Sơn</a>
                 </li>
                 <li>
-                  <a href="#">Support</a>
+                  <a href="https://www.facebook.com/trungnn1606" target="_blank">Nguyễn Ngọc Trung</a>
                 </li>
                 <li>
-                  <a href="#">License</a>
+                  <a href="https://www.facebook.com/hai.dothi.1710" target="_blank">Đỗ Thị Hải</a>
                 </li>
                 <li>
-                  <a href="#">Terms & Conditions</a>
+                  <a href="https://www.facebook.com/kieu.thuong.334" target="_blank">Nguyễn Thị Kiều Thương</a>
                 </li>
                 <li>
-                  <a href="#">Contact</a>
+                  <a href="https://www.facebook.com/chung.gemGaming" target="_blank">Lê Trọng Chung</a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="widget">
-              <h3 class="block-title">Trending Jobs</h3>
+              <h3 class="block-title">Nghề nghiệp hot</h3>
               <ul class="menu">
                 <li>
                   <a href="#">Android Developer</a>
@@ -60,28 +57,28 @@
           </div>
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="widget">
-              <h3 class="block-title">Follow Us</h3>
+              <h3 class="block-title">Mạng xã hội</h3>
               <div class="bottom-social-icons social-icon">
-                <a class="twitter" href="https://twitter.com">
+                <a class="twitter" href="https://twitter.com" target="_blank">
                   <i class="ti-twitter-alt"></i>
                 </a>
-                <a class="facebook" href="https://web.facebook.com/">
+                <a class="facebook" href="https://web.facebook.com/" target="_blank">
                   <i class="ti-facebook"></i>
                 </a>
-                <a class="youtube" href="https://youtube.com">
+                <a class="youtube" href="https://youtube.com" target="_blank">
                   <i class="ti-youtube"></i>
                 </a>
-                <a class="dribble" href="https://dribbble.com/">
+                <a class="dribble" href="https://dribbble.com/" target="_blank">
                   <i class="ti-dribbble"></i>
                 </a>
-                <a class="linkedin" href="https://www.linkedin.com/GrayGrids">
+                <a class="linkedin" href="https://www.linkedin.com/GrayGrids" target="_blank">
                   <i class="ti-linkedin"></i>
                 </a>
               </div>
-              <p>Join our mailing list to stay up to date and get notices about our new releases!</p>
+              <p>Để lại email để luôn cập nhật và nhận được thông báo về các bản phát hành mới của chúng tôi!</p>
               <form class="subscribe-box">
-                <input type="text" placeholder="Your email">
-                <input type="submit" class="btn-system" value="Send">
+                <input type="text" placeholder="Email của bạn">
+                <input type="submit" class="btn-system" value="Gửi">
               </form>
             </div>
           </div>
@@ -96,9 +93,9 @@
         <div class="row">
           <div class="col-md-12">
             <div class="site-info text-center">
-              Shared by
+              Đội ngũ phát triển
               <i class="fa fa-love"></i>
-              <a href="https://github.com/oorochimaru">Ryamsey Ryam & Rajnesh </a>
+              <a href="https://github.com/oorochimaru">IS2 - K60</a>
             </div>
           </div>
         </div>
