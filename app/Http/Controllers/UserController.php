@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     //
+    public function home(){
+    	return view('users.layout.layout');
+    }
+
+    public function showLogin(){
+    	return view('login');
+    }
+
 	public function login(Request $request){
 		$email = $request['email'];
 		$password = $request['password'];
@@ -25,5 +33,13 @@ class UserController extends Controller
 			Auth::logout();
 			return redirect()->route('home');
 		}
+	}
+
+	public function showSignup(){
+		return view('signup');
+	}
+
+	public function signup(Request $request){
+		
 	}
 }

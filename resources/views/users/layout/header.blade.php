@@ -48,11 +48,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right float-right">
 
-                <li class="left">
-                  <a href="post-job.html">
-                    <i class="ti-pencil-alt"></i>Đăng tin</a>
-                </li>
+               
                 @if(Auth::check())
+                   @if(Auth::user()->id_role<3)
+                      <li class="left">
+                        <a href="post-job.html">
+                        <i class="ti-pencil-alt"></i>Đăng tin</a>
+                      </li>
+                    @endif
                   <li >
                     <a href="resume.html">
                       Thông tin <i class="fa fa-angle-down" ></i>

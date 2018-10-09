@@ -77,39 +77,39 @@
                 @if(isset($error))
                     <p class="error">{!!$error!!}</p>
                 @endif
-                  <form id="frmEmployerLogin" name="frmEmployerLogin" method="post" action="{{route('auth')}}">
-                      @csrf
-                      <input type="hidden" name="employer_login" value="1" />
-                      <div class="form-group">
-                          <label class="control-label" for="email">
-                              <span class="wc-editable" data-pk="front_label_email" data-type="text">Địa chỉ email</span>:</label>
-                          <input type="email" name="email" id="email" class="form-control required email" maxlength="255" autocomplete="email" data-msg-required="Email is required."
-                              data-msg-email="Email is invalid." />
-                          <div class="help-block with-errors">
-                              <ul class="list-unstyled"></ul>
-                          </div>
-                      </div>
+                <form id="frmEmployerLogin" name="frmEmployerLogin" method="post" action="{{route('auth')}}">
+                    @csrf
+                    <input type="hidden" name="employer_login" value="1" />
+                    <div class="form-group">
+                        <label class="control-label" for="email">
+                            <span class="wc-editable" data-pk="front_label_email" data-type="text">Địa chỉ email</span>:</label>
+                        <input type="email" name="email" id="email" class="form-control required email" maxlength="255" autocomplete="email" data-msg-required="Email is required."
+                            data-msg-email="Email is invalid." />
+                        <div class="help-block with-errors">
+                            <ul class="list-unstyled"></ul>
+                        </div>
+                    </div>
 
-                      <div class="form-group">
-                          <label class="control-label" for="password">
-                              <span class="wc-editable" data-pk="front_label_password" data-type="text">Mật khẩu</span>: </label>
-                          <input type="password" name="password" id="password" autocomplete="current-password" class="form-control required" data-msg-required="Password is required."
-                          />
-                          <div class="help-block with-errors">
-                              <ul class="list-unstyled"></ul>
-                          </div>
-                      </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">
+                            <span class="wc-editable" data-pk="front_label_password" data-type="text">Mật khẩu</span>: </label>
+                        <input type="password" name="password" id="password" autocomplete="current-password" class="form-control required" data-msg-required="Password is required."
+                        />
+                        <div class="help-block with-errors">
+                            <ul class="list-unstyled"></ul>
+                        </div>
+                    </div>
 
-                      <div class="form-actions">
-                          <button type="submit" class="btn btn-primary btn-lg">
-                              <span class="wc-editable" data-pk="front_btn_login" data-type="action">Đăng nhập</span>
-                          </button>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <span class="wc-editable" data-pk="front_btn_login" data-type="action">Đăng nhập</span>
+                        </button>
 
-                          <a href="forget-password.html">
-                              <span class="wc-editable" data-pk="front_link_forgot_password" data-type="text">Quên mật khẩu</span>
-                          </a>
-                      </div>
-                  </form>
+                        <a href="forget-password.html">
+                            <span class="wc-editable" data-pk="front_link_forgot_password" data-type="text">Quên mật khẩu</span>
+                        </a>
+                    </div>
+                </form>
               </div>
           </div>
 
@@ -120,7 +120,7 @@
                       <span class="wc-editable" data-pk="front_dont_have_account" data-type="text">Bạn chưa có tài khoản?</span>
                   </div>
 
-                  <a href="signup.html" class="btn btn-primary btn-lg">
+                  <a href="{{ route('showSignup') }}" class="btn btn-primary btn-lg">
                       <span class="wc-editable" data-pk="front_register" data-type="text">Đăng kí</span>
                   </a>
               </div>

@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('users.layout.layout');
-})->name('home');
+Route::get('/','UserController@home')->name('home');
 
-Route::get('login', function () {
-	return view('login');
-})->name('login');
+Route::get('/login', 'UserController@showLogin')->name('login');
 
 Route::post('/auth', 'UserController@login')->name('auth');
 
 Route::get('/logout', 'UserController@logout')->name('logout');
+
+Route::get('/signup','UserController@showSignup')->name('showSignup');
+
+Route::post('/sign','UserController@signup')->name('signup');
