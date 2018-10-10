@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\MessageBag;
 use Validator;
+use Hash;
 
 class UserController extends Controller
 {
@@ -48,17 +49,16 @@ class UserController extends Controller
 
 	public function signup(Request $request){
 		$rules = [
-			'role' => 'required',
-			'email' => 'unique:users,email|email',
-    		'password' => 'min:6',
-    		'role' => 'required',
-    		'cpassword' => 'same:password'
+			'email' => 'unique:users,email|email|required',
+    		'password' => 'required|min:6',
+    		'cpassword' => 'required|same:password',
+    		'fullName' => 'required'
 		];
 		$messages = [
+			'required'=> 'Không được để trống thông tin nào',
     		'email.email' => 'Email không đúng định dạng',
     		'email.unique' => 'Email đã được đăng kí',
     		'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự',
-    		'role.required' => 'Phải chọn loại tài khoản',
     		'cpassword.same' => "Chưa nhập đúng lại mật khẩu"
     	];
     	$validator = Validator::make($request->all(), $rules, $messages);
@@ -78,5 +78,39 @@ class UserController extends Controller
 			$user->save();
 			return response()->json(['error'=>false]);
 		}
+	}
+
+	public function showResetPassword(){
+		return view('reset-password');
+	}
+
+	public function changePassword(Request $request){
+		$userLogin = Auth::user();
+		if(!Hash::check($request->cuPassword,$userLogin->password)){
+			$errors = new MessageBag(['errorPassword' => 'Hãy nhập đúng mật khẩu hiện tại']);
+			return response()->json(['error'=>true,'message'=> $error]);
+		}
+		$rules = [
+			'cuPassword' => 'required',
+			'nPassword' => 'required|min:6',
+			'cPassword' => 'required|same:nPassword'
+		];
+
+		$messages = [
+			'required'=> 'Không được để trống thông tin nào',
+    		'nPassword.min' => 'Mật khẩu có ít nhất 6 kí tự',
+    		'cPassword.same' => "Chưa nhập đúng lại mật khẩu mới"
+    	];
+    	$validator = Validator::make($request->all(), $rules, $messages);
+    	if ($validator->fails()) {
+            return response()->json([
+                    'error' => true,
+                    'message' => $validator->errors()
+                ], 200);
+    		// return redirect()->back()->withErrors($validator)->withInput();
+    	} else {
+			return response()->json(['error'=>false]);
+		}
+
 	}
 }

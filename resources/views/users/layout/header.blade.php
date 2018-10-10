@@ -58,12 +58,12 @@
                     @endif
                   <li >
                     <a href="resume.html">
-                      Thông tin <i class="fa fa-angle-down" ></i>
+                      {{Auth::user()->name}}<i class="fa fa-angle-down" ></i>
                     </a> 
                     <ul class="dropdown">
                       <li>
-                        <a href="resume.html">
-                          Thông tin
+                        <a href="{{ route('reset-password') }}">
+                          Đổi mật khẩu
                         </a>
                       </li>
                       <li>

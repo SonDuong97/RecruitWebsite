@@ -22,3 +22,7 @@ Route::get('/logout', 'UserController@logout')->name('logout');
 Route::get('/signup','UserController@showSignup')->name('showSignup');
 
 Route::post('/sign','UserController@signup')->name('sign');
+
+Route::get('/reset-password','UserController@showResetPassword')->name('reset-password');
+
+Route::POST('/change-password','UserController@changePassword')->name('change-password');

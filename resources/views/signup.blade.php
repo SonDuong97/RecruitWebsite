@@ -12,11 +12,10 @@
   <script src="user_assets/js/jquery-min.js"></script>
   <script src="user_assets/js/bootstrap.min.js"></script>
   <script src="user_assets/js/ajax/signup.js"></script>
-  <script type="text/javascript" src="user_assets/js/sweetalert.min.js"></script>
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 <body>
-  <div class="container">
+  <div class="container" style="margin-top:30px">
    <div class="row">
     <div class="col-md-8">
      <!--thông báo-->

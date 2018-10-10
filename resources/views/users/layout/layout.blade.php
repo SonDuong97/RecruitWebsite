@@ -8,7 +8,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="author" content="Jobboard">
 
-  <title>JobBoard - Search your dream Job</title>
+  <title>Tìm kiếm việc làm</title>
   <base href="{{asset('')}}"/>
   <!-- Favicon -->
   <link rel="shortcut icon" href="user_assets/img/favicon.png">
