@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">    
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="author" content="Jobboard">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Tìm kiếm việc làm</title>    
   <base href="{{asset('')}}">
   <!-- for login -->
@@ -48,6 +48,7 @@
 
   <link rel="stylesheet" type="text/css" href="user_assets/css/reset-password.css" media="screen" />
 
+
 </head>
 
 <body>  
@@ -84,7 +85,6 @@
               Đổi mật khẩu thất bại. <span id="error"></span>. 
             </div>
             <form id="frmEmployerLogin" name="frmEmployerLogin">
-              @csrf
               <input type="hidden" name="employer_login" value="1" />
               <div class="form-group">
                 <label class="control-label" for="email">
@@ -116,7 +116,7 @@
                     </div>
 
                     <div class="form-actions">
-                       <input name="Submit" type="button" value="Đổi mật khẩu" class="btn btn-success" id="change">
+                      <button name="Submit" type="button" class="btn btn-success" id="submit">Đổi mật khẩu</button>
                     </div>
                   </form>
                 </div>
@@ -149,7 +149,8 @@
       </div>
 
       <!-- Main JS  -->
-      <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>      
+      
+      <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>
       <script type="text/javascript" src="user_assets/js/bootstrap.min.js"></script>    
       <script type="text/javascript" src="user_assets/js/material.min.js"></script>
       <script type="text/javascript" src="user_assets/js/material-kit.js"></script>
@@ -164,7 +165,9 @@
       <script type="text/javascript" src="user_assets/js/form-validator.min.js"></script>
       <script type="text/javascript" src="user_assets/js/contact-form-script.js"></script>    
       <script type="text/javascript" src="user_assets/js/jquery.themepunch.revolution.min.js"></script>
-      <script type="text/javascript" src="user_assets/js/jquery.themepunch.tools.min.js"></script>
+      <script type="text/javascript" src="user_assets/js/jquery.themepunch.tools.min.js"></script> 
       <script type="text/javascript" src="user_assets/js/ajax/reset-password.js"></script>
-</body>
-</html>
+
+    </script>
+  </body>
+  </html>

@@ -8,18 +8,18 @@ use App\User;
 use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
-
+use Mail;
 class UserController extends Controller
 {
     //
-    public function home(){
-    	$member = User::where('deleted','=','false')->count();
-    	return view('users.home',['member'=>$member]);
-    }
+	public function home(){
+		$member = User::where('deleted','=','false')->count();
+		return view('users.home',['member'=>$member]);
+	}
 
-    public function showLogin(){
-    	return view('login');
-    }
+	public function showLogin(){
+		return view('login');
+	}
 
 	public function login(Request $request){
 		$email = $request['email'];
@@ -50,25 +50,25 @@ class UserController extends Controller
 	public function signup(Request $request){
 		$rules = [
 			'email' => 'unique:users,email|email|required',
-    		'password' => 'required|min:6',
-    		'cpassword' => 'required|same:password',
-    		'fullName' => 'required'
+			'password' => 'required|min:6',
+			'cpassword' => 'required|same:password',
+			'fullName' => 'required'
 		];
 		$messages = [
 			'required'=> 'Không được để trống thông tin nào',
-    		'email.email' => 'Email không đúng định dạng',
-    		'email.unique' => 'Email đã được đăng kí',
-    		'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự',
-    		'cpassword.same' => "Chưa nhập đúng lại mật khẩu"
-    	];
-    	$validator = Validator::make($request->all(), $rules, $messages);
-    	if ($validator->fails()) {
-            return response()->json([
-                    'error' => true,
-                    'message' => $validator->errors()
-                ], 200);
+			'email.email' => 'Email không đúng định dạng',
+			'email.unique' => 'Email đã được đăng kí',
+			'password.min' => 'Mật khẩu phải chứa ít nhất 6 ký tự',
+			'cpassword.same' => "Chưa nhập đúng lại mật khẩu"
+		];
+		$validator = Validator::make($request->all(), $rules, $messages);
+		if ($validator->fails()) {
+			return response()->json([
+				'error' => true,
+				'message' => $validator->errors()
+			], 200);
     		// return redirect()->back()->withErrors($validator)->withInput();
-    	} else {
+		} else {
 			$user = new User;
 			$user->name = $request->fullName;
 			$user->password = bcrypt($request->password);
@@ -86,9 +86,10 @@ class UserController extends Controller
 
 	public function changePassword(Request $request){
 		$userLogin = Auth::user();
+
 		if(!Hash::check($request->cuPassword,$userLogin->password)){
 			$errors = new MessageBag(['errorPassword' => 'Hãy nhập đúng mật khẩu hiện tại']);
-			return response()->json(['error'=>true,'message'=> $error]);
+			return response()->json(['error'=>true,'message'=> $errors]);
 		}
 		$rules = [
 			'cuPassword' => 'required',
@@ -98,19 +99,24 @@ class UserController extends Controller
 
 		$messages = [
 			'required'=> 'Không được để trống thông tin nào',
-    		'nPassword.min' => 'Mật khẩu có ít nhất 6 kí tự',
-    		'cPassword.same' => "Chưa nhập đúng lại mật khẩu mới"
-    	];
-    	$validator = Validator::make($request->all(), $rules, $messages);
-    	if ($validator->fails()) {
-            return response()->json([
-                    'error' => true,
-                    'message' => $validator->errors()
-                ], 200);
-    		// return redirect()->back()->withErrors($validator)->withInput();
-    	} else {
+			'nPassword.min' => 'Mật khẩu có ít nhất 6 kí tự',
+			'cPassword.same' => "Chưa nhập đúng lại mật khẩu mới"
+		];
+
+		$validator = Validator::make($request->all(), $rules, $messages);
+
+		if ($validator->fails()) {
+			return response()->json([
+				'error' => true,
+				'message' => $validator->errors()
+			], 200);
+		} 
+
+		else {
+			User::where('id',$userLogin->id)->update(['password'=>bcrypt($request->nPassword)]);
 			return response()->json(['error'=>false]);
 		}
-
 	}
+
+
 }

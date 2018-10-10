@@ -2,11 +2,12 @@
 * @Author: Trungnn
 * @Date:   2018-10-10 10:48:47
 * @Last Modified by:   Trungnn
-* @Last Modified time: 2018-10-10 11:51:24
+* @Last Modified time: 2018-10-10 23:31:22
 */
 $(document).ready(function(){
-	$('#change').click(function(event) {
+	$('#submit').click(function(event) {
 		/* Act on the event */
+
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -23,6 +24,7 @@ $(document).ready(function(){
 			},
 			success:function(data){
 				if (data.error == true) {
+					$('#alert_success').hide();
 					$('#alert_danger').show();
 					if(data.message.errorPassword != undefined){
 						$('#error').text(data.message.errorPassword[0]);
@@ -38,6 +40,7 @@ $(document).ready(function(){
 					}
 				} else {
 					$('#alert_success').show();
+					$('#alert_danger').hide();
 				}
 			}
 		});

@@ -2,7 +2,7 @@
 * @Author: Trungnn
 * @Date:   2018-10-09 10:02:22
 * @Last Modified by:   Trungnn
-* @Last Modified time: 2018-10-10 11:05:41
+* @Last Modified time: 2018-10-10 23:33:12
 */
 $(document).ready(function(){
 	$('#submit').click(function(event) {
@@ -25,6 +25,7 @@ $(document).ready(function(){
 			success:function(data){
 				if (data.error == true) {
 					$('#alert_danger').show();
+					$('#alert_success').hide();
 					if(data.message.fullName != undefined){
 						$('#error').text(data.message.fullName[0]);
 					}
@@ -40,6 +41,7 @@ $(document).ready(function(){
 				} 
 				else {
 					$('#alert_success').show();
+					$('#alert_danger').hide();
 				}
 			}
 		});
