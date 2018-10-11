@@ -27,3 +27,5 @@ Route::get('/reset-password','UserController@showResetPassword')->name('reset-pa
 
 Route::post('/change-password','UserController@changePassword')->name('change-password');
 
+Route::get('/sendbasicemail','MailController@basic_email');
+

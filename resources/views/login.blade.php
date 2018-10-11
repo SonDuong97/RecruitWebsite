@@ -107,7 +107,7 @@
                       <span class="wc-editable" data-pk="front_btn_login" data-type="action">Đăng nhập</span>
                     </button>
 
-                    <a href="forget-password.html">
+                    <a href="#modal_forgot_password" data-toggle="modal">
                       <span class="wc-editable" data-pk="front_link_forgot_password" data-type="text">Quên mật khẩu</span>
                     </a>
                   </div>
@@ -153,7 +153,24 @@
         </div>
       </div>
     </div>
-
+    
+    <div class="modal fade" id="modal_forgot_password">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  
+          </div>
+          <div class="modal-body">
+            <h3>Nhập email đã đăng kí: </h3>
+            <input type="text" name="email_forgot" id="email_forgot"  class="form-control required" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Lấy lại mật khẩu</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Main JS  -->
     <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>      
     <script type="text/javascript" src="user_assets/js/bootstrap.min.js"></script>    
