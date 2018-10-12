@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Summaries extends Migration
+class Companies extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Summaries extends Migration
      */
     public function up()
     {
-        Schema::create('summaries', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->integer('id_company');
-            $table->integer('id_description')->unsigned()->nullable();
-            $table->timestamps();
+            $table->string('company_link')->nullable();
+            $table->string('company_logo')->nullable();
+            $table->string('company_name')->nullable();
+            $table->integer('id_address')->default(1);
             //
         });
     }
@@ -30,7 +30,6 @@ class Summaries extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('summaries');
+        Schema::dropIfExists('companies');
     }
 }

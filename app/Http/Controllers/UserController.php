@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Company;
 use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
@@ -14,7 +15,8 @@ class UserController extends Controller
     //
 	public function home(){
 		$member = User::where('deleted','=','false')->count();
-		return view('users.home',['member'=>$member]);
+		$company = Company::count();
+		return view('users.home',['member'=>$member,'company'=>$company]);
 	}
 
 	public function showLogin(){
@@ -118,5 +120,17 @@ class UserController extends Controller
 		}
 	}
 
-	
+	public function forgotPassword(Request $request){
+		if($request->email==''){
+			return response()->json(['error'=>true,'message'=>'Không được để trống địa chỉ email']);
+		}
+		$user = User::where('email',$request->email)->get();
+		/*if($user){
+			return response()->json(['error'=>true,'message'=>'Email này chưa được đăng kí.']);
+		}*/
+		$npassword = str_random(8);
+		User::where('email',$request->email)->update(['password'=>bcrypt($npassword)]);
+		return response()->json(['error'=>false,'message'=>'Lấy lại mật khẩu mới trong email của bạn.'.$npassword]);
+		
+	}
 }

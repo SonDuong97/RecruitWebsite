@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Summaries extends Migration
+class Address extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Summaries extends Migration
      */
     public function up()
     {
-        Schema::create('summaries', function (Blueprint $table) {
+        //
+        Schema::create('address', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->integer('id_company');
-            $table->integer('id_description')->unsigned()->nullable();
-            $table->timestamps();
+            $table->string('name');
             //
         });
     }
@@ -31,6 +29,6 @@ class Summaries extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('summaries');
+        Schema::dropIfExists('address');
     }
 }

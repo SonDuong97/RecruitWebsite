@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeed::class);
         $this->call(DescriptionSeed::class);
         $this->call(SummarieSeed::class);
+        $this->call(AddressSeed::class);
+        $this->call(CompanySeed::class);
 
 
     }

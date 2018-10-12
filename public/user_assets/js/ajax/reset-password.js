@@ -2,7 +2,7 @@
 * @Author: Trungnn
 * @Date:   2018-10-10 10:48:47
 * @Last Modified by:   Trungnn
-* @Last Modified time: 2018-10-10 23:31:22
+* @Last Modified time: 2018-10-12 23:50:18
 */
 $(document).ready(function(){
 	$('#submit').click(function(event) {
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		});
 		$.ajax({
 			'url':'/change-password',
-			'type':'POST',
+			'type':'put',
 			'data':{
 				'cuPassword':$('#cu_password').val(),
 				'nPassword':$('#n_password').val(),
@@ -41,6 +41,9 @@ $(document).ready(function(){
 				} else {
 					$('#alert_success').show();
 					$('#alert_danger').hide();
+					$('#cu_password').text();
+					$('#n_password').text();
+					$('#c_password').text();
 				}
 			}
 		});

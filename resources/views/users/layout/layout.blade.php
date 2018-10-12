@@ -61,7 +61,5 @@
   <script type="text/javascript" src="user_assets/js/waypoints.min.js"></script>
   <script type="text/javascript" src="user_assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="user_assets/js/bootstrap-select.min.js"></script>
-  <script type="text/javascript" src="user_assets/js/form-validator.min.js"></script>
   <script type="text/javascript" src="user_assets/js/contact-form-script.js"></script>
-  <script type="text/javascript" src="user_assets/js/sweetalert.min.js"></script>
 </body>

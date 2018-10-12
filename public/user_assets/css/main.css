@@ -3453,3 +3453,11 @@ blockquote p a:hover {
 .error{
   color:red;
 }
+
+#alert-success{
+  display:none;
+}
+
+#alert-error{
+  display: none;
+}

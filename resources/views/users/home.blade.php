@@ -214,7 +214,7 @@
             </div>
             <div class="desc">
               <h2>Company</h2>
-              <h1 class="counter">9050</h1>
+              <h1 class="counter">{{ $company }}</h1>
             </div>
           </div>
         </div>

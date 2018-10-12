@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">    
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="author" content="Jobboard">
-
-  <title>JobBoard - Bootstrap HTML5 Job Portal Template</title>    
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+  <title>Đăng nhập</title>    
   <base href="{{asset('')}}">
+
   <!-- for login -->
   <link rel="icon" type="image/vnd.microsoft.icon" href="http://vevs.website/vgw09602_awsoo_com/app/web/upload/medium/favicon-346.ico">
   <link rel="stylesheet" href="http://vevs.website/vgw09602_awsoo_com/core/third-party/flexslider/2.7.0/flexslider.css">
@@ -79,6 +80,9 @@
               Đăng nhập thất bại. {{$error}}
             </div>
             @endif
+            <div class="alert alert-success " id="alert-success" role="alert">
+                Đăng kí thành công <a href="{{ route('login') }}" class="alert-link">Đăng nhập ngay</a>. 
+            </div>
             <form id="frmEmployerLogin" name="frmEmployerLogin" method="post" action="{{route('auth')}}">
               @csrf
               <input type="hidden" name="employer_login" value="1" />
@@ -159,15 +163,21 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  
+
           </div>
           <div class="modal-body">
-            <h3>Nhập email đã đăng kí: </h3>
-            <input type="text" name="email_forgot" id="email_forgot"  class="form-control required" />
+            <form action="">
+              <div class="alert alert-danger" role="alert" id="alert-error" style="display: none">
+                
+              </div>
+              <h3>Nhập email đã đăng kí: </h3>
+              <input type="text" name="email_forgot" id="email_forgot"  class="form-control required" />
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="forgot-password">Lấy lại mật khẩu</button>
+              </div>
+            </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Lấy lại mật khẩu</button>
-          </div>
+
         </div>
       </div>
     </div>
@@ -188,6 +198,6 @@
     <script type="text/javascript" src="user_assets/js/contact-form-script.js"></script>    
     <script type="text/javascript" src="user_assets/js/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript" src="user_assets/js/jquery.themepunch.tools.min.js"></script>
-
+    <script type="text/javascript" src="user_assets/js/ajax/login.js"></script>
   </body>
   </html>

@@ -25,7 +25,7 @@ Route::post('/sign','UserController@signup')->name('sign');
 
 Route::get('/reset-password','UserController@showResetPassword')->name('reset-password');
 
-Route::post('/change-password','UserController@changePassword')->name('change-password');
+Route::put('/change-password','UserController@changePassword')->name('change-password');
 
-Route::get('/sendbasicemail','MailController@basic_email');
+Route::put('/forgot-password','UserController@forgotPassword')->name('forgot-password');
 
