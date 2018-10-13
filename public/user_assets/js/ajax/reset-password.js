@@ -2,7 +2,7 @@
 * @Author: Trungnn
 * @Date:   2018-10-10 10:48:47
 * @Last Modified by:   Trungnn
-* @Last Modified time: 2018-10-12 23:50:18
+* @Last Modified time: 2018-10-13 21:03:22
 */
 $(document).ready(function(){
 	$('#submit').click(function(event) {
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		});
 		$.ajax({
 			'url':'/change-password',
-			'type':'put',
+			'type':'post',
 			'data':{
 				'cuPassword':$('#cu_password').val(),
 				'nPassword':$('#n_password').val(),

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Company;
+use App\Address;
 use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
@@ -124,13 +125,26 @@ class UserController extends Controller
 		if($request->email==''){
 			return response()->json(['error'=>true,'message'=>'Không được để trống địa chỉ email']);
 		}
+
 		$user = User::where('email',$request->email)->get();
-		/*if($user){
+		if($user==null){
 			return response()->json(['error'=>true,'message'=>'Email này chưa được đăng kí.']);
-		}*/
+		}
+
 		$npassword = str_random(8);
 		User::where('email',$request->email)->update(['password'=>bcrypt($npassword)]);
-		return response()->json(['error'=>false,'message'=>'Lấy lại mật khẩu mới trong email của bạn.'.$npassword]);
+		return response()->json(['error'=>false,'message'=>'Lấy lại mật khẩu mới trong email của bạn.']);
 		
+	}
+	public function findByAddress(Request $request){
+	
+		$arrAddress = Address::where('name','like','%'.$request->address.'%')->get()->toArray();
+		$addess = array();
+		foreach ($arrAddress as $value) {
+			# code..
+			$address[] = $value['name'];
+		}
+
+		return response()->json(['address'=>$address]);
 	}
 }

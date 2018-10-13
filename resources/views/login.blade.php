@@ -81,7 +81,7 @@
             </div>
             @endif
             <div class="alert alert-success " id="alert-success" role="alert">
-                Đăng kí thành công <a href="{{ route('login') }}" class="alert-link">Đăng nhập ngay</a>. 
+              Đăng kí thành công <a href="{{ route('login') }}" class="alert-link">Đăng nhập ngay</a>. 
             </div>
             <form id="frmEmployerLogin" name="frmEmployerLogin" method="post" action="{{route('auth')}}">
               @csrf
@@ -168,7 +168,7 @@
           <div class="modal-body">
             <form action="">
               <div class="alert alert-danger" role="alert" id="alert-error" style="display: none">
-                
+
               </div>
               <h3>Nhập email đã đăng kí: </h3>
               <input type="text" name="email_forgot" id="email_forgot"  class="form-control required" />
@@ -199,5 +199,6 @@
     <script type="text/javascript" src="user_assets/js/jquery.themepunch.revolution.min.js"></script>
     <script type="text/javascript" src="user_assets/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="user_assets/js/ajax/login.js"></script>
+   
   </body>
   </html>

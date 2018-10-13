@@ -38,6 +38,12 @@
 
   <!-- Color CSS Styles  -->
   <link rel="stylesheet" type="text/css" href="user_assets/css/colors/red.css" media="screen" />
+
+  <!-- CSS file -->
+  <link rel="stylesheet" href="user_assets/css/easy-autocomplete.min.css"> 
+
+<!-- Additional CSS Themes file - not required-->
+<link rel="stylesheet" href="user_assets/css/easy-autocomplete.themes.min.css"> 
   
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -62,4 +68,5 @@
   <script type="text/javascript" src="user_assets/js/jasny-bootstrap.min.js"></script>
   <script type="text/javascript" src="user_assets/js/bootstrap-select.min.js"></script>
   <script type="text/javascript" src="user_assets/js/contact-form-script.js"></script>
+  <script type="text/javascript" src="user_assets/js/form-validator.min.js"></script>
 </body>
