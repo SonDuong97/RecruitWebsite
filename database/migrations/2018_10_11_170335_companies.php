@@ -15,9 +15,9 @@ class Companies extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_link')->nullable();
-            $table->string('company_logo')->nullable();
-            $table->string('company_name')->nullable();
+            $table->string('link')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('name')->nullable();
             $table->integer('id_address')->default(1);
             //
         });

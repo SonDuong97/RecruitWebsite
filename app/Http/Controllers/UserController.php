@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Company;
 use App\Address;
+use App\JobSummary;
 use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
@@ -17,7 +18,10 @@ class UserController extends Controller
 	public function home(){
 		$member = User::where('deleted','=','false')->count();
 		$company = Company::count();
-		return view('users.home',['member'=>$member,'company'=>$company]);
+		$job = JobSummary::count();
+		$jobSummary = JobSummary::orderBy('id','desc')->take(5)->get();
+
+		return view('users.home',['member'=>$member,'company'=>$company,'job'=>$job,'jobSummary'=>$jobSummary]);
 	}
 
 	public function showLogin(){
@@ -136,15 +140,5 @@ class UserController extends Controller
 		return response()->json(['error'=>false,'message'=>'Lấy lại mật khẩu mới trong email của bạn.']);
 		
 	}
-	public function findByAddress(Request $request){
 	
-		$arrAddress = Address::where('name','like','%'.$request->address.'%')->get()->toArray();
-		$addess = array();
-		foreach ($arrAddress as $value) {
-			# code..
-			$address[] = $value['name'];
-		}
-
-		return response()->json(['address'=>$address]);
-	}
 }

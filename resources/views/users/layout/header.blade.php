@@ -17,7 +17,7 @@
               <img src="user_assets/img/logo.png" alt="">
             </a>
           </div>
-
+          
           <div class="collapse navbar-collapse" id="navbar">
             <!-- Start Navigation List -->
             <ul class="nav navbar-nav">
@@ -50,11 +50,11 @@
 
 
               @if(Auth::check())
-              @if(Auth::user()->id_role<3)
-              <li class="left">
-                <a href="post-job.html">
-                  <i class="ti-pencil-alt"></i>Đăng tin</a>
-                </li>
+                @if(Auth::user()->id_role<3)
+                  <li class="left">
+                    <a href="post-job.html">
+                    <i class="ti-pencil-alt"></i>Đăng tin</a>
+                  </li>
                 @endif
                 <li >
                   <a href="resume.html">
@@ -111,32 +111,37 @@
                 <div class="content">
                   <form method="" action="">
                     <div class="row">
-                      <div class="col-md-6 col-sm-4">
+                      <div class="col-md-1 col-sm-1">
+                       
+                      </div>
+                      <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <input class="form-control" type="text" placeholder="job title / keywords / company name" id="">
-                          <i class="ti-time"></i>
+                          <input class="form-control" type="text" placeholder="Tên công ty" id="company">
+                          <i class="ti-briefcase"></i>
                         </div>
                       </div>
-                      <div class="col-md-5 col-sm-4">
+                      <div class="col-md-3 col-sm-3">
+                        <div class="form-group">
+                          <input class="form-control" type="text" placeholder="Ngành nghề" id="category">
+                          <i class="ti-list"></i>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-sm-3">
                         <div class="form-group">
                           <input class="form-control"  type="text" placeholder="Thành phố" id="address">
                           <i class="ti-location-pin"></i>
-
                         </div>
                       </div>
-                      <div class="col-md-1 col-sm-4">
+                       <div class="col-md-1 col-sm-1">
+                       
+                      </div>
+                      <div class="col-md-2 col-sm-3">
                         <button type="button" class="btn btn-search-icon">
                           <i class="ti-search"></i>
                         </button>
                       </div>
                     </div>
                   </form>
-                </div>
-                <div class="popular-jobs">
-                  <b>Popular Keywords: </b>
-                  <a href="#">Web Design</a>
-                  <a href="#">Manager</a>
-                  <a href="#">Programming</a>
                 </div>
               </div>
             </div>

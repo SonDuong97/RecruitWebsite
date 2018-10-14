@@ -29,7 +29,10 @@ Route::post('/change-password','UserController@changePassword')->name('change-pa
 
 Route::put('/forgot-password','UserController@forgotPassword')->name('forgot-password');
 
-Route::get('/findByAddress', 'UserController@findByAddress');
+Route::get('/findByAddress', 'AddressController@findByAddress');
+
+Route::get('/findByCompany', 'CompanyController@findByCompany');
+
 
 
 

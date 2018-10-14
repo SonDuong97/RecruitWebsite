@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategorySeed extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,7 @@ class CategorySeed extends Seeder
      */
     public function run()
     {
+        //
         DB::table('categories')->insert([
         	['name'=>'Nhân viên kinh doanh'],
         	['name'=>'Kế toán-Kiểm toán'],
