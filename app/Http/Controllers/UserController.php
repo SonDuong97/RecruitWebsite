@@ -8,6 +8,7 @@ use App\User;
 use App\Company;
 use App\Address;
 use App\JobSummary;
+use App\Category;
 use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
@@ -20,8 +21,8 @@ class UserController extends Controller
 		$company = Company::count();
 		$job = JobSummary::count();
 		$jobSummary = JobSummary::orderBy('id','desc')->take(5)->get();
-
-		return view('users.home',['cmember'=>$member,'ccompany'=>$company,'cJob'=>$job,'jobSummary'=>$jobSummary,'active_home'=>true]);
+		$listCategory = Category::all();
+		return view('users.home',['cmember'=>$member,'ccompany'=>$company,'cJob'=>$job,'jobSummary'=>$jobSummary,'active_home'=>true,'listCategory'=>$listCategory]);
 	}
 
 	public function showLogin(){

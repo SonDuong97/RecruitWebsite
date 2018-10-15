@@ -2,7 +2,7 @@
 * @Author: Trungnn
 * @Date:   2018-10-12 22:36:04
 * @Last Modified by:   Trungnn
-* @Last Modified time: 2018-10-13 21:03:16
+* @Last Modified time: 2018-10-15 14:59:00
 */
 jQuery(document).ready(function() {
 	$("#forgot-password").click(function(event) {
@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
 		});
 		$.ajax({
 			'url': '/forgot-password',
-			'type': 'post',
+			'type': 'put',
 			'data': {'email': $('#email_forgot').val()},
 			success:function(data){
 				if(data.error==false){

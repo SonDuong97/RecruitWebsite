@@ -32,6 +32,16 @@
                   Công việc
                   <i class="fa fa-angle"></i>
                 </a>
+                <ul class="rd-menu rd-navbar-megamenu" style="width:750px">
+                 @if(isset($listCategory))
+                    @foreach ($listCategory as $value)
+                      {{-- expr --}}
+                      <li class="rd-megamenu-item col-xs-4" style="margin-bottom: 10px">
+                        <h6 class="rd-megamenu-title"><a href="/category/{{$value->id}}" style="color: white">{{ $value->name }}</a></h6>
+                      </li>
+                    @endforeach
+                 @endif
+                </ul>
               </li>
               <li>
                 <a href="about.html">
@@ -50,11 +60,11 @@
 
 
               @if(Auth::check())
-                @if(Auth::user()->id_role<3)
-                  <li class="left">
-                    <a href="post-job.html">
-                    <i class="ti-pencil-alt"></i>Đăng tin</a>
-                  </li>
+              @if(Auth::user()->id_role<3)
+              <li class="left">
+                <a href="post-job.html">
+                  <i class="ti-pencil-alt"></i>Đăng tin</a>
+                </li>
                 @endif
                 <li >
                   <a href="resume.html">
@@ -136,7 +146,7 @@
                           <i class="ti-location-pin"></i>
                         </div>
                       </div>
-                       <div class="col-md-1 col-sm-1">
+                      <div class="col-md-1 col-sm-1">
                        
                       </div>
                       <div class="col-md-2 col-sm-3">

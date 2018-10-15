@@ -25,7 +25,7 @@ Route::post('/sign','UserController@signup')->name('sign');
 
 Route::get('/reset-password','UserController@showResetPassword')->name('reset-password');
 
-Route::post('/change-password','UserController@changePassword')->name('change-password');
+Route::put('/change-password','UserController@changePassword')->name('change-password');
 
 Route::put('/forgot-password','UserController@forgotPassword')->name('forgot-password');
 
@@ -34,7 +34,10 @@ Route::get('/findByAddress', 'AddressController@findByAddress');
 Route::get('/findByCompany', 'CompanyController@findByCompany');
 
 Route::get('/job', 'JobController@showJob')->name('showJob');
+
 Route::get('/searchJob', 'JobController@searchJob')->name('searchJob');
+
+Route::get('category/{id}', 'JobController@findByCategory')->name('category');
 
 
 
