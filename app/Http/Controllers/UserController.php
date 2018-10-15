@@ -21,7 +21,7 @@ class UserController extends Controller
 		$job = JobSummary::count();
 		$jobSummary = JobSummary::orderBy('id','desc')->take(5)->get();
 
-		return view('users.home',['member'=>$member,'company'=>$company,'job'=>$job,'jobSummary'=>$jobSummary]);
+		return view('users.home',['cmember'=>$member,'ccompany'=>$company,'cJob'=>$job,'jobSummary'=>$jobSummary,'active_home'=>true]);
 	}
 
 	public function showLogin(){

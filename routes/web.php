@@ -33,6 +33,9 @@ Route::get('/findByAddress', 'AddressController@findByAddress');
 
 Route::get('/findByCompany', 'CompanyController@findByCompany');
 
+Route::get('/job', 'JobController@showJob')->name('showJob');
+Route::get('/searchJob', 'JobController@searchJob')->name('searchJob');
+
 
 
 

@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- Find Job Section Start -->
+
 <section class="find-job section">
   <div class="container">
     <h2 class="section-title">Công việc mới nhất</h2>
@@ -57,43 +58,37 @@
           <div class="row">
             <div class="touch-slider" class="owl-carousel owl-theme">
               <div class="item active text-center">
-                <img class="img-member" src="user_assets/img/testimonial/img1.jpg" alt="">
+                <img class="img-member" src="user_assets/img/clients/sonduong.jpg" alt="">
                 <div class="client-info">
-                  <h2 class="client-name">Jessica
-                    <span>(Senior Accountant)</span>
+                  <h2 class="client-name">Dương Ngọc Sơn <br>
+                    <span>(Sơn Bơm)</span>
                   </h2>
                 </div>
                 <p>
-                  <i class="fa fa-quote-left quote-left"></i> The team that was assigned to our project... were extremely professional
+                  <i class="fa fa-quote-left quote-left"></i> Trang web hết sức tuyệt vời
                   <i class="fa fa-quote-right quote-right"></i>
-                  <br> throughout the project and assured that the owner expectations were met and
-                  <br> often exceeded. </p>
                 </div>
                 <div class="item text-center">
-                  <img class="img-member" src="user_assets/img/testimonial/img2.jpg" alt="">
+                  <img class="img-member" src="user_assets/img/clients/trung.jpg" alt="">
                   <div class="client-info">
-                    <h2 class="client-name">John Doe
-                      <span>(Project Menager)</span>
+                    <h2 class="client-name">Nguyễn Ngọc Trung <br>
+                      <span>(Thạch Thất)</span>
                     </h2>
                   </div>
                   <p>
-                    <i class="fa fa-quote-left quote-left"></i> The team that was assigned to our project... were extremely professional
+                    <i class="fa fa-quote-left quote-left"></i> Trang web đã giúp tôi tìm được công việc phù hợp
                     <i class="fa fa-quote-right quote-right"></i>
-                    <br> throughout the project and assured that the owner expectations were met and
-                    <br> often exceeded. </p>
                   </div>
                   <div class="item text-center">
-                    <img class="img-member" src="user_assets/img/testimonial/img3.jpg" alt="">
+                    <img class="img-member" src="user_assets/img/clients/hai.jpg" alt="">
                     <div class="client-info">
-                      <h2 class="client-name">Helen
-                        <span>(Engineer)</span>
+                      <h2 class="client-name">Đỗ Thị Hải <br>
+                        <span>(Hải Ngáo)</span>
                       </h2>
                     </div>
                     <p>
-                      <i class="fa fa-quote-left quote-left"></i> The team that was assigned to our project... were extremely professional
+                      <i class="fa fa-quote-left quote-left"></i>Cảm ơn trang web
                       <i class="fa fa-quote-right quote-right"></i>
-                      <br> throughout the project and assured that the owner expectations were met and
-                      <br> often exceeded. </p>
                     </div>
                   </div>
                 </div>
@@ -105,7 +100,7 @@
             <section class="clients section">
               <div class="container">
                 <h2 class="section-title">
-                  Clients & Partners
+                  Đối tác liên kết
                 </h2>
                 <div class="row">
                   <div id="clients-scroller">
@@ -127,12 +122,6 @@
                     <div class="items">
                       <img src="user_assets/img/clients/img6.png" alt="">
                     </div>
-                    <div class="items">
-                      <img src="user_assets/img/clients/img6.png" alt="">
-                    </div>
-                    <div class="items">
-                      <img src="user_assets/img/clients/img6.png" alt="">
-                    </div>
                   </div>
                 </div>
               </div>
@@ -150,7 +139,7 @@
                       </div>
                       <div class="desc">
                         <h2>Công việc</h2>
-                        <h1 class="counter">{{ $job }}</h1>
+                        <h1 class="counter">{{ $cJob }}</h1>
                       </div>
                     </div>
                   </div>
@@ -161,7 +150,7 @@
                       </div>
                       <div class="desc">
                         <h2>Thành viên</h2>
-                        <h1 class="counter" id="member">{{ $member }}</h1>
+                        <h1 class="counter" id="member">{{ $cmember }}</h1>
                       </div>
                     </div>
                   </div>
@@ -183,7 +172,7 @@
                       </div>
                       <div class="desc">
                         <h2>Company</h2>
-                        <h1 class="counter">{{ $company }}</h1>
+                        <h1 class="counter">{{ $ccompany }}</h1>
                       </div>
                     </div>
                   </div>
@@ -191,5 +180,5 @@
               </div>
             </section>
             <!-- Counter Section End -->
-
+            
             @endsection
