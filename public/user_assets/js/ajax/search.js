@@ -2,10 +2,11 @@
 * @Author: Trungnn
 * @Date:   2018-10-13 23:24:40
 * @Last Modified by:   Trungnn
-* @Last Modified time: 2018-10-14 20:02:00
+* @Last Modified time: 2018-10-16 06:35:00
 */
+
 jQuery(document).ready(function($) {
-	$('#address').keydown(function(event) {
+	$('#address').change(function(){
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -19,6 +20,7 @@ jQuery(document).ready(function($) {
 				var options = {
 					data:response.address 
 				};
+
 				$("#address").easyAutocomplete(options);
 			}
 		})

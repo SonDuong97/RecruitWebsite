@@ -32,11 +32,11 @@
                   Công việc
                   <i class="fa fa-angle"></i>
                 </a>
-                <ul class="rd-menu rd-navbar-megamenu" style="width:750px">
+                <ul class="rd-menu rd-navbar-megamenu" style="width:900px">
                  @if(isset($listCategory))
                     @foreach ($listCategory as $value)
                       {{-- expr --}}
-                      <li class="rd-megamenu-item col-xs-4" style="margin-bottom: 10px">
+                      <li class="rd-megamenu-item col-xs-3" style="margin-bottom: 10px">
                         <h6 class="rd-megamenu-title"><a href="/category/{{$value->id}}" style="color: white">{{ $value->name }}</a></h6>
                       </li>
                     @endforeach

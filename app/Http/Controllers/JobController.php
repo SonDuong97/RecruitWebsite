@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\JobSummary;
 use App\Category;
+use App\JobSummary;
+use App\JobDetail;
 
 class JobController extends Controller
 {
@@ -23,9 +24,18 @@ class JobController extends Controller
 
 	public function findByCategory($id) {
 		$jobs = JobSummary::where('id_category',$id)->paginate(5);
+		$category = Category::find($id);
 		$listCategory = Category::all();
-		return view('users.job-category',['jobs'=>$jobs,'active_job'=>true,'listCategory'=>$listCategory]);
+		return view('users.job-category',['jobs'=>$jobs,'active_job'=>true,'listCategory'=>$listCategory,'category'=>$category]);
 	
+	}
+
+	public function showJobDetail($id){
+		$jobSummary = JobSummary::find($id);
+		$listCategory = Category::all();
+		return view('users.job-detail',['jobSummary'=>$jobSummary,'listCategory'=>$listCategory]);
+
+
 	}
 
    

@@ -5,7 +5,7 @@
 
 <section class="find-job section">
 	<div class="container">
-		<h2 class="section-title">Searched Resumes</h2>
+		<h2 class="section-title">Kết quả tìm kiếm</h2>
 		@foreach ($jobs as $value)
 		<div class="row">
 			<div class="col-md-12">
@@ -17,7 +17,7 @@
 					</div>
 					<div class="job-list-content">
 						<h4>
-							<a href="job-details.html">{{ $value->title }}</a>
+							<a href="job-detail/{{ $value->id_job_detail }}">{{ $value->title }}</a>
 						</h4>
 						<p>{{ $value->description }}
 						</p>

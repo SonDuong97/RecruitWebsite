@@ -37,7 +37,9 @@ Route::get('/job', 'JobController@showJob')->name('showJob');
 
 Route::get('/searchJob', 'JobController@searchJob')->name('searchJob');
 
-Route::get('category/{id}', 'JobController@findByCategory')->name('category');
+Route::get('/category/{id}', 'JobController@findByCategory')->name('category');
+
+Route::get('/job-detail/{id}', 'JobController@showJobDetail');
 
 
 
