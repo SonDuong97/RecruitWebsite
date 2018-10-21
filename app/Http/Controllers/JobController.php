@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\JobSummary;
 use App\JobDetail;
+use Illuminate\Support\Facades\URL;
 
 class JobController extends Controller
 {
@@ -27,16 +28,15 @@ class JobController extends Controller
 		$category = Category::find($id);
 		$listCategory = Category::all();
 		return view('users.job-category',['jobs'=>$jobs,'active_job'=>true,'listCategory'=>$listCategory,'category'=>$category]);
-	
+
 	}
 
 	public function showJobDetail($id){
+		$url =  URL::current();
 		$jobSummary = JobSummary::find($id);
 		$listCategory = Category::all();
-		return view('users.job-detail',['jobSummary'=>$jobSummary,'listCategory'=>$listCategory]);
-
-
+		return view('users.job-detail',['jobSummary'=>$jobSummary,'listCategory'=>$listCategory,'url'=>$url]);
 	}
 
-   
+
 }
