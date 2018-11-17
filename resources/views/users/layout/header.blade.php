@@ -130,20 +130,35 @@
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <input class="form-control" type="text" placeholder="Tên công ty" id="company" name="company">
+                          <input class="form-control" type="text" placeholder="Tên công ty" id="company" name="company" @if (isset($companySearch))
+                            value="{{ $companySearch }}" 
+                          @endif>
                           <i class="ti-briefcase"></i>
                         </div>
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <input class="form-control" type="text" placeholder="Ngành nghề" id="category">
-                          <i class="ti-list" name="category"></i>
+                          <i class="ti-list" name=""></i>
+                          <select name="category" id="category" class="form-control">
+                            <option value="">Chọn ngành nghề</option>
+                            @foreach ($listCategory as $category)
+                              {{-- expr --}}
+                              <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                          </select>
+                          
                         </div>
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <input class="form-control"  type="text" placeholder="Thành phố" id="address" name="address">
                           <i class="ti-location-pin"></i>
+                          <select name="address" id="address" class="form-control">
+                            <option value="">Chọn địa điểm</option>
+                            @foreach ($listAddress as $address)
+                              {{-- expr --}}
+                              <option value="{{ $address->id }}">{{ $address->name }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                       <div class="col-md-1 col-sm-1">

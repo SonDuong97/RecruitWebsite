@@ -9,6 +9,7 @@ use App\Company;
 use App\Address;
 use App\JobSummary;
 use App\Category;
+use App\JobFavorite;
 use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
@@ -22,7 +23,8 @@ class UserController extends Controller
 		$job = JobSummary::count();
 		$jobSummary = JobSummary::orderBy('id','desc')->take(5)->get();
 		$listCategory = Category::all();
-		return view('users.home',['cmember'=>$member,'ccompany'=>$company,'cJob'=>$job,'jobSummary'=>$jobSummary,'active_home'=>true,'listCategory'=>$listCategory]);
+		$listAddress = Address::all();
+		return view('users.home',['cmember'=>$member,'ccompany'=>$company,'cJob'=>$job,'jobSummary'=>$jobSummary,'active_home'=>true,'listCategory'=>$listCategory,'listAddress'=>$listAddress]);
 	}
 
 	public function showLogin(){
@@ -140,6 +142,20 @@ class UserController extends Controller
 		User::where('email',$request->email)->update(['password'=>bcrypt($npassword)]);
 		return response()->json(['error'=>false,'message'=>'Lấy lại mật khẩu mới trong email của bạn.']);
 		
+	}
+
+	public function addJobFavorite(Request $request){
+		if(!Auth::check()){
+			return response()->json(['error'=>true,'message'=>'Đăng nhập ngay']);
+		}else{
+			$userLogin = Auth::user();
+
+			$jobFavorite = JobFavorite::where(['id_user','=',$userLogin->id],['id_job','=',$request->idJob]);
+			if($jobFavorite!=null){
+				return response()->json(['error'=>false,'message'=>false,'idJob'=>$request->idJob]);
+			}
+			return response()->json(['error'=>false,'message'=>true,'idJob'=>$request->idJob]);
+		}
 	}
 	
 }

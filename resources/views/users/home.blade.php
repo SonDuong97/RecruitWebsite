@@ -35,7 +35,7 @@
                       </div>
                     </div>
                     <div class="pull-right">
-                      <div class="icon">
+                      <div class="icon" id="{{ $value->id }}">
                         <i class="ti-heart"></i>
                       </div>
                       <a href="job-details.html" class="btn btn-common btn-rm">Xem chi tiết</a>
@@ -180,5 +180,34 @@
               </div>
             </section>
             <!-- Counter Section End -->
-            
+            <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>
+            <script>
+              $(document).ready(function() {
+                $('.icon').click(function(event) {
+                  /* Act on the event */
+                  $.ajaxSetup({
+                    headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                  });
+                  $.ajax({
+                    'url': '/favorite',
+                    'type': 'post',
+                    'data': {'idJob': $(this).attr('id')},
+                    success:function(data){
+                      if(data.error==true){
+                        window.location="/login";
+                      }
+                      else{
+                        if(data.message == false){
+
+                   $('#'.data.idJob).css({'background-color':'red','color':'white'});
+                        }
+                      }
+                    }
+                  })
+                });  
+              });
+            </script>
             @endsection
+
