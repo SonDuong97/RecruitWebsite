@@ -23,17 +23,41 @@ class JobController extends Controller
 	public function searchJob(Request $request){
 		$listCategory = Category::all();
 		if($request->address == '' && $request->category == ''){
-			$jobs = JobSummary::selectRaw('job_summaries.*')->join('companies','companies.id','=','job_summaries.id_company')->where('companies.name','like','%'.$request->company.'%')->orderBy('id','DESC')->paginate(5);
+			$jobs = JobSummary::selectRaw('job_summaries.*')
+					->join('companies','companies.id','=','job_summaries.id_company')
+					->where('companies.name','like','%'.$request->company.'%')
+					->orderBy('id','DESC')
+					->paginate(5);
 
 		}
 		else if($request->address != '' && $request->category == ''){
-			$jobs = JobSummary::selectRaw('job_summaries.*')->join(['companies','companies.id','=','job_summaries.id_company'],['address','address.id','=','job_summaries.id_address'])->where(['companies.name','like','%'.$request->company.'%'],['address.id','=',$request->address])->orderBy('id','DESC')->paginate(5);
+			$addr = (int)$request->address;
+			$jobs = JobSummary::selectRaw('job_summaries.*')
+					->join('companies','companies.id','=','job_summaries.id_company')
+					->join('address','address.id','=','job_summaries.id_address')
+					->where([['companies.name','like','%'.$request->company.'%'],['address.id','=',$addr]])
+					->orderBy('id','DESC')
+					->paginate(5);
 		}
 		else if($request->address == '' && $request->category != ''){
-			$jobs = JobSummary::selectRaw('job_summaries.*')->join(['companies','companies.id','=','job_summaries.id_company'],['categories','categories.id','=','job_summaries.id_category'])->where(['companies.name','like','%'.$request->company.'%'],['categories.id','=',$request->category])->orderBy('id','DESC')->paginate(5);
+			$cate = (int)$request->category;
+			$jobs = JobSummary::selectRaw('job_summaries.*')
+					->join('companies','companies.id','=','job_summaries.id_company')
+					->join('categories','categories.id','=','job_summaries.id_category')
+					->where([['companies.name','like','%'.$request->company.'%'],['categories.id','=',$cate]])
+					->orderBy('id','DESC')
+					->paginate(5);
 		}
 		else {
-			$jobs = JobSummary::selectRaw('job_summaries.*')->join(['companies','companies.id','=','job_summaries.id_company'],['categories','categories.id','=','job_summaries.id_category'],['address','address.id','=','job_summaries.id_address'])->where(['companies.name','like','%'.$request->company.'%'],['categories.id','=',$request->category],['address.id','=',$request->address])->orderBy('id','DESC')->paginate(5);
+			$addr = (int)$request->address;
+			$cate = (int)$request->category;
+			$jobs = JobSummary::selectRaw('job_summaries.*')
+					->join('companies','companies.id','=','job_summaries.id_company')
+					->join('categories','categories.id','=','job_summaries.id_category')
+					->join('address','address.id','=','job_summaries.id_address')
+					->where(['companies.name','like','%'.$request->company.'%'],['categories.id','=',$cate],['address.id','=',$addr])
+					->orderBy('id','DESC')
+					->paginate(5);
 		}
 
 		
