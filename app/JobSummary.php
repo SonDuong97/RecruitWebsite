@@ -8,20 +8,19 @@ class JobSummary extends Model
 {
 	protected $table = 'job_summaries';
 	public function address(){
-		return $this->belongsTo('App\Address','id_address','id');
+		return $this->belongsTo('App\Address','address_id','id');
 	}
 	public function company(){
-		return $this->belongsTo('App\Company','id_company','id');
+		return $this->belongsTo('App\Company','company_id','id');
 	}
 	public function category(){
-		return $this->belongsTo('App\Category','id_category','id');
+		return $this->belongsTo('App\Category','category_id','id');
 	}
 	public function user(){
-		return $this->belongsTo('App\User','id_user','id');
+		return $this->belongsTo('App\User','user_id','id');
 	}
 
 	public function detail(){
-    	return $this->belongsTo('App\JobDetail','id_job_detail','id');
-    	/*return $this->belongsto('App\Posts','forigen_key','local_key');*/
+    	return $this->belongsTo('App\JobDetail','job_detail_id','id');
     }
 }

@@ -28,7 +28,19 @@
 								<b>Hạn nộp hồ sơ: </b> <span >{{ $jobSummary->detail->expiration_date }}</span><br>
 								<b>Lĩnh vực: </b><a href="/category/{{$jobSummary->category->id}}"> <span >{{ $jobSummary->category->name}}</span></a><br>
 								<div>
-									<a href="button" class="btn btn-danger"><i class="ti-heart" ></i> Lưu công việc</a>
+									<!-- <a href="button" class="btn btn-danger"><i class="ti-heart" ></i> 
+										@if(Auth::check())
+											@foreach (Auth::user()->jobFavorite as $favorite)
+												@if($favorite->id == $jobSummary->id)
+													Đã lưu 
+												@else
+													Lưu công việc
+												@endif	
+											@endforeach
+										@else
+											Lưu công việc
+										@endif
+									</a> -->
 									<a href="button" class="btn btn-info"><i class="ti-bookmark"></i> Ứng tuyển ngay</a> 
 								</div>
 							</p>

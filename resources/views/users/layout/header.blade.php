@@ -60,7 +60,7 @@
 
 
               @if(Auth::check())
-              @if(Auth::user()->id_role<3)
+              @if(Auth::user()->role_id<3)
               <li class="left">
                 <a href="post-job.html">
                   <i class="ti-pencil-alt"></i>Đăng tin</a>
@@ -82,8 +82,8 @@
                       </a>
                     </li>
                     <li>
-                      <a href="search-resumes.html">
-                        My Shortlist
+                      <a href="{{ route('list-favorite') }}">
+                        Yêu thích
                       </a>
                     </li>
                     <li>

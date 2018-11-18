@@ -40,7 +40,13 @@ Route::get('/searchJob', 'JobController@searchJob')->name('searchJob');
 Route::get('/category/{id}', 'JobController@findByCategory')->name('category');
 
 Route::get('/job-detail/{id}', 'JobController@showJobDetail');
+
 Route::post('/favorite','UserController@addJobFavorite');
+
+Route::get('/list-favorite', 'UserController@listFavorite')->name('list-favorite');
+
+Route::delete('/delete-job','UserController@deleteJobFavorite');
+Route::get('/test', 'UserController@test');
 
 
 

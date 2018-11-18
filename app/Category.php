@@ -10,6 +10,6 @@ class Category extends Model
     protected $table ='categories';
 
     public function jobs(){
-    	return $this->hasMany('App\JobSummary','id_category','id');
+    	return $this->hasMany('App\JobSummary','category_id','id');
     }
 }

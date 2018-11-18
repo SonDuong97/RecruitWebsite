@@ -18,7 +18,7 @@ class Companies extends Migration
             $table->string('link')->nullable();
             $table->string('logo')->nullable();
             $table->string('name')->nullable();
-            $table->integer('id_address')->default(1);
+            $table->integer('address_id')->default(1);
             //
         });
     }

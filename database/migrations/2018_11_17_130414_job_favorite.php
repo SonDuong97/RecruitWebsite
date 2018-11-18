@@ -14,13 +14,15 @@ class JobFavorite extends Migration
     public function up()
     {
         //
-       Schema::create('job_favorite', function (Blueprint $table) {
-           $table->increments('id');
-           $table->integer('id_user');
-           $table->integer('id_job');
+     Schema::create('job_favorite', function (Blueprint $table) {
+       $table->increments('id');
+       $table->integer('user_id');
+       $table->integer('job_id');
+       $table->rememberToken();
+       $table->timestamps();
            //
-       });
-    }
+     });
+   }
 
     /**
      * Reverse the migrations.
@@ -29,6 +31,6 @@ class JobFavorite extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_favorite');
+      Schema::dropIfExists('job_favorite');
     }
-}
+  }

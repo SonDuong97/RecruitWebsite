@@ -5,12 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+
 
 class User extends Authenticatable
 {
     protected $table = "users";
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -28,4 +29,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function jobFavorite(){
+        return $this->belongsToMany('App\JobSummary', 'job_favorite', 'user_id', 'job_id');
+    }
 }

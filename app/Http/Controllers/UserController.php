@@ -83,7 +83,7 @@ class UserController extends Controller
 			$user->name = $request->fullName;
 			$user->password = bcrypt($request->password);
 			$user->email = $request->email;
-			$user->id_role = $request->role;
+			$user->role_id = $request->role;
 			$user->deleted = false;
 			$user->save();
 			return response()->json(['error'=>false]);
@@ -150,12 +150,39 @@ class UserController extends Controller
 		}else{
 			$userLogin = Auth::user();
 
-			$jobFavorite = JobFavorite::where(['id_user','=',$userLogin->id],['id_job','=',$request->idJob]);
+			$jobFavorite = JobFavorite::where([['user_id','=',$userLogin->id],['job_id','=',$request->idJob]])->first();
 			if($jobFavorite!=null){
+				$jobFavorite->delete();
 				return response()->json(['error'=>false,'message'=>false,'idJob'=>$request->idJob]);
 			}
+			$favorite = new JobFavorite;
+			$favorite->user_id = $userLogin->id;
+			$favorite->job_id = $request->idJob;
+			$favorite->save();
+
 			return response()->json(['error'=>false,'message'=>true,'idJob'=>$request->idJob]);
 		}
 	}
+
+	public function listFavorite(){
+		$listCategory = Category::all();
+		$listAddress = Address::all();
+		$listJob = Auth::user()->jobFavorite;
+		return view('users.list-favorite',['listCategory'=>$listCategory,'listAddress'=>$listAddress,'listJob'=>$listJob]);
+	}
+
+	public function deleteJobFavorite(Request $request){
+		$userLogin = Auth::user();
+		$jobFavorite = JobFavorite::where([['user_id','=',$userLogin->id],['job_id','=',$request->idJob]])->first();
+		if($jobFavorite!=null){
+			$jobFavorite->delete();
+			return response()->json(['message'=>true,'idJob'=>$request->idJob]);
+		}
+	}
+	public function test(){
+		
+
+	}
+
 	
 }

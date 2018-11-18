@@ -24,7 +24,7 @@ class JobController extends Controller
 		$listCategory = Category::all();
 		if($request->address == '' && $request->category == ''){
 			$jobs = JobSummary::selectRaw('job_summaries.*')
-					->join('companies','companies.id','=','job_summaries.id_company')
+					->join('companies','companies.id','=','job_summaries.company_id')
 					->where('companies.name','like','%'.$request->company.'%')
 					->orderBy('id','DESC')
 					->paginate(5);
@@ -33,8 +33,8 @@ class JobController extends Controller
 		else if($request->address != '' && $request->category == ''){
 			$addr = (int)$request->address;
 			$jobs = JobSummary::selectRaw('job_summaries.*')
-					->join('companies','companies.id','=','job_summaries.id_company')
-					->join('address','address.id','=','job_summaries.id_address')
+					->join('companies','companies.id','=','job_summaries.company_id')
+					->join('address','address.id','=','job_summaries.address_id')
 					->where([['companies.name','like','%'.$request->company.'%'],['address.id','=',$addr]])
 					->orderBy('id','DESC')
 					->paginate(5);
@@ -42,8 +42,8 @@ class JobController extends Controller
 		else if($request->address == '' && $request->category != ''){
 			$cate = (int)$request->category;
 			$jobs = JobSummary::selectRaw('job_summaries.*')
-					->join('companies','companies.id','=','job_summaries.id_company')
-					->join('categories','categories.id','=','job_summaries.id_category')
+					->join('companies','companies.id','=','job_summaries.company_id')
+					->join('categories','categories.id','=','job_summaries.category_id')
 					->where([['companies.name','like','%'.$request->company.'%'],['categories.id','=',$cate]])
 					->orderBy('id','DESC')
 					->paginate(5);
@@ -52,10 +52,10 @@ class JobController extends Controller
 			$addr = (int)$request->address;
 			$cate = (int)$request->category;
 			$jobs = JobSummary::selectRaw('job_summaries.*')
-					->join('companies','companies.id','=','job_summaries.id_company')
-					->join('categories','categories.id','=','job_summaries.id_category')
-					->join('address','address.id','=','job_summaries.id_address')
-					->where(['companies.name','like','%'.$request->company.'%'],['categories.id','=',$cate],['address.id','=',$addr])
+					->join('companies','companies.id','=','job_summaries.company_id')
+					->join('categories','categories.id','=','job_summaries.category_id')
+					->join('address','address.id','=','job_summaries.address_id')
+					->where([['companies.name','like','%'.$request->company.'%'],['categories.id','=',$cate],['address.id','=',$addr]])
 					->orderBy('id','DESC')
 					->paginate(5);
 		}
@@ -66,7 +66,7 @@ class JobController extends Controller
 	}
 
 	public function findByCategory($id) {
-		$jobs = JobSummary::where('id_category',$id)->paginate(5);
+		$jobs = JobSummary::where('category_id',$id)->paginate(5);
 		$category = Category::find($id);
 		$listCategory = Category::all();
 		$listAddress = Address::all();
@@ -78,7 +78,8 @@ class JobController extends Controller
 		$url =  URL::current();
 		$jobSummary = JobSummary::find($id);
 		$listCategory = Category::all();
-		return view('users.job-detail',['jobSummary'=>$jobSummary,'listCategory'=>$listCategory,'url'=>$url]);
+		$listAddress = Address::all();
+		return view('users.job-detail',['jobSummary'=>$jobSummary,'listCategory'=>$listCategory,'url'=>$url,'listAddress'=>$listAddress]);
 	}
 
 

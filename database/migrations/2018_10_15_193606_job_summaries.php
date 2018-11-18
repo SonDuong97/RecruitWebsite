@@ -18,11 +18,11 @@ class JobSummaries extends Migration
         $table->increments('id');
         $table->string('title');
         $table->text('description');
-        $table->integer('id_category');
-        $table->integer('id_company');
-        $table->integer('id_address')->default(1);
-        $table->integer('id_user')->default(1);
-        $table->integer('id_job_detail')->unsigned()->nullable();
+        $table->integer('category_id');
+        $table->integer('company_id');
+        $table->integer('address_id')->default(1);
+        $table->integer('user_id')->default(1);
+        $table->integer('job_detail_id')->unsigned()->nullable();
         
         $table->timestamps();
             //
