@@ -46,7 +46,7 @@
 											}
 										});
 										$.ajax({
-											'url': '/delete-job',
+											'url': '/delete-job-favorite',
 											'type': 'delete',
 											'data': {'idJob': $(this).attr('id')},
 											success:function(data){

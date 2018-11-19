@@ -82,5 +82,9 @@ class JobController extends Controller
 		return view('users.job-detail',['jobSummary'=>$jobSummary,'listCategory'=>$listCategory,'url'=>$url,'listAddress'=>$listAddress]);
 	}
 
-
+	public function showPostJob(){
+		$listCategory = Category::all();
+		$listAddress = Address::all();
+		return view('users.post-job',['listCategory'=>$listCategory,'listAddress'=>$listAddress]);
+	}
 }

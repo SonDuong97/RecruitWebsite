@@ -221,12 +221,12 @@ a:focus {
   text-align: center;
 }
 .breadcrumb {
-  font-size: 14px;
+  /* font-size: 14px;
   color: #ff4f57;
   border-radius: 0px;
   background: transparent;
   padding: 5px 0px;
-  z-index: 1;
+  z-index: 1; */
 }
 .breadcrumb a {
   color: #fff;

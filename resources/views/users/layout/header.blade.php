@@ -62,7 +62,7 @@
               @if(Auth::check())
               @if(Auth::user()->role_id<3)
               <li class="left">
-                <a href="post-job.html">
+                <a href="{{ route('form-post-job') }}">
                   <i class="ti-pencil-alt"></i>Đăng tin</a>
                 </li>
                 @endif

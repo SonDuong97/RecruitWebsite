@@ -45,7 +45,9 @@ Route::post('/favorite','UserController@addJobFavorite');
 
 Route::get('/list-favorite', 'UserController@listFavorite')->name('list-favorite');
 
-Route::delete('/delete-job','UserController@deleteJobFavorite');
+Route::delete('/delete-job-favorite','UserController@deleteJobFavorite');
+
+Route::get('/form-post-job','JobController@showPostJob')->name('form-post-job');
 Route::get('/test', 'UserController@test');
 
 
