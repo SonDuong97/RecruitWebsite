@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class JobSummary extends Model
 {
 	protected $table = 'job_summaries';
+	public $timestamps = false;
 	public function address(){
 		return $this->belongsTo('App\Address','address_id','id');
 	}

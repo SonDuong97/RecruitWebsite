@@ -54,7 +54,9 @@ class UserController extends Controller
 	}
 
 	public function showSignup(){
-		return view('signup');
+		$listCompany = Company::all();
+		$listAddress = Address::all();
+		return view('signup',['listCompany'=>$listCompany,'listAddress'=>$listAddress]);
 	}
 
 	public function signup(Request $request){

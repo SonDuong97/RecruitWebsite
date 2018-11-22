@@ -8,5 +8,6 @@ class Address extends Model
 {
     //
     protected $table = "address";
+    public $timestamps = false;
    
 }

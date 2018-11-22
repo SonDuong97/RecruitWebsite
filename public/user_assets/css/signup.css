@@ -42,3 +42,10 @@ input.upload {
 #alert_danger{
     display: none;
 }
+
+#alert_success_company{
+    display: none;
+}
+#alert_danger_company{
+    display: none;
+}

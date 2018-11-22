@@ -8,6 +8,7 @@ class JobDetail extends Model
 {
     //
     protected $table = 'job_details';
+    public $timestamps = false;
 
     
 }
