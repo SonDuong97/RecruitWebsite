@@ -49,3 +49,12 @@ input.upload {
 #alert_danger_company{
     display: none;
 }
+.margin-top-5{
+    margin-top:5px;
+}
+.margin-top-30{
+    margin-top:30px;
+}
+#select_list_company{
+    display: none;
+}

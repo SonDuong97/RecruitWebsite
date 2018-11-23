@@ -54,7 +54,7 @@ class CompanyController extends Controller
 		$company->logo = "logo_company/".$request->file('logoCompany')->getClientOriginalName();
 		$company->address_id = $request->addressCompany;
 		$company->save();
-		return response()->json(['error'=>false]);
+		return response()->json(['error'=>false,'company'=>$company]);
 	}
 
 	

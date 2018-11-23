@@ -80,16 +80,25 @@ class UserController extends Controller
 				'message' => $validator->errors()
 			], 200);
     		// return redirect()->back()->withErrors($validator)->withInput();
-		} else {
-			$user = new User;
-			$user->name = $request->fullName;
-			$user->password = bcrypt($request->password);
-			$user->email = $request->email;
-			$user->role_id = $request->role;
-			$user->deleted = false;
-			$user->save();
-			return response()->json(['error'=>false]);
+		} 
+		if($request->role == 2 && $request->company_id == 0){
+			$errors = new MessageBag(['errorCompany' => 'Hãy chọn công ty của bạn']);
+			return response()->json(['error'=>true,'message'=> $errors]);
 		}
+
+		$user = new User;
+		$user->name = $request->fullName;
+		$user->password = bcrypt($request->password);
+		$user->email = $request->email;
+		$user->role_id = $request->role;
+		if($request->role == 2)
+			$user->company_id = $request->company_id;
+		else 
+			$user->company_id = null;
+		$user->deleted = false;
+		$user->save();
+		return response()->json(['error'=>false]);
+
 	}
 
 	public function showResetPassword(){

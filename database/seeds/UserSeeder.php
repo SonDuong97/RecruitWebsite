@@ -11,6 +11,7 @@ class UserSeeder extends Seeder
 				'email'=>'admin@gmail.com',
 				'password'=>bcrypt('123456'),
 				'role_id'=>1,
+				'company_id'=>null
 
 
 			],
@@ -19,6 +20,7 @@ class UserSeeder extends Seeder
 				'email'=>'trungnn160697@gmail.com',
 				'password'=>bcrypt('123456'),
 				'role_id'=>2,
+				'company_id'=>1,
 
 
 			],
@@ -27,6 +29,7 @@ class UserSeeder extends Seeder
 				'email'=>'sonbom@gmail.com',
 				'password'=>bcrypt('123456'),
 				'role_id'=>2,
+				'company_id'=>2,
 
 
 			],
@@ -35,7 +38,7 @@ class UserSeeder extends Seeder
 				'email'=>'haipt@gmail.com',
 				'password'=>bcrypt('123456'),
 				'role_id'=>3,
-
+				'company_id'=>null
 
 			],
 			[
@@ -43,7 +46,7 @@ class UserSeeder extends Seeder
 				'email'=>'thuongntk@gmail.com',
 				'password'=>bcrypt('123456'),
 				'role_id'=>3,
-
+				'company_id'=>null
 
 			],
 			[
@@ -51,7 +54,7 @@ class UserSeeder extends Seeder
 				'email'=>'chunglt@gmail.com',
 				'password'=>bcrypt('123456'),
 				'role_id'=>3,
-
+				'company_id'=>null
 			]
 		]);
 	}
