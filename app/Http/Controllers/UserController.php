@@ -155,41 +155,7 @@ class UserController extends Controller
 		
 	}
 
-	public function addJobFavorite(Request $request){
-		if(!Auth::check()){
-			return response()->json(['error'=>true,'message'=>'Đăng nhập ngay']);
-		}else{
-			$userLogin = Auth::user();
-
-			$jobFavorite = JobFavorite::where([['user_id','=',$userLogin->id],['job_id','=',$request->idJob]])->first();
-			if($jobFavorite!=null){
-				$jobFavorite->delete();
-				return response()->json(['error'=>false,'message'=>false,'idJob'=>$request->idJob]);
-			}
-			$favorite = new JobFavorite;
-			$favorite->user_id = $userLogin->id;
-			$favorite->job_id = $request->idJob;
-			$favorite->save();
-
-			return response()->json(['error'=>false,'message'=>true,'idJob'=>$request->idJob]);
-		}
-	}
-
-	public function listFavorite(){
-		$listCategory = Category::all();
-		$listAddress = Address::all();
-		$listJob = Auth::user()->jobFavorite;
-		return view('users.list-favorite',['listCategory'=>$listCategory,'listAddress'=>$listAddress,'listJob'=>$listJob]);
-	}
-
-	public function deleteJobFavorite(Request $request){
-		$userLogin = Auth::user();
-		$jobFavorite = JobFavorite::where([['user_id','=',$userLogin->id],['job_id','=',$request->idJob]])->first();
-		if($jobFavorite!=null){
-			$jobFavorite->delete();
-			return response()->json(['message'=>true,'idJob'=>$request->idJob]);
-		}
-	}
+	
 	public function test(){
 		
 

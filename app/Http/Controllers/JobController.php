@@ -10,6 +10,7 @@ use App\Address;
 use App\Company;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -86,5 +87,36 @@ class JobController extends Controller
 		$listCategory = Category::all();
 		$listAddress = Address::all();
 		return view('users.post-job',['listCategory'=>$listCategory,'listAddress'=>$listAddress]);
+	}
+
+	public function addJob(Request $request){
+		$jobSummary = new JobSummary;
+		$jobDetail = new JobDetail;
+
+		$jobDetail->salary = $request->salary;
+		$jobDetail->experience = $request->experience;
+		$jobDetail->education = $request->education;
+		$jobDetail->quantity = $request->quantity;
+		$jobDetail->position = $request->position;
+		$jobDetail->gender = $request->gender;
+		$jobDetail->age = $request->age;
+		$jobDetail->expiration_date = $request->expiration_date;
+		$jobDetail->job_description = $request->job_description;
+		$jobDetail->benefit = $request->benefit;
+		$jobDetail->other_requirement = $request->other_requirement;
+		$jobDetail->save();
+
+		$jobSummary->title = $request->title;
+		$jobSummary->description = $request->description;
+		$jobSummary->category_id = $request->category_id;
+		$jobSummary->company_id = Auth::user()->company_id;
+		$jobSummary->address_id = $request->address_id;
+		$jobSummary->user_id = Auth::user()->id;
+		$jobSummary->job_detail_id = $jobDetail->id;
+		$jobSummary->save();
+
+		return response()->json(["error"=>false]);
+
+
 	}
 }

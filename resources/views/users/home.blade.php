@@ -17,7 +17,7 @@
           </div>
           <div class="job-list-content">
             <h4>
-              <a href="job-detail/{{ $value->id_job_detail }}">{{ $value->title }}</a>
+              <a href="job-detail/{{ $value->job_detail_id }}">{{ $value->title }}</a>
             </h4>
             <p>{{ $value->description }}
             </p>

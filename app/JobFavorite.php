@@ -11,4 +11,5 @@ class JobFavorite extends Model
      public function jobFavorite(){
         return $this->belongsToMany('App\User', 'job_favorite', 'user_id', 'job_id');
     }
+
 }

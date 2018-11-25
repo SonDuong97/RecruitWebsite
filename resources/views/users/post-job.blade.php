@@ -11,6 +11,8 @@
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="user_assets/img/favicon.png">
+  <base href="{{asset('')}}"/>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="user_assets/css/bootstrap.min.css" type="text/css">    
   <link rel="stylesheet" href="user_assets/css/jasny-bootstrap.min.css" type="text/css">  
@@ -45,7 +47,7 @@
 <body>  
 
   <!-- Page Header Start -->
- <div class="page-header" style="background: url(user_assets/img/banner1.jpg);">
+  <div class="page-header" style="background: url(user_assets/img/banner1.jpg);">
     <div class="container">
       <div class="row">         
         <div class="col-md-12">
@@ -60,119 +62,119 @@
       </div>
     </div>
   </div>
-        <!-- Page Header End -->    
+  <!-- Page Header End -->    
 
 
 
-        <div class="container">
-          <div class="row">
-            <div class="col col-md-2"></div>
-            <div class="col col-md-8">
-              <form>
-                <div class="form-group required col-xs-12">
-                  <label for="exampleInputEmail1" class='control-label'>Tiêu đề</label>
-                  <input type="text" class="form-control" id="title" name="title">
-                  <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                </div>
-                <div class="form-group required col-xs-12 col-md-6">
-                  <label for="exampleInputPassword1" class='control-label'>Ngành nghề</label>
-                  <select class="form-control" id="exampleSelect1">
-                   <option>--------------- Chọn ngành nghề ---------------</option>
-                   @foreach ($listCategory as $c)
-                   <option value="{{ $c->id }}">{{ $c->name }}</option>
-                   @endforeach
-                 </select>
-               </div>
-               <div class="form-group required col-xs-12 col-md-6">
-                <label for="exampleInputPassword1" class='control-label'>Địa điểm</label>
-                <select class="form-control" id="exampleSelect1">
-                 <option>--------------------- Chọn địa điểm ---------------------</option>
-                 @foreach ($listAddress as $a)
-                 <option value="{{ $a->id }}">{{ $a->name }}</option>
-                 @endforeach
-               </select>
-             </div>
-             <div class="form-group required col-xs-12 col-sm-6">
-              <label for="exampleInputPassword1" class='control-label'>Số lượng</label>
-              <input type="number" class="form-control" id="quantity" name= "quantity" min=0>
-            </div>
-            <div class="form-group required col-xs-12 col-sm-6">
-              <label for="exampleInputPassword1" class='control-label'>Lương</label>
-              <input type="number" class="form-control" id="salary" name="salary" min=0 >
-            </div>
-            <div class="form-group required col-xs-12 col-sm-4">
-              <label for="exampleInputPassword1" class='control-label'>Giới tính</label>
-              <select class="form-control" id="gender" name="gender">
-                <option value="0">Không yêu cầu</option>
-                <option value="1">Nam</option>
-                <option value="2">Nữ</option>
-
-              </select>
-            </div>
-            <div class="form-group required col-xs-12 col-sm-4">
-              <label for="exampleInputPassword1" class='control-label'>Tuổi</label>
-              <input type="number" class="form-control" id="age" name="age" min=18>
-            </div>
-            <div class="form-group required col-xs-12 col-sm-4">
-              <label for="exampleInputPassword1" class='control-label'>Hạn đăng kí</label>
-              <input type="date" class="form-control" id="date" name="date">
-            </div>
-
-            <div class="form-group required col-xs-12 col-md-4">
-              <label for="exampleInputPassword1" class='control-label'>Chức vụ</label>
-              <input type="text" class="form-control" id="position" name="position">
-            </div>
-            <div class="form-group required col-xs-12 col-md-4">
-              <label for="exampleInputPassword1" class='control-label'>Kinh nghiệm</label>
-              <input type="text" class="form-control" id="experience" name="experience">
-            </div>
-
-            <div class="form-group required col-xs-12 col-md-4">
-              <label for="exampleInputPassword1" class='control-label'>Bằng cấp</label>
-              <input type="text" class="form-control" id="education" name="education">
-            </div>
-
-            <div class="form-group required col-xs-12">
-              <label for="exampleTextarea" class='control-label'>Mô tả chung</label>
-              <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-            </div>
-            <div class="form-group required col-xs-12">
-              <label for="exampleTextarea" class='control-label'>Mô tả chi tiết</label>
-              <textarea class="form-control" id="detail" name="detail" rows="3"></textarea>
-            </div>
-            <div class="form-group required col-xs-12">
-              <label for="exampleTextarea" class='control-label'>Quyền lợi</label>
-              <textarea class="form-control" id="benefit" name="benefit" rows="3" ></textarea>
-            </div>
-            <div class="form-group required col-xs-12">
-              <label for="exampleTextarea" class='control-label'>Yêu cầu khác</label>
-              <textarea class="form-control" id="other_requirement" name="other_requirement" rows="3" ></textarea>
-            </div>
-            <div class="col-xs-12" style="margin-bottom: 50px;margin-top: 30px">
-             <button type="reset" class="btn btn-danger">Làm mới</button>
-             <button type="button" class="btn btn-success">Đăng tin</button>
-           </div>
-
-         </form>
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-2"></div>
+      <div class="col col-md-8">
+        <form>
+          <div class="form-group required col-xs-12">
+            <label for="exampleInputEmail1" class='control-label'>Tiêu đề</label>
+            <input type="text" class="form-control" id="title" name="title">
+            <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+          </div>
+          <div class="form-group required col-xs-12 col-md-6">
+            <label for="exampleInputPassword1" class='control-label'>Ngành nghề</label>
+            <select class="form-control" id="category_id">
+             <option>--------------- Chọn ngành nghề ---------------</option>
+             @foreach ($listCategory as $c)
+             <option value="{{ $c->id }}">{{ $c->name }}</option>
+             @endforeach
+           </select>
+         </div>
+         <div class="form-group required col-xs-12 col-md-6">
+          <label for="exampleInputPassword1" class='control-label'>Địa điểm</label>
+          <select class="form-control" id="address_id">
+           <option>--------------------- Chọn địa điểm ---------------------</option>
+           @foreach ($listAddress as $a)
+           <option value="{{ $a->id }}">{{ $a->name }}</option>
+           @endforeach
+         </select>
        </div>
-       <div class="col col-md-2"></div>
+       <div class="form-group required col-xs-12 col-sm-6">
+        <label for="exampleInputPassword1" class='control-label'>Số lượng</label>
+        <input type="number" class="form-control" id="quantity" name= "quantity" min=0>
+      </div>
+      <div class="form-group required col-xs-12 col-sm-6">
+        <label for="exampleInputPassword1" class='control-label'>Lương</label>
+        <input type="number" class="form-control" id="salary" name="salary" min=0 >
+      </div>
+      <div class="form-group required col-xs-12 col-sm-4">
+        <label for="exampleInputPassword1" class='control-label'>Giới tính</label>
+        <select class="form-control" id="gender" name="gender">
+          <option value="0">Không yêu cầu</option>
+          <option value="1">Nam</option>
+          <option value="2">Nữ</option>
 
+        </select>
+      </div>
+      <div class="form-group required col-xs-12 col-sm-4">
+        <label for="exampleInputPassword1" class='control-label'>Tuổi</label>
+        <input type="number" class="form-control" id="age" name="age" min=18>
+      </div>
+      <div class="form-group required col-xs-12 col-sm-4">
+        <label for="exampleInputPassword1" class='control-label'>Hạn đăng kí</label>
+        <input type="date" class="form-control" id="date" name="date">
+      </div>
+
+      <div class="form-group required col-xs-12 col-md-4">
+        <label for="exampleInputPassword1" class='control-label'>Chức vụ</label>
+        <input type="text" class="form-control" id="position" name="position">
+      </div>
+      <div class="form-group required col-xs-12 col-md-4">
+        <label for="exampleInputPassword1" class='control-label'>Kinh nghiệm</label>
+        <input type="text" class="form-control" id="experience" name="experience">
+      </div>
+
+      <div class="form-group required col-xs-12 col-md-4">
+        <label for="exampleInputPassword1" class='control-label'>Bằng cấp</label>
+        <input type="text" class="form-control" id="education" name="education">
+      </div>
+
+      <div class="form-group required col-xs-12">
+        <label for="exampleTextarea" class='control-label'>Mô tả chung</label>
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+      </div>
+      <div class="form-group required col-xs-12">
+        <label for="exampleTextarea" class='control-label'>Mô tả chi tiết</label>
+        <textarea class="form-control" id="detail" name="detail" rows="3"></textarea>
+      </div>
+      <div class="form-group required col-xs-12">
+        <label for="exampleTextarea" class='control-label'>Quyền lợi</label>
+        <textarea class="form-control" id="benefit" name="benefit" rows="3" ></textarea>
+      </div>
+      <div class="form-group required col-xs-12">
+        <label for="exampleTextarea" class='control-label'>Yêu cầu khác</label>
+        <textarea class="form-control" id="other_requirement" name="other_requirement" rows="3" ></textarea>
+      </div>
+      <div class="col-xs-12 margin-bottom50-top30" >
+       <button type="reset" class="btn btn-danger">Làm mới</button>
+       <button type="button" class="btn btn-success" id="button_add_job">Đăng tin</button>
      </div>
-   </div>   
 
-   <!-- Copyright Start  -->
-   <div id="copyright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="site-info text-center">
+   </form>
+ </div>
+ <div class="col col-md-2"></div>
 
-          </div>   
-        </div>
+</div>
+</div>   
+
+<!-- Copyright Start  -->
+<div id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="site-info text-center">
+
+        </div>   
       </div>
     </div>
   </div>
-  <!-- Copyright End -->
+</div>
+<!-- Copyright End -->
 
 </footer>
 <!-- Footer Section End -->  
@@ -219,10 +221,52 @@
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 
 <script>
-  CKEDITOR.replace( 'description' );
   CKEDITOR.replace( 'detail' );
   CKEDITOR.replace( 'benefit' );
   CKEDITOR.replace( 'other_requirement' );
+  $(document).ready(function() {
+
+    $('#button_add_job').click(function(event) {
+      /* Act on the event */
+
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      var formData = new FormData();
+      formData.append("title",$("#title").val());
+      formData.append("category_id",$("#category_id").val());
+      formData.append("address_id",$("#address_id").val());
+      formData.append("quantity",$("#quantity").val());
+      formData.append("salary",$("#salary").val());
+      formData.append("gender",$("#gender").val());
+      formData.append("age",$("#age").val());
+      formData.append("date",$("#date").val());
+      formData.append("position",$("#position").val());
+      formData.append("experience",$("#experience").val());
+      formData.append("education",$("#education").val());
+      formData.append("description",$("#description").val());
+      formData.append("detail",CKEDITOR.instances['detail'].getData());
+      formData.append("other_requirement",CKEDITOR.instances['other_requirement'].getData());
+      formData.append("benefit",CKEDITOR.instances['benefit'].getData());
+      $.ajax({
+        'url': '/add-job',
+        'type': 'post',
+        'data': formData,
+        processData : false,
+        contentType : false,
+        success:function(data){
+          if(data.error == false){
+            alert('thành công');
+          }
+          else{
+          }
+        }
+      })
+    });  
+  });
+
 </script>
 
 </body>
