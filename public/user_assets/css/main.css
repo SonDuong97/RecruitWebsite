@@ -3462,3 +3462,18 @@ blockquote p a:hover {
 #alert-error{
   display: none;
 }
+.margin-top30{
+  margin-top:30px;
+}
+#alert_success_cv{
+  display: none;
+  width:50%;
+}
+#alert_danger_cv{
+  display: none;
+  width:50%;
+}
+
+.plugin_cmt{
+  text-align: center;width: 100%
+}

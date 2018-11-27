@@ -70,6 +70,12 @@
     <div class="row">
       <div class="col col-md-2"></div>
       <div class="col col-md-8">
+        <div class="alert alert-success " id="alert_success" role="alert">
+          Đăng bài thành công 
+        </div>
+        <div class="alert alert-danger " id="alert_danger" role="alert">
+         Thông tin tuyển dụng không hợp lệ. Hãy kiểm tra lại
+        </div>
         <form>
           <div class="form-group required col-xs-12">
             <label for="exampleInputEmail1" class='control-label'>Tiêu đề</label>
@@ -258,14 +264,20 @@
         contentType : false,
         success:function(data){
           if(data.error == false){
-            alert('thành công');
+            $('#alert_success').show();
+            $('#alert_danger').hide();
           }
           else{
           }
-        }
-      })
+        },
+
+        error:function(data){
+         $('#alert_danger').show();
+         $('#alert_success').hide();
+       },
+     })
     });  
-  });
+  })
 
 </script>
 

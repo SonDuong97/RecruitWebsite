@@ -8,9 +8,12 @@ use App\JobSummary;
 use App\JobDetail;
 use App\Address;
 use App\Company;
+use App\ApplyCV;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
+use Validator;
 
 class JobController extends Controller
 {
@@ -117,6 +120,40 @@ class JobController extends Controller
 
 		return response()->json(["error"=>false]);
 
+
+	}
+
+	public function sendCV(Request $request){
+		$rules = [
+			
+			'cv' => 'required'
+		];
+		$messages = [
+			'required'=> 'Bạn chưa upload CV',
+			
+		];
+		$validator = Validator::make($request->all(), $rules, $messages);
+		if ($validator->fails()) {
+			return response()->json([
+				'error' => true,
+				'message' => $validator->errors()
+			], 200);
+    		// return redirect()->back()->withErrors($validator)->withInput();
+		} 
+/*		if(!$request->hasFile('cv')){
+			$errors = new MessageBag(['logoCompany' => 'Bạn chưa upload CV']);
+			return response()->json(['error'=>true,'message'=> $errors]);
+		}*/
+		$request->file('cv')->move(
+			'cv', //nơi cần lưu
+			$request->file('cv')->getClientOriginalName()
+		);
+		$cv = new ApplyCV;
+		$cv->user_id = $request->user_id;
+		$cv->job_summary_id = $request->job_id;
+		$cv->cv = "cv/".$request->file('cv')->getClientOriginalName();
+		$cv->save();
+		return response()->json(['error'=>false]);
 
 	}
 }

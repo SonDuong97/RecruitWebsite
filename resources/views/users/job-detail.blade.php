@@ -12,16 +12,21 @@
 				<div class="job-list">
 					<div class="thumb">
 						<a href="job-details.html">
-							<img src="user_assets/img/jobs/img-1.jpg" alt="">
+							<img src="{{ $jobSummary->company->logo }}" alt="">
 						</a>
 					</div>
 					<div class="job-list-content">
 						@if (isset($jobSummary))
 						{{-- expr --}}
-						
+						<div class="alert alert-success " id="alert_success_cv" role="alert" >
+							Gửi CV thành công. 
+						</div>
+						<div class="alert alert-danger " id="alert_danger_cv" role="alert">
+							Gửi CV thất bại.
+						</div>
 						<h4>
 							<a href="" >{{ $jobSummary->title }}</a><br>
-							<i class="ti-briefcase"></i><a href="{{ $jobSummary->link }}" style="color: blue">  {{ $jobSummary->company->name }}</a><br>
+							<i class="ti-briefcase"></i><a href="{{ $jobSummary->company->link }}" style="color: blue">  {{ $jobSummary->company->name }}</a><br>
 							<p  class="info-job-basic">
 								<b>Địa điểm: </b> <span >{{ $jobSummary->address->name }}</span><br>
 								<b>Mức lương: </b> <span >{{ $jobSummary->detail->salary }}</span><br>
@@ -41,7 +46,12 @@
 											Lưu công việc
 										@endif
 									</a> -->
-									<a href="button" class="btn btn-info"><i class="ti-bookmark"></i> Ứng tuyển ngay</a> 
+									<a data-toggle="modal" 
+									@if (Auth::check())
+									href='#modal_cv' 
+									@else href="{{ route('login') }}" 
+									@endif
+									class="btn btn-info"><i class="ti-bookmark"></i> Ứng tuyển ngay</a> 
 								</div>
 							</p>
 
@@ -83,7 +93,7 @@
 
 					</div>
 					@endif
-					<div style="text-align: center;width: 100%">
+					<div class="plugin_cmt">
 						<div id="fb-root"></div>
 						<script>(function(d, s, id) {
 							var js, fjs = d.getElementsByTagName(s)[0];
@@ -97,4 +107,82 @@
 				</section>
 				<!-- Find Job Section End -->
 
+				<div class="modal fade" id="modal_cv">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h2 class="modal-title">Gửi CV cho nhà tuyển dụng</h2>
+							</div>
+							<div class="modal-body">
+								<form action="" role="form" enctype="multipart/form-data">
+									<input type="hidden" value="{{ $jobSummary->id }}" id="job_id">
+									<input type="hidden" value="{{ Auth::user()->id }}" id="user_id">
+									<div class="file has-name">
+										<label class="file-label">
+											<input class="file-input" type="file" name="cv" id="cv">
+											<span class="file-cta">
+												<span class="file-icon">
+													<i class="fas fa-upload"></i>
+												</span>
+												<span class="file-label">
+													Chọn file.
+												</span>
+											</span>
+										</label>
+									</div>
+
+									
+
+									<button type="button" id="upload_cv" class="btn btn-primary margin-top30">Gửi CV</button>
+								</form>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+
+				<script type="text/javascript" src="user_assets/js/jquery-min.js"></script>   
+				<script>
+					
+					$(document).ready(function() {
+
+						$('#upload_cv').click(function(event) {
+							/* Act on the event */
+
+							$.ajaxSetup({
+								headers: {
+									'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+								}
+							});
+							var formData = new FormData();
+							formData.append("job_id",$("#job_id").val());
+							formData.append("user_id",$("#user_id").val());
+							formData.append("cv",document.getElementById("cv").files[0]);
+							$.ajax({
+								'url': '/send-cv',
+								'type': 'post',
+								'data': formData,
+								processData : false,
+								contentType : false,
+								success:function(data){
+									if(data.error == false){
+										$('#alert_success_cv').show();
+										$('#alert_danger_cv').hide();
+										$('#modal_cv').modal('hide');
+									}
+									else{
+									}
+								},
+
+								error:function(data){
+									$('#alert_danger_cv').show();
+									$('#alert_success_cv').hide();
+									$('#modal_cv').modal('hide');
+								},
+							})
+						});  
+					})
+
+				</script>
 				@endsection

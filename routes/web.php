@@ -52,6 +52,8 @@ Route::get('/form-post-job','JobController@showPostJob')->name('form-post-job');
 Route::post('/signup-company', 'CompanyController@signupCompany')->name('signupCompany');
 
 Route::post('/add-job','JobController@addJob')->name('addJob');
+
+Route::post('/send-cv','JobController@sendCV')->name('sendCV');
 Route::get('/test', 'CompanyController@test');
 
 
