@@ -155,7 +155,24 @@ class UserController extends Controller
 		
 	}
 
+	public function getRecruit(){
+		$user = Auth::user();
+		$listCategory = Category::all();
+		$listAddress = Address::all();
+		return view('users.my-recruit',["listRecruit"=>$user->myRecruit,'listCategory'=>$listCategory,'listAddress'=>$listAddress]);
+	}
 	
+	public function deleteRecruit(Request $request){
+		$userLogin = Auth::user();
+		$recruit = JobSummary::where([['user_id','=',$userLogin->id],['id','=',$request->idJob]])->first();
+		if($recruit!=null){
+			if($recruit->detail!=null){
+				$recruit->detail->delete();
+			}
+			$recruit->delete();
+			return response()->json(['message'=>true,'idJob'=>$request->idJob]);
+		}
+	}
 	public function test(){
 		
 

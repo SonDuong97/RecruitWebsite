@@ -33,4 +33,8 @@ class User extends Authenticatable
     public function jobFavorite(){
         return $this->belongsToMany('App\JobSummary', 'job_favorite', 'user_id', 'job_id');
     }
+
+    public function myRecruit(){
+        return $this->hasMany('App\JobSummary','user_id','id');   
+    }
 }

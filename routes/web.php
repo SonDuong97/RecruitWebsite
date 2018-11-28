@@ -54,6 +54,12 @@ Route::post('/signup-company', 'CompanyController@signupCompany')->name('signupC
 Route::post('/add-job','JobController@addJob')->name('addJob');
 
 Route::post('/send-cv','JobController@sendCV')->name('sendCV');
+
+Route::get('/my-recruit','UserController@getRecruit')->name('my-recruit');
+
+Route::delete('/delete-recruit', 'UserController@deleteRecruit');
+
+Route::get('/user-apply','UserApplyController@listUserApply');
 Route::get('/test', 'CompanyController@test');
 
 
