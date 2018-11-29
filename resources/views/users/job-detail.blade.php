@@ -169,9 +169,16 @@
 									if(data.error == false){
 										$('#alert_success_cv').show();
 										$('#alert_danger_cv').hide();
+										
 										$('#modal_cv').modal('hide');
 									}
 									else{
+										if (data.message.cvExist != undefined) {
+											$('#alert_danger_cv').text(data.message.cvExist[0]);
+											$('#alert_danger_cv').show();
+											$('#alert_success_cv').hide();
+											$('#modal_cv').modal('hide');
+										}
 									}
 								},
 

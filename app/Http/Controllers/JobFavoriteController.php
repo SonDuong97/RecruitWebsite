@@ -36,7 +36,8 @@ class JobFavoriteController extends Controller
 	public function listFavorite(){
 		$listCategory = Category::all();
 		$listAddress = Address::all();
-		$listJob = Auth::user()->jobFavorite;
+		$user = User::find(Auth::user()->id);
+		$listJob = $user->jobFavorite()->paginate(5);
 		return view('users.list-favorite',['listCategory'=>$listCategory,'listAddress'=>$listAddress,'listJob'=>$listJob]);
 	}
 

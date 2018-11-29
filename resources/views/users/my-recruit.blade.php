@@ -10,9 +10,9 @@
 			<thead>
 				<tr>
 
-					<th style="width: 85%">Tiêu đề</th>
+					<th style="width: 75%">Tiêu đề</th>
 
-					<th style="width: 15%">Hành động</th>
+					<th style="width: 25%">Hành động</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,13 +21,25 @@
 					<td>{{ $recruit->title }}</td>
 					<td>
 						<a href="/job-detail/{{ $recruit->id }}"><span class="label label-success">Chi tiết</span></a>
+						<a href="/user-apply/{{ $recruit->id }}"><span class="label label-primary">Xem ứng viên</span></a>
 						<span class="label label-warning delete" id="{{ $recruit->id }}" style="cursor:pointer">Xóa</span>
 					</td>
 				</tr>
 				@endforeach
-			</tbody>
-		</table>
 
+			</tbody>
+
+		</table>
+		<div class="col-md-12">
+			<div class="showing pull-left">
+				<a href="#">Hiện thị
+					<span>{{ $listRecruit->firstItem() }} - {{   $listRecruit->lastItem() }}</span> trong tổng số {{ $listRecruit->total() }} tin</a>
+				</div>
+				<div class="pagination pull-right">
+					{!! $listRecruit->links() !!}
+				</div>
+			</div>
+		</div>
 
 
 	</div>

@@ -144,7 +144,7 @@ class UserController extends Controller
 			return response()->json(['error'=>true,'message'=>'Không được để trống địa chỉ email']);
 		}
 
-		$user = User::where('email',$request->email)->get();
+		$user = User::where('email',$request->email)->first();
 		if($user==null){
 			return response()->json(['error'=>true,'message'=>'Email này chưa được đăng kí.']);
 		}
@@ -156,10 +156,11 @@ class UserController extends Controller
 	}
 
 	public function getRecruit(){
-		$user = Auth::user();
+		$user=User::find(Auth::user()->id);
+		$listRecruit = $user->myRecruit()->paginate(5);
 		$listCategory = Category::all();
 		$listAddress = Address::all();
-		return view('users.my-recruit',["listRecruit"=>$user->myRecruit,'listCategory'=>$listCategory,'listAddress'=>$listAddress]);
+		return view('users.my-recruit',["listRecruit"=>$listRecruit,'listCategory'=>$listCategory,'listAddress'=>$listAddress]);
 	}
 	
 	public function deleteRecruit(Request $request){
@@ -173,10 +174,7 @@ class UserController extends Controller
 			return response()->json(['message'=>true,'idJob'=>$request->idJob]);
 		}
 	}
-	public function test(){
-		
-
-	}
+	
 
 	
 }

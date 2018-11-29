@@ -37,4 +37,12 @@ class User extends Authenticatable
     public function myRecruit(){
         return $this->hasMany('App\JobSummary','user_id','id');   
     }
+
+    public function jobApply(){
+        return $this->belongsToMany('App\JobSummary', 'cv_apply', 'job_summary_id', 'user_id');
+    }
+
+    public function getCV(){
+        return $this->belongsTo('App\ApplyCV','id','user_id');
+    }
 }

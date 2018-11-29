@@ -37,16 +37,16 @@
                     <div class="pull-right">
                       <div class="icon" id="{{ $value->id }}" 
                         @if (Auth::check())
-                          @foreach (Auth::user()->jobFavorite as $favorite)
-                            @if ($favorite->id == $value->id)
-                              style="background-color:red;color:white" 
-                            @endif
-                          @endforeach
+                        @foreach (Auth::user()->jobFavorite as $favorite)
+                        @if ($favorite->id == $value->id)
+                        style="background-color:red;color:white" 
                         @endif
-                      >
+                        @endforeach
+                        @endif
+                        >
                         <i class="ti-heart"></i>
                       </div>
-                      <a href="job-details.html" class="btn btn-common btn-rm">Xem chi tiết</a>
+                      <a href="job-detail/{{ $value->id }}" class="btn btn-common btn-rm">Xem chi tiết</a>
                     </div>
                   </div>
                 </div>

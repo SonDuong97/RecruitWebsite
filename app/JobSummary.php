@@ -24,4 +24,8 @@ class JobSummary extends Model
 	public function detail(){
     	return $this->belongsTo('App\JobDetail','job_detail_id','id');
     }
+
+    public function userApply(){
+        return $this->belongsToMany('App\User', 'cv_apply', 'job_summary_id', 'user_id');
+    }
 }

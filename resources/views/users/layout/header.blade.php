@@ -77,7 +77,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="search-resumes.html">
+                      <a href="{{ route('my-recruit') }}">
                         Bài đăng
                       </a>
                     </li>

@@ -48,7 +48,6 @@
 				success:function(data){
 					if(data.message == true){
 						$('#tr'+data.idJob).remove();
-						alert('thành công');
 					}
 
 				}
