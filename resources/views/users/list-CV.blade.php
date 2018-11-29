@@ -6,6 +6,7 @@
 <section class="find-job section">
 	<div class="container">
 		<h2 class="section-title">Danh sách ứng viên công việc mã ID {{ $jobID }}</h2>
+		<input type="hidden" value="{{ $jobID }}">
 		<table class="table table-hover" style="width: 100%;">
 			<thead>
 				<tr>
@@ -20,11 +21,10 @@
 				@foreach ($listCV as $CV)
 				<tr id="tr{{ $CV->id }}">{{-- expr --}}
 					<td>{{ $CV->name }}</td>
-					<td>{{ $CV->email }}</td>
+					<td >{{ $CV->email }}</td>
 					<td>
 						<a href="{{ $CV->getCV->cv }}"><span class="label label-success">Xem CV</span></a>
-
-						<a data-toggle="modal" href='#modal-id'><span class="label label-primary">Liên hệ</span></a>
+						<a class="contact" id="{{ $CV->email }}"  href="javascript:;"><span class="label label-primary" >Liên hệ</span></a>
 					</td>
 				</tr>
 				@endforeach
@@ -45,25 +45,57 @@
 
 
 	</div>
-	<div class="modal fade" id="modal-id">
+	<div class="modal fade" id="modal_id">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Modal title</h4>
 				</div>
 				<div class="modal-body">
-					
+					<form action="" method="POST" role="form">
+						<h3>Liên hệ</h3>
+
+						<div class="form-group">
+							<label for="">Người nhận</label>
+							<input type="email" class="form-control" id="email" value="" readonly>
+							<label for="">Nội dung</label>
+							<textarea name="" id="content_mail"></textarea>
+						</div>
+
+						
+
+						<button type="submit" class="btn btn-primary">Liên hệ</button>
+					</form>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
+				
 			</div>
 		</div>
 	</div>
 </section>
 <!-- Find Job Section End -->
 <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 
-@endsection
+<script>
+	CKEDITOR.replace( 'content_mail' );
+	$(document).ready(function() {
+
+		$('.contact').click(function(event) {
+			/* Act on the event */
+
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			var formData = new FormData();
+			var email = $(this).attr('id');
+			$('#email').val(email);
+			$('#modal_id').modal('show');
+			
+			
+		});
+	});
+	</script>
+	@endsection
