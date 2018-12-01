@@ -175,6 +175,49 @@ class UserController extends Controller
 		}
 	}
 	
-
+	public function formEditInfo(){
+		$listCompany = Company::all();
+		$listAddress = Address::all();
+		return view('users.edit-info',['listCompany'=>$listCompany,'listAddress'=>$listAddress]);
+	}
 	
+	public function updateInfo(Request $request){
+		$rules = [
+			'email' => 'email|required',
+			
+			'fullName' => 'required'
+		];
+		$messages = [
+			'required'=> 'Không được để trống thông tin nào',
+			'email.email' => 'Email không đúng định dạng'
+		];
+		$validator = Validator::make($request->all(), $rules, $messages);
+		if ($validator->fails()) {
+			return response()->json([
+				'error' => true,
+				'message' => $validator->errors()
+			], 200);
+    		// return redirect()->back()->withErrors($validator)->withInput();
+		} 
+		if($request->role == 2 && $request->company_id == 0){
+			$errors = new MessageBag(['errorCompany' => 'Hãy chọn công ty của bạn']);
+			return response()->json(['error'=>true,'message'=> $errors]);
+		}
+
+		if($request->email != Auth::user()->email && User::where('email','=',$request->email)->first()!=null){
+			$errors = new MessageBag(['errorEmail' => 'Email này đã được đăng kí']);
+			return response()->json(['error'=>true,'message'=> $errors]);
+		}
+		$user = Auth::user();
+		$user->name = $request->fullName;
+		$user->email = $request->email;
+		$user->role_id = $request->role;
+		if($request->role == 2)
+			$user->company_id = $request->company_id;
+		else 
+			$user->company_id = null;
+		$user->deleted = false;
+		$user->update();
+		return response()->json(['error'=>false]);
+	}
 }

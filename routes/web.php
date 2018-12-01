@@ -60,6 +60,10 @@ Route::get('/my-recruit','UserController@getRecruit')->name('my-recruit');
 Route::delete('/delete-recruit', 'UserController@deleteRecruit');
 
 Route::get('/user-apply/{jobID}','UserApplyController@listUserApply');
+
+Route::get('/edit-info','UserController@formEditInfo')->name('edit-info');
+
+Route::put('/update-info','UserController@updateInfo');
 Route::get('/test', 'UserApplyController@test');
 
 

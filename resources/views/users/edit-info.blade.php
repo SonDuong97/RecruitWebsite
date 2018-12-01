@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Đăng kí tài khoản</title>
+  <title>Chỉnh sửa thông tin</title>
   <base href="{{asset('')}}">
 
 
@@ -58,7 +58,7 @@
           <h2 class="product-title">Chỉnh sửa thông tin</h2>
           <ol class="breadcrumb">
             <li><a href="{{ route('home') }}"><i class="ti-home"></i> Trang chủ</a></li>
-            <li class="current">Đăng kí tài khoản</li>
+            <li class="current">Chỉnh sửa thông tin</li>
           </ol>
         </div>
       </div>
@@ -74,67 +74,54 @@
      
 
      <section>      
-      <h1 class="entry-title"><span>Đăng kí</span> </h1>
+      <h1 class="entry-title"><span>Chỉnh sửa thông tin</span> </h1>
       <div class="alert alert-success " id="alert_success" role="alert">
-        Đăng kí thành công <a href="{{ route('login') }}" class="alert-link">Đăng nhập ngay</a>. 
+        Chỉnh sửa thông tin thành công. 
       </div>
       <div class="alert alert-danger " id="alert_danger" role="alert">
-        Đăng kí thất bại. <span id="error"></span>. 
+       Chỉnh sửa thông tin thất bại. <span id="error"></span>. 
+     </div>
+     <hr>
+     <form class="form-horizontal" name="signup" id="signup" >
+
+      <div class="form-group">
+        <label class="control-label col-sm-3">Loại tài khoản <span class="text-danger">*</span></label>
+        <div class="col-md-8 col-sm-9">
+          <label>
+            <input name="role" type="radio" value="2" @if (Auth::user()->role_id == 2) checked @endif>
+          Nhà tuyển dụng </label>
+             
+          <label>
+            <input name="role" type="radio" value="3" @if (Auth::user()->role_id == 3) checked @endif>
+          Người tìm việc </label>
+        </div>
       </div>
-      <hr>
-      <form class="form-horizontal" name="signup" id="signup" >
-
-        <div class="form-group">
-          <label class="control-label col-sm-3">Loại tài khoản <span class="text-danger">*</span></label>
-          <div class="col-md-8 col-sm-9">
-            <label>
-              <input name="role" type="radio" value="2">
-            Nhà tuyển dụng </label>
-               
-            <label>
-              <input name="role" type="radio" value="3" checked>
-            Người tìm việc </label>
-          </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Họ và tên<span class="text-danger">*</span></label>
+        <div class="col-md-8 col-sm-9">
+          <input type="text" class="form-control" name="mem_name" id="mem_name" placeholder="Enter your Name here" value="{{ Auth::user()->name }}" required>
         </div>
-        <div class="form-group">
-          <label class="control-label col-sm-3">Họ và tên<span class="text-danger">*</span></label>
-          <div class="col-md-8 col-sm-9">
-            <input type="text" class="form-control" name="mem_name" id="mem_name" placeholder="Enter your Name here" value="" required>
-          </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-3">Email<span class="text-danger">*</span></label>
+        <div class="col-md-8 col-sm-9">
+          <input type="email" class="form-control" name="emailid" id="emailid" placeholder="Enter your Email ID" value="{{ Auth::user()->email }}" required>
+          <small> Địa chỉ email của bạn được sử dụng để đảm bảo tính bảo mật và khôi phục tài khoản của bạn. </small> </div>
         </div>
-        <div class="form-group">
-          <label class="control-label col-sm-3">Email<span class="text-danger">*</span></label>
-          <div class="col-md-8 col-sm-9">
-            <input type="email" class="form-control" name="emailid" id="emailid" placeholder="Enter your Email ID" value="" required>
-            <small> Địa chỉ email của bạn được sử dụng để đảm bảo tính bảo mật và khôi phục tài khoản của bạn. </small> </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label col-sm-3">Mật khẩu <span class="text-danger">*</span></label>
-            <div class="col-md-8 col-sm-9">
-              <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu (nhiều hơn 6 kí tự)" value="" required>
+        <div class="form-group" id="select_list_company" @if (Auth::user()->role_id == 2) style="display:inline " @endif>
+          <label class="control-label col-md-3">Công ty<span class="text-danger">*</span></label>
+          <div class="col-md-6">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <select name="company_id" class="form-control" id="company_id">
+                <option value="0">------------------Công ty----------------</option>
+                @foreach ($listCompany as $c)
+                <option value="{{ $c->id }}" @if (Auth::user()->company_id == $c->id) selected @endif>{{ $c->name }}</option>
+                @endforeach
+              </select>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-3">Xác nhận mật khẩu<span class="text-danger">*</span></label>
-            <div class="col-md-8 col-sm-9">
-              <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Xác nhận mật khẩu" value="" required>
-            </div>
-          </div>
-          <div class="form-group" id="select_list_company">
-            <label class="control-label col-md-3">Công ty<span class="text-danger">*</span></label>
-            <div class="col-md-6">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <select name="company_id" class="form-control" id="company_id">
-                  <option value="0">------------------Công ty----------------</option>
-                 @foreach ($listCompany as $c)
-                 <option value="{{ $c->id }}">{{ $c->name }}</option>
-                 @endforeach
-               </select>
-             </div>
-           </div>  
-           <div class="col-md-1">
+          </div>  
+          <div class="col-md-1">
             <button type="button" class="btn btn-primary margin-top-5" data-toggle="modal" href='#modal-id'>Thêm mới</button>
           </div>
         </div>
@@ -143,7 +130,7 @@
         <div class="col-xs-offset-2 col-xs-8">
           <a href="{{ route('login') }}" class="btn btn-primary margin-top-5" >Trở lại đăng nhập</a>
           <input name="Reset" type="reset" value="Làm mới" class="btn btn-danger margin-top-5" >
-          <input name="Submit" type="button" value="Đăng kí" class="btn btn-success margin-top-5" id="submit" >
+          <input name="update" type="button" value="Cập nhật" class="btn btn-success margin-top-5" id="update" >
         </div>
       </div>
     </form>
@@ -171,7 +158,7 @@
               <label for="">Link công ty</label>
               <input type="text" class="form-control" id="linkCompany" placeholder="Nhập link web công ty">
               <label for="">Logo</label>
-              <input type="file" class="form-control" id="logoCompany" name="logo" >
+              <input type="file" class="form-control" id="logoCompany" name="logo" ><br>
               <label for="">Địa chỉ</label>
               <select name="address" id="addressCompany" class="form-control" >
                 <option value="">----------Chọn địa điểm---------</option>
@@ -254,7 +241,52 @@
 
         }
       })
-    });  
+    }); 
+
+    $('#update').click(function(event) {
+      /* Act on the event */
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $.ajax({
+        'url':'/update-info',
+        'type':'PUT',
+        'data':{
+          'role':$('[name="role"]:radio:checked').val(),
+          'fullName':$('#mem_name').val(),
+          'email':$('#emailid').val(),
+          'company_id':$('#company_id').val()
+        },
+        success:function(data){
+          if (data.error == true) {
+            $('#alert_danger').show();
+            $('#alert_success').hide();
+            if(data.message.fullName != undefined){
+              $('#error').text(data.message.fullName[0]);
+            }
+            
+            else if (data.message.password != undefined) {
+              $('#error').text(data.message.password[0]);
+            }
+            else if (data.message.cpassword != undefined) {
+              $('#error').text(data.message.cpassword[0]);
+            }
+            else if (data.message.errorEmail != undefined) {
+              $('#error').text(data.message.errorEmail[0]);
+            }
+            else if(data.message.errorCompany != undefined){
+              $('#error').text(data.message.errorCompany[0]);
+            }
+          } 
+          else {
+            $('#alert_success').show();
+            $('#alert_danger').hide();
+          }
+        }
+      });
+    }); 
   });
 </script>
 </body>

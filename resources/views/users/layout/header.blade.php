@@ -43,7 +43,7 @@
                  @endif
                 </ul>
               </li>
-              <li>
+              <!-- <li>
                 <a href="about.html">
                   About Us
                   <i class="fa fa-angle"></i>
@@ -54,7 +54,7 @@
                   Contact Us
                   <i class="fa fa-angle"></i>
                 </a>
-              </li>
+              </li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right float-right">
 
@@ -67,13 +67,18 @@
                 </li>
                 @endif
                 <li >
-                  <a href="resume.html">
+                  <a href="">
                     {{Auth::user()->name}}<i class="fa fa-angle-down" ></i>
                   </a> 
                   <ul class="dropdown">
                     <li>
                       <a href="{{ route('reset-password') }}">
                         Đổi mật khẩu
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ route('edit-info') }}">
+                        Đổi thông tin
                       </a>
                     </li>
                     <li>
