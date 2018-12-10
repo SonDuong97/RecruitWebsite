@@ -171,7 +171,7 @@
               <label for="">Link công ty</label>
               <input type="text" class="form-control" id="linkCompany" placeholder="Nhập link web công ty">
               <label for="">Logo</label>
-              <input type="file" class="form-control" id="logoCompany" name="logo" >
+              
               <label for="">Địa chỉ</label>
               <select name="address" id="addressCompany" class="form-control" >
                 <option value="">----------Chọn địa điểm---------</option>
@@ -181,6 +181,7 @@
                 @endforeach
 
               </select>
+              <input type="file" id="logoCompany" name="logo" >
             </div>
           </form>
         </div>
