@@ -8,5 +8,10 @@ class Address extends Model
 {
     //
     protected $table = "address";
+
+    public function companies()
+    {
+        return $this->hasMany('App\Company', 'id_address', 'id');
+    }
    
 }
