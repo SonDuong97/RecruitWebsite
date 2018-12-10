@@ -92,11 +92,6 @@
                       </a>
                     </li>
                     <li>
-                      <a href="search-resumes.html">
-                        $Payment
-                      </a>
-                    </li>
-                    <li>
                       <a href="{{ route('logout') }} ">
                         Đăng xuất
                       </a>
