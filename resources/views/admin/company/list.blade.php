@@ -17,7 +17,7 @@
                                 <th>link</th>
                                 <th>logo</th>
                                 <th>name</th>
-                                <th>id_address</th>
+                                <th>address</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>

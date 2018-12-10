@@ -16,7 +16,9 @@
                                 <th>ID</th>
                                 <th>Title</th>
                                 <th>description</th>
-                                <th>Status</th>
+                                <th>category</th>
+                                <th>address</th>
+                                <th>user</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -25,9 +27,13 @@
                             @foreach($jobs as $job)
 
                             <tr class="even gradeC" align="center">
+
                                 <td>{{ $job->id }}</td>
                                 <td>{{ $job->title }}</td>
                                 <td>{{ $job->description }}</td>
+                                <td>{{ $job->category->name}}</td>
+                                <td>{{ $job->address->name}}</td>
+                                <td>{{ $job->user->name}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
                             </tr>
