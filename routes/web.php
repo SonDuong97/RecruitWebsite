@@ -37,7 +37,34 @@ Route::get('/job', 'JobController@showJob')->name('showJob');
 
 Route::get('/searchJob', 'JobController@searchJob')->name('searchJob');
 
-Route::get('category/{id}', 'JobController@findByCategory')->name('category');
+Route::get('/category/{id}', 'JobController@findByCategory')->name('category');
+
+Route::get('/job-detail/{id}', 'JobController@showJobDetail');
+
+Route::post('/favorite','JobFavoriteController@addJobFavorite');
+
+Route::get('/list-favorite', 'JobFavoriteController@listFavorite')->name('list-favorite');
+
+Route::delete('/delete-job-favorite','JobFavoriteController@deleteJobFavorite');
+
+Route::get('/form-post-job','JobController@showPostJob')->name('form-post-job');
+
+Route::post('/signup-company', 'CompanyController@signupCompany')->name('signupCompany');
+
+Route::post('/add-job','JobController@addJob')->name('addJob');
+
+Route::post('/send-cv','UserApplyController@sendCV')->name('sendCV');
+
+Route::get('/my-recruit','UserController@getRecruit')->name('my-recruit');
+
+Route::delete('/delete-recruit', 'UserController@deleteRecruit');
+
+Route::get('/user-apply/{jobID}','UserApplyController@listUserApply');
+
+Route::get('/edit-info','UserController@formEditInfo')->name('edit-info');
+
+Route::put('/update-info','UserController@updateInfo');
+Route::get('/test', 'UserApplyController@test');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
 	Route::get('/jobs', ['as' => 'index', 'uses' => 'JobController@index']);

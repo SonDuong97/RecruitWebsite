@@ -42,7 +42,7 @@ a:hover,a:focus{
 }
 /* Navbar */
 .navbar-default.affix .float-right li a{
-  color: #FF4F57!important;
+  color: #444!important;
   border-color: #FF4F57;
 }
 .navbar-default.affix .float-right li a:hover{

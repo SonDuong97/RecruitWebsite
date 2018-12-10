@@ -42,8 +42,10 @@
   <!-- CSS file -->
   <link rel="stylesheet" href="user_assets/css/easy-autocomplete.min.css"> 
 
-<!-- Additional CSS Themes file - not required-->
-<link rel="stylesheet" href="user_assets/css/easy-autocomplete.themes.min.css"> 
+  <!-- Additional CSS Themes file - not required-->
+  <link rel="stylesheet" href="user_assets/css/easy-autocomplete.themes.min.css"> 
+
+  <link rel="stylesheet" href="user_assets/css/job-detail.css">
   
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 

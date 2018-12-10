@@ -10,7 +10,8 @@ class UserSeeder extends Seeder
 				'name'=>'Admin',
 				'email'=>'admin@gmail.com',
 				'password'=>bcrypt('123456'),
-				'id_role'=>1,
+				'role_id'=>1,
+				'company_id'=>null
 
 
 			],
@@ -18,7 +19,8 @@ class UserSeeder extends Seeder
 				'name'=>'Nguyễn Ngọc Trung',
 				'email'=>'trungnn160697@gmail.com',
 				'password'=>bcrypt('123456'),
-				'id_role'=>2,
+				'role_id'=>2,
+				'company_id'=>1,
 
 
 			],
@@ -26,7 +28,8 @@ class UserSeeder extends Seeder
 				'name'=>'Dương Ngọc Sơn',
 				'email'=>'sonbom@gmail.com',
 				'password'=>bcrypt('123456'),
-				'id_role'=>2,
+				'role_id'=>2,
+				'company_id'=>2,
 
 
 			],
@@ -34,24 +37,24 @@ class UserSeeder extends Seeder
 				'name'=>'Đỗ Thị Hải',
 				'email'=>'haipt@gmail.com',
 				'password'=>bcrypt('123456'),
-				'id_role'=>3,
-
+				'role_id'=>3,
+				'company_id'=>null
 
 			],
 			[
 				'name'=>'Nguyễn Thị Kiều Thương',
 				'email'=>'thuongntk@gmail.com',
 				'password'=>bcrypt('123456'),
-				'id_role'=>3,
-
+				'role_id'=>3,
+				'company_id'=>null
 
 			],
 			[
 				'name'=>'Lê Trọng Chung',
 				'email'=>'chunglt@gmail.com',
 				'password'=>bcrypt('123456'),
-				'id_role'=>3,
-
+				'role_id'=>3,
+				'company_id'=>null
 			]
 		]);
 	}

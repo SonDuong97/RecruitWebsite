@@ -8,8 +8,9 @@ class Company extends Model
 {
     //
     protected $table = "companies";
+    public $timestamps = false;
     public function jobSummary(){
-    	return $this->hasMany('App\JobSummary','id_company','id');
+    	return $this->hasMany('App\JobSummary','company_id','id');
     }
     public function address(){
     	return $this->belongsTo('App\Address', 'id_address','id');

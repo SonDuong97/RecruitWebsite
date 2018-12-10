@@ -2,7 +2,7 @@
 * @Author: Trungnn
 * @Date:   2018-10-09 10:02:22
 * @Last Modified by:   Trungnn
-* @Last Modified time: 2018-10-10 23:33:12
+* @Last Modified time: 2018-11-23 15:53:56
 */
 $(document).ready(function(){
 	$('#submit').click(function(event) {
@@ -20,7 +20,8 @@ $(document).ready(function(){
 				'fullName':$('#mem_name').val(),
 				'email':$('#emailid').val(),
 				'password':$('#password').val(),
-				'cpassword': $('#cpassword').val()
+				'cpassword': $('#cpassword').val(),
+				'company_id':$('#company_id').val()
 			},
 			success:function(data){
 				if (data.error == true) {
@@ -37,6 +38,9 @@ $(document).ready(function(){
 					}
 					else if (data.message.cpassword != undefined) {
 						$('#error').text(data.message.cpassword[0]);
+					}
+					else if(data.message.errorCompany != undefined){
+						$('#error').text(data.message.errorCompany[0]);
 					}
 				} 
 				else {

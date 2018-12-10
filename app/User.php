@@ -5,12 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+
 
 class User extends Authenticatable
 {
     protected $table = "users";
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -31,5 +32,20 @@ class User extends Authenticatable
 
     public function role() {
         return $this->belongsTo(Role::class, 'id_role', 'id');
+  
+    public function jobFavorite(){
+        return $this->belongsToMany('App\JobSummary', 'job_favorite', 'user_id', 'job_id');
+    }
+
+    public function myRecruit(){
+        return $this->hasMany('App\JobSummary','user_id','id');   
+    }
+
+    public function jobApply(){
+        return $this->belongsToMany('App\JobSummary', 'cv_apply', 'job_summary_id', 'user_id');
+    }
+
+    public function getCV(){
+        return $this->belongsTo('App\ApplyCV','id','user_id');
     }
 }

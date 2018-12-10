@@ -12,12 +12,12 @@
         <div class="job-list">
           <div class="thumb">
             <a href="job-details.html">
-              <img src="user_assets/img/jobs/img-1.jpg" alt="">
+              <img src="{{ $value->company->logo }}" alt="" style="width: 100px;height: 100px">
             </a>
           </div>
           <div class="job-list-content">
             <h4>
-              <a href="job-details.html">{{ $value->title }}</a>
+              <a href="job-detail/{{ $value->job_detail_id }}">{{ $value->title }}</a>
             </h4>
             <p>{{ $value->description }}
             </p>
@@ -35,10 +35,18 @@
                       </div>
                     </div>
                     <div class="pull-right">
-                      <div class="icon">
+                      <div class="icon" id="{{ $value->id }}" 
+                        @if (Auth::check())
+                        @foreach (Auth::user()->jobFavorite as $favorite)
+                        @if ($favorite->id == $value->id)
+                        style="background-color:red;color:white" 
+                        @endif
+                        @endforeach
+                        @endif
+                        >
                         <i class="ti-heart"></i>
                       </div>
-                      <a href="job-details.html" class="btn btn-common btn-rm">Xem chi tiết</a>
+                      <a href="job-detail/{{ $value->id }}" class="btn btn-common btn-rm">Xem chi tiết</a>
                     </div>
                   </div>
                 </div>
@@ -132,7 +140,7 @@
             <section id="counter">
               <div class="container">
                 <div class="row">
-                  <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="col-md-4 col-xs-12">
                     <div class="counting">
                       <div class="icon">
                         <i class="ti-briefcase"></i>
@@ -143,7 +151,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="col-md-4 col-xs-12">
                     <div class="counting">
                       <div class="icon">
                         <i class="ti-user"></i>
@@ -154,24 +162,14 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="counting">
-                      <div class="icon">
-                        <i class="ti-write"></i>
-                      </div>
-                      <div class="desc">
-                        <h2>Resume</h2>
-                        <h1 class="counter">700</h1>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6 col-xs-12">
+                
+                  <div class="col-md-4 col-xs-12">
                     <div class="counting">
                       <div class="icon">
                         <i class="ti-heart"></i>
                       </div>
                       <div class="desc">
-                        <h2>Company</h2>
+                        <h2>Công ty</h2>
                         <h1 class="counter">{{ $ccompany }}</h1>
                       </div>
                     </div>
@@ -180,5 +178,36 @@
               </div>
             </section>
             <!-- Counter Section End -->
-            
+            <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>
+            <script>
+              $(document).ready(function() {
+                $('.icon').click(function(event) {
+                  /* Act on the event */
+                  $.ajaxSetup({
+                    headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                  });
+                  $.ajax({
+                    'url': '/favorite',
+                    'type': 'post',
+                    'data': {'idJob': $(this).attr('id')},
+                    success:function(data){
+                      if(data.error==true){
+                        window.location="/login";
+                      }
+                      else{
+                        if(data.message == true){
+                           $('#'+data.idJob).css({'background-color':'red','color':'white'});
+                        }
+                        else{
+                          $('#'+data.idJob).css({'background-color':'#f1f1f1','color':'#FF4F57'});
+                        }
+                      }
+                    }
+                  })
+                });  
+              });
+            </script>
             @endsection
+

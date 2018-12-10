@@ -32,18 +32,18 @@
                   Công việc
                   <i class="fa fa-angle"></i>
                 </a>
-                <ul class="rd-menu rd-navbar-megamenu" style="width:750px">
+                <ul class="rd-menu rd-navbar-megamenu" style="width:900px">
                  @if(isset($listCategory))
                     @foreach ($listCategory as $value)
                       {{-- expr --}}
-                      <li class="rd-megamenu-item col-xs-4" style="margin-bottom: 10px">
+                      <li class="rd-megamenu-item col-xs-3" style="margin-bottom: 10px">
                         <h6 class="rd-megamenu-title"><a href="/category/{{$value->id}}" style="color: white">{{ $value->name }}</a></h6>
                       </li>
                     @endforeach
                  @endif
                 </ul>
               </li>
-              <li>
+              <!-- <li>
                 <a href="about.html">
                   About Us
                   <i class="fa fa-angle"></i>
@@ -54,20 +54,20 @@
                   Contact Us
                   <i class="fa fa-angle"></i>
                 </a>
-              </li>
+              </li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right float-right">
 
 
               @if(Auth::check())
-              @if(Auth::user()->id_role<3)
+              @if(Auth::user()->role_id<3)
               <li class="left">
-                <a href="post-job.html">
+                <a href="{{ route('form-post-job') }}">
                   <i class="ti-pencil-alt"></i>Đăng tin</a>
                 </li>
                 @endif
                 <li >
-                  <a href="resume.html">
+                  <a href="">
                     {{Auth::user()->name}}<i class="fa fa-angle-down" ></i>
                   </a> 
                   <ul class="dropdown">
@@ -77,18 +77,18 @@
                       </a>
                     </li>
                     <li>
-                      <a href="search-resumes.html">
+                      <a href="{{ route('edit-info') }}">
+                        Đổi thông tin
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ route('my-recruit') }}">
                         Bài đăng
                       </a>
                     </li>
                     <li>
-                      <a href="search-resumes.html">
-                        My Shortlist
-                      </a>
-                    </li>
-                    <li>
-                      <a href="search-resumes.html">
-                        $Payment
+                      <a href="{{ route('list-favorite') }}">
+                        Yêu thích
                       </a>
                     </li>
                     <li>
@@ -130,20 +130,35 @@
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <input class="form-control" type="text" placeholder="Tên công ty" id="company" name="company">
+                          <input class="form-control" type="text" placeholder="Tên công ty" id="company" name="company" @if (isset($companySearch))
+                            value="{{ $companySearch }}" 
+                          @endif>
                           <i class="ti-briefcase"></i>
                         </div>
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <input class="form-control" type="text" placeholder="Ngành nghề" id="category">
-                          <i class="ti-list" name="category"></i>
+                          <i class="ti-list" name=""></i>
+                          <select name="category" id="category" class="form-control">
+                            <option value="">Chọn ngành nghề</option>
+                            @foreach ($listCategory as $category)
+                              {{-- expr --}}
+                              <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                          </select>
+                          
                         </div>
                       </div>
                       <div class="col-md-3 col-sm-3">
                         <div class="form-group">
-                          <input class="form-control"  type="text" placeholder="Thành phố" id="address" name="address">
                           <i class="ti-location-pin"></i>
+                          <select name="address" id="address" class="form-control">
+                            <option value="">Chọn địa điểm</option>
+                            @foreach ($listAddress as $address)
+                              {{-- expr --}}
+                              <option value="{{ $address->id }}">{{ $address->name }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                       <div class="col-md-1 col-sm-1">

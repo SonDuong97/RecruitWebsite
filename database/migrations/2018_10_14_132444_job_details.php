@@ -13,24 +13,23 @@ class JobDetails extends Migration
      */
     public function up()
     {
-         Schema::create('job_details', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('salary')->nullable();
-            $table->integer('experience')->nullable();
-            $table->string('education')->nullable();
-            $table->integer('quantity')->nullable();
+       Schema::create('job_details', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('salary')->nullable();
+        $table->string('experience')->nullable();
+        $table->text('education')->nullable();
+        $table->integer('quantity')->nullable();
+        $table->string('position')->nullable();
+        $table->string('gender')->nullable();
+        $table->string('age')->nullable();
+        $table->string('expiration_date')->nullable();
+        $table->text('job_description')->nullable();
+        $table->text('benefit')->nullable();
+        $table->text('other_requirement')->nullable();
 
-            $table->string('position')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('age')->nullable();
-            $table->string('expiration_date')->nullable();
-            $table->text('job_description')->nullable();
-            $table->text('benefit')->nullable();
-            $table->text('other_requirement')->nullable();
-            $table->timestamps();
             //
-        });
-    }
+    });
+   }
 
     /**
      * Reverse the migrations.

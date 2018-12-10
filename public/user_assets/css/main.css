@@ -221,12 +221,12 @@ a:focus {
   text-align: center;
 }
 .breadcrumb {
-  font-size: 14px;
+  /* font-size: 14px;
   color: #ff4f57;
   border-radius: 0px;
   background: transparent;
   padding: 5px 0px;
-  z-index: 1;
+  z-index: 1; */
 }
 .breadcrumb a {
   color: #fff;
@@ -2055,6 +2055,7 @@ footer {
   border-top: 1px solid #ddd;
   padding: 15px 0;
   line-height: 35px;
+
 }
 .job-list .job-tag .meta-tag span {
   font-size: 14px;
@@ -3460,4 +3461,19 @@ blockquote p a:hover {
 
 #alert-error{
   display: none;
+}
+.margin-top30{
+  margin-top:30px;
+}
+#alert_success_cv{
+  display: none;
+  width:50%;
+}
+#alert_danger_cv{
+  display: none;
+  width:50%;
+}
+
+.plugin_cmt{
+  text-align: center;width: 100%
 }

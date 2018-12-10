@@ -9,6 +9,7 @@ use App\Company;
 use App\Address;
 use App\JobSummary;
 use App\Category;
+use App\JobFavorite;
 use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
@@ -22,7 +23,8 @@ class UserController extends Controller
 		$job = JobSummary::count();
 		$jobSummary = JobSummary::orderBy('id','desc')->take(5)->get();
 		$listCategory = Category::all();
-		return view('users.home',['cmember'=>$member,'ccompany'=>$company,'cJob'=>$job,'jobSummary'=>$jobSummary,'active_home'=>true,'listCategory'=>$listCategory]);
+		$listAddress = Address::all();
+		return view('users.home',['cmember'=>$member,'ccompany'=>$company,'cJob'=>$job,'jobSummary'=>$jobSummary,'active_home'=>true,'listCategory'=>$listCategory,'listAddress'=>$listAddress]);
 	}
 
 	public function showLogin(){
@@ -52,7 +54,9 @@ class UserController extends Controller
 	}
 
 	public function showSignup(){
-		return view('signup');
+		$listCompany = Company::all();
+		$listAddress = Address::all();
+		return view('signup',['listCompany'=>$listCompany,'listAddress'=>$listAddress]);
 	}
 
 	public function signup(Request $request){
@@ -76,16 +80,25 @@ class UserController extends Controller
 				'message' => $validator->errors()
 			], 200);
     		// return redirect()->back()->withErrors($validator)->withInput();
-		} else {
-			$user = new User;
-			$user->name = $request->fullName;
-			$user->password = bcrypt($request->password);
-			$user->email = $request->email;
-			$user->id_role = $request->role;
-			$user->deleted = false;
-			$user->save();
-			return response()->json(['error'=>false]);
+		} 
+		if($request->role == 2 && $request->company_id == 0){
+			$errors = new MessageBag(['errorCompany' => 'Hãy chọn công ty của bạn']);
+			return response()->json(['error'=>true,'message'=> $errors]);
 		}
+
+		$user = new User;
+		$user->name = $request->fullName;
+		$user->password = bcrypt($request->password);
+		$user->email = $request->email;
+		$user->role_id = $request->role;
+		if($request->role == 2)
+			$user->company_id = $request->company_id;
+		else 
+			$user->company_id = null;
+		$user->deleted = false;
+		$user->save();
+		return response()->json(['error'=>false]);
+
 	}
 
 	public function showResetPassword(){
@@ -131,7 +144,7 @@ class UserController extends Controller
 			return response()->json(['error'=>true,'message'=>'Không được để trống địa chỉ email']);
 		}
 
-		$user = User::where('email',$request->email)->get();
+		$user = User::where('email',$request->email)->first();
 		if($user==null){
 			return response()->json(['error'=>true,'message'=>'Email này chưa được đăng kí.']);
 		}
@@ -141,5 +154,70 @@ class UserController extends Controller
 		return response()->json(['error'=>false,'message'=>'Lấy lại mật khẩu mới trong email của bạn.']);
 		
 	}
+
+	public function getRecruit(){
+		$user=User::find(Auth::user()->id);
+		$listRecruit = $user->myRecruit()->paginate(5);
+		$listCategory = Category::all();
+		$listAddress = Address::all();
+		return view('users.my-recruit',["listRecruit"=>$listRecruit,'listCategory'=>$listCategory,'listAddress'=>$listAddress]);
+	}
 	
+	public function deleteRecruit(Request $request){
+		$userLogin = Auth::user();
+		$recruit = JobSummary::where([['user_id','=',$userLogin->id],['id','=',$request->idJob]])->first();
+		if($recruit!=null){
+			if($recruit->detail!=null){
+				$recruit->detail->delete();
+			}
+			$recruit->delete();
+			return response()->json(['message'=>true,'idJob'=>$request->idJob]);
+		}
+	}
+	
+	public function formEditInfo(){
+		$listCompany = Company::all();
+		$listAddress = Address::all();
+		return view('users.edit-info',['listCompany'=>$listCompany,'listAddress'=>$listAddress]);
+	}
+	
+	public function updateInfo(Request $request){
+		$rules = [
+			'email' => 'email|required',
+			
+			'fullName' => 'required'
+		];
+		$messages = [
+			'required'=> 'Không được để trống thông tin nào',
+			'email.email' => 'Email không đúng định dạng'
+		];
+		$validator = Validator::make($request->all(), $rules, $messages);
+		if ($validator->fails()) {
+			return response()->json([
+				'error' => true,
+				'message' => $validator->errors()
+			], 200);
+    		// return redirect()->back()->withErrors($validator)->withInput();
+		} 
+		if($request->role == 2 && $request->company_id == 0){
+			$errors = new MessageBag(['errorCompany' => 'Hãy chọn công ty của bạn']);
+			return response()->json(['error'=>true,'message'=> $errors]);
+		}
+
+		if($request->email != Auth::user()->email && User::where('email','=',$request->email)->first()!=null){
+			$errors = new MessageBag(['errorEmail' => 'Email này đã được đăng kí']);
+			return response()->json(['error'=>true,'message'=> $errors]);
+		}
+		$user = Auth::user();
+		$user->name = $request->fullName;
+		$user->email = $request->email;
+		$user->role_id = $request->role;
+		if($request->role == 2)
+			$user->company_id = $request->company_id;
+		else 
+			$user->company_id = null;
+		$user->deleted = false;
+		$user->update();
+		return response()->json(['error'=>false]);
+	}
 }
