@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','id_role','deleted',
+        'name', 'email', 'password','id_role', 'deleted',
     ];
 
     /**
@@ -30,6 +30,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function role() {
+        return $this->belongsTo(Role::class, 'id_role', 'id');
+  
     public function jobFavorite(){
         return $this->belongsToMany('App\JobSummary', 'job_favorite', 'user_id', 'job_id');
     }

@@ -66,6 +66,18 @@ Route::get('/edit-info','UserController@formEditInfo')->name('edit-info');
 Route::put('/update-info','UserController@updateInfo');
 Route::get('/test', 'UserApplyController@test');
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+	Route::get('/jobs', ['as' => 'index', 'uses' => 'JobController@index']);
+	Route::get('/jobs/create', ['as' => 'create', 'uses' => 'JobController@create']);
 
+	Route::get('/addresses', ['as' => 'index', 'uses' => 'AddressController@index']);
+	Route::get('/address/create', ['as' => 'create', 'uses' => 'AddressController@create']);
+	Route::get('/categories', ['as' => 'index', 'uses' => 'CategoryController@index']);
+	Route::get('/category/create', ['as' => 'create', 'uses' => 'CategoryController@create']);
+	Route::get('/users', ['as' => 'index', 'uses' => 'UserController@index']);
+	Route::get('/user/create', ['as' => 'create', 'uses' => 'UserController@create']);
 
+	Route::get('/companies', ['as' => 'index', 'uses' => 'CompanyController@index']);
+	Route::get('/company/create', ['as' => 'create', 'uses' => 'CompanyController@create']);
 
+});
