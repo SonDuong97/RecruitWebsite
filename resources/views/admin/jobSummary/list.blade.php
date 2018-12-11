@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Job
                             <small>List</small>
                         </h1>
                     </div>
@@ -20,14 +20,12 @@
                                 <th>address</th>
                                 <th>user</th>
                                 <th>Delete</th>
-                                
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($jobs as $job)
 
                             <tr class="even gradeC" align="center">
-
                                 <td>{{ $job->id }}</td>
                                 <td>{{ $job->title }}</td>
                                 <td>{{ $job->description }}</td>
