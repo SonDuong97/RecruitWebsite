@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\JobSummary;
+use App\Category;
 class JobController extends Controller
 {
 	public function index() {
@@ -16,7 +17,12 @@ class JobController extends Controller
 	}
 
 	public function create() {
-		return view('admin.jobSummary.add');
+		$categories = Category::all();
+		$data = [
+			'categories' => $categories, 
+		];
+
+		return view('admin.jobSummary.add', $data);
 	}
 
 	public function store() {

@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 	Route::get('/jobs', ['as' => 'index', 'uses' => 'JobController@index']);
 	Route::get('/jobs/create', ['as' => 'create', 'uses' => 'JobController@create']);
 	Route::post('/jobs/destroy/{id}', ['as' => 'jobs.destroy', 'uses' => 'JobController@destroy']);
+	
 
 
 

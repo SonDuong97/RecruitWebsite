@@ -9,7 +9,7 @@ class Company extends Model
     //
     protected $table = "companies";
     public $timestamps = false;
-    public function jobSummary(){
+    public function jobSummaries(){
     	return $this->hasMany('App\JobSummary','company_id','id');
     }
     public function address(){

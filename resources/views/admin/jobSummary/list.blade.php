@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">Job
                             <small>List</small>
                         </h1>
                     </div>
@@ -20,14 +20,11 @@
                                 <th>address</th>
                                 <th>user</th>
                                 <th>Delete</th>
-                                <th>Edit</th>
-                            </tr>
                         </thead>
                         <tbody>
                             @foreach($jobs as $job)
 
                             <tr class="even gradeC" align="center">
-
                                 <td>{{ $job->id }}</td>
                                 <td>{{ $job->title }}</td>
                                 <td>{{ $job->description }}</td>
@@ -38,7 +35,7 @@
                             @csrf
                                 <input id="delete" type="submit" name="Delete">
                             </form></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                
                             </tr>
                             
                             @endforeach
