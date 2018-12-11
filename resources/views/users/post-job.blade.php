@@ -79,13 +79,12 @@
         <form>
           <div class="form-group required col-xs-12">
             <label for="exampleInputEmail1" class='control-label'>Tiêu đề</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" required="true">
             <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
           </div>
           <div class="form-group required col-xs-12 col-md-6">
             <label for="exampleInputPassword1" class='control-label'>Ngành nghề</label>
-            <select class="form-control" id="category_id">
-             <option>--------------- Chọn ngành nghề ---------------</option>
+            <select class="form-control" id="category_id" required>
              @foreach ($listCategory as $c)
              <option value="{{ $c->id }}">{{ $c->name }}</option>
              @endforeach
@@ -93,8 +92,7 @@
          </div>
          <div class="form-group required col-xs-12 col-md-6">
           <label for="exampleInputPassword1" class='control-label'>Địa điểm</label>
-          <select class="form-control" id="address_id">
-           <option>--------------------- Chọn địa điểm ---------------------</option>
+          <select class="form-control" id="address_id" required>
            @foreach ($listAddress as $a)
            <option value="{{ $a->id }}">{{ $a->name }}</option>
            @endforeach
@@ -102,15 +100,15 @@
        </div>
        <div class="form-group required col-xs-12 col-sm-6">
         <label for="exampleInputPassword1" class='control-label'>Số lượng</label>
-        <input type="number" class="form-control" id="quantity" name= "quantity" min=0>
+        <input type="number" class="form-control" id="quantity" name= "quantity" min=0 required>
       </div>
       <div class="form-group required col-xs-12 col-sm-6">
         <label for="exampleInputPassword1" class='control-label'>Lương</label>
-        <input type="number" class="form-control" id="salary" name="salary" min=0 >
+        <input type="number" class="form-control" id="salary" name="salary" min=0 required>
       </div>
       <div class="form-group required col-xs-12 col-sm-4">
         <label for="exampleInputPassword1" class='control-label'>Giới tính</label>
-        <select class="form-control" id="gender" name="gender">
+        <select class="form-control" id="gender" name="gender"required>
           <option value="0">Không yêu cầu</option>
           <option value="1">Nam</option>
           <option value="2">Nữ</option>
@@ -119,25 +117,25 @@
       </div>
       <div class="form-group required col-xs-12 col-sm-4">
         <label for="exampleInputPassword1" class='control-label'>Tuổi</label>
-        <input type="number" class="form-control" id="age" name="age" min=18>
+        <input type="number" class="form-control" id="age" name="age" min=18 required>
       </div>
       <div class="form-group required col-xs-12 col-sm-4">
         <label for="exampleInputPassword1" class='control-label'>Hạn đăng kí</label>
-        <input type="date" class="form-control" id="date" name="date">
+        <input type="date" class="form-control" id="date" name="date" required>
       </div>
 
       <div class="form-group required col-xs-12 col-md-4">
         <label for="exampleInputPassword1" class='control-label'>Chức vụ</label>
-        <input type="text" class="form-control" id="position" name="position">
+        <input type="text" class="form-control" id="position" name="position" required>
       </div>
       <div class="form-group required col-xs-12 col-md-4">
         <label for="exampleInputPassword1" class='control-label'>Kinh nghiệm</label>
-        <input type="text" class="form-control" id="experience" name="experience">
+        <input type="text" class="form-control" id="experience" name="experience" required>
       </div>
 
       <div class="form-group required col-xs-12 col-md-4">
         <label for="exampleInputPassword1" class='control-label'>Bằng cấp</label>
-        <input type="text" class="form-control" id="education" name="education">
+        <input type="text" class="form-control" id="education" name="education" required>
       </div>
 
       <div class="form-group required col-xs-12">
@@ -146,15 +144,15 @@
       </div>
       <div class="form-group required col-xs-12">
         <label for="exampleTextarea" class='control-label'>Mô tả chi tiết</label>
-        <textarea class="form-control" id="detail" name="detail" rows="3"></textarea>
+        <textarea class="form-control" id="detail" name="detail" rows="3" required></textarea>
       </div>
       <div class="form-group required col-xs-12">
         <label for="exampleTextarea" class='control-label'>Quyền lợi</label>
-        <textarea class="form-control" id="benefit" name="benefit" rows="3" ></textarea>
+        <textarea class="form-control" id="benefit" name="benefit" rows="3" required></textarea>
       </div>
       <div class="form-group required col-xs-12">
         <label for="exampleTextarea" class='control-label'>Yêu cầu khác</label>
-        <textarea class="form-control" id="other_requirement" name="other_requirement" rows="3" ></textarea>
+        <textarea class="form-control" id="other_requirement" name="other_requirement" rows="3" required></textarea>
       </div>
       <div class="col-xs-12 margin-bottom50-top30" >
        <button type="reset" class="btn btn-danger">Làm mới</button>
