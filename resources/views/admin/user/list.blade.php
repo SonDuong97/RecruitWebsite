@@ -18,7 +18,7 @@
                                 <th>email</th>
                                 <th>id_role</th>
                                 <th>Delete</th>
-                                <th>Edit</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,7 @@
                             @csrf
                                 <input id="delete" type="submit" name="Delete">
                             </form></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                
                             </tr>
 
                             @endforeach

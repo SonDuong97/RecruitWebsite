@@ -14,26 +14,23 @@
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="" method="POST">
                             <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
-                                </select>
+                                <label>Title</label>
+                                <input class="form-control" name="txtOrder" placeholder="Please Enter Title" />
                             </div>
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <label>Description</label>
+                                <textarea class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                                <label>Category </label>
+                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category " />
                             </div>
                             <div class="form-group">
-                                <label>Category Keywords</label>
+                                <label>Address</label>
                                 <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
+                                <label>User</label>
                                 <textarea class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
