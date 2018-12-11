@@ -69,6 +69,7 @@ Route::get('/test', 'UserApplyController@test');
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
 	Route::get('/jobs', ['as' => 'index', 'uses' => 'JobController@index']);
 	Route::get('/jobs/create', ['as' => 'create', 'uses' => 'JobController@create']);
+	Route::post('/jobs/destroy/{id}', ['as' => 'jobs.destroy', 'uses' => 'JobController@destroy']);
 
 	Route::get('/addresses', ['as' => 'index', 'uses' => 'AddressController@index']);
 	Route::get('/address/create', ['as' => 'create', 'uses' => 'AddressController@create']);

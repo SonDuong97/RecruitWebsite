@@ -34,9 +34,13 @@
                                 <td>{{ $job->category->name}}</td>
                                 <td>{{ $job->address->name}}</td>
                                 <td>{{ $job->user->name}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
+                                <td class="center"><form action="{{ route('admin.jobs.destroy', $job->id) }}" method="POST">
+                            @csrf
+                                <input id="delete" type="submit" name="Delete">
+                            </form></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
                             </tr>
+                            
                             @endforeach
                         </tbody>
                     </table>
@@ -46,4 +50,7 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+        <script >
+        </script>
+
 @endsection
