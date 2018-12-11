@@ -32,7 +32,7 @@ class AddressController extends Controller
 	}
 
 	public function destroy($id) {
-		$address = Address::find($id)->destroy();
+		Address::destroy($id);
 		return redirect()->back();
 	}
 

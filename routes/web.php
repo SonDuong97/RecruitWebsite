@@ -71,14 +71,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 	Route::get('/jobs/create', ['as' => 'create', 'uses' => 'JobController@create']);
 	Route::post('/jobs/destroy/{id}', ['as' => 'jobs.destroy', 'uses' => 'JobController@destroy']);
 
+
+
 	Route::get('/addresses', ['as' => 'index', 'uses' => 'AddressController@index']);
 	Route::get('/address/create', ['as' => 'create', 'uses' => 'AddressController@create']);
+	Route::post('/addresses/destroy/{id}', ['as' => 'addresses.destroy', 'uses' => 'AddressController@destroy']);
+
+
+
 	Route::get('/categories', ['as' => 'index', 'uses' => 'CategoryController@index']);
 	Route::get('/category/create', ['as' => 'create', 'uses' => 'CategoryController@create']);
+	Route::post('/categories/destroy/{id}', ['as' => 'categories.destroy', 'uses' => 'CategoryController@destroy']);
+
+
+
 	Route::get('/users', ['as' => 'index', 'uses' => 'UserController@index']);
 	Route::get('/user/create', ['as' => 'create', 'uses' => 'UserController@create']);
+	Route::post('/users/destroy/{id}', ['as' => 'users.destroy', 'uses' => 'UserController@destroy']);
+
+
 
 	Route::get('/companies', ['as' => 'index', 'uses' => 'CompanyController@index']);
 	Route::get('/company/create', ['as' => 'create', 'uses' => 'CompanyController@create']);
+	Route::post('/companies/destroy/{id}', ['as' => 'companies.destroy', 'uses' => 'CompanyController@destroy']);
 
 });

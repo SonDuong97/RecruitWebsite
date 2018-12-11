@@ -13,6 +13,6 @@ class Company extends Model
     	return $this->hasMany('App\JobSummary','company_id','id');
     }
     public function address(){
-    	return $this->belongsTo('App\Address', 'id_address','id');
+    	return $this->belongsTo('App\Address', 'address_id','id');
     }
 }

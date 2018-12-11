@@ -10,7 +10,7 @@ class Address extends Model
     protected $table = "address";
     public function companies()
     {
-        return $this->hasMany('App\Company', 'id_address', 'id');
+        return $this->hasMany('App\Company', 'address_id', 'id');
     }
     public $timestamps = false;
    

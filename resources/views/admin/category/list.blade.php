@@ -27,8 +27,12 @@
                                 <td>{{ $category->id }}</td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->code }}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
+                                <td class="center"><form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
+                            @csrf
+                                <input id="delete" type="submit" name="Delete">
+                            </form></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                            </tr>
                             @endforeach
                     </table>
                 </div>

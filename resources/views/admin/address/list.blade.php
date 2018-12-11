@@ -15,7 +15,6 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>name</th>
-                                <th>Description</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
@@ -26,8 +25,12 @@
                             
                                 <td>{{ $address->id }}</td>
                                 <td>{{ $address->name }}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
+                                <td class="center"><form action="{{ route('admin.addresses.destroy', $address->id) }}" method="POST">
+                            @csrf
+                                <input id="delete" type="submit" name="Delete">
+                            </form></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                            </tr>
                             @endforeach
                             </tr>
                         </tbody>

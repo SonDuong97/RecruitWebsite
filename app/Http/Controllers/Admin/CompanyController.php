@@ -32,7 +32,8 @@ class CompanyController extends Controller
 	}
 
 	public function destroy($id) {
-		$company = Company::find($id)->destroy();
+		Company::destroy($id);
 		return redirect()->back();
 	}
+
 }

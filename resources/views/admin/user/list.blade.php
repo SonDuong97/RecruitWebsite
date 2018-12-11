@@ -28,8 +28,13 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->role->name }}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
+                                <td class="center"><form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                            @csrf
+                                <input id="delete" type="submit" name="Delete">
+                            </form></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                            </tr>
+
                             @endforeach
                         </tbody>
                     </table>
