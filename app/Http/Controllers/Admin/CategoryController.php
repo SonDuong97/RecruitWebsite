@@ -30,19 +30,20 @@ class CategoryController extends Controller
     // Load user/createOrUpdate.blade.php vi	ew
     	return view('admin.category.edit', compact('categories'));
 	}
+	
 	public function postEdit(Request $request,$id){
 		$categories = Category::find($id);
-	
 		$categories -> name = $request -> name;
 		$categories -> save();
-
 		return redirect('admin/categories/edit/'.$id)->with('thongbao','Sửa thành công');
 	}
 
-
-
-	public function update() {
-		
+	public function update(Request $request) {
+		$categories = new Category;
+		$categories -> name=$request -> name;
+		$categories -> code=$request -> code;
+		$categories -> save();
+		return redirect('admin/categories/create/')->with('thongbao','Thêm thành công');
 	}
 
 	public function destroy($id) {

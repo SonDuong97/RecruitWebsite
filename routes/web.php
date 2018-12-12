@@ -82,12 +82,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 
 	Route::get('/categories', ['as' => 'index', 'uses' => 'CategoryController@index']);
 	Route::get('/categories/create', ['as' => 'create', 'uses' => 'CategoryController@create']);
-	Route::post('/categories/create/{name}', ['as' => 'create', 'uses' => 'CategoryController@update']);
+	Route::post('/categories/create', ['as' => 'create', 'uses' => 'CategoryController@update']);
 	
 	Route::post('/categories/destroy/{id}', ['as' => 'categories.destroy', 'uses' => 'CategoryController@destroy']);
 	
 	Route::get('/categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@getEdit']);
-	Route::post('/categories/update/{id}', ['as' => 'categories.update', 'uses' => 'CategoryController@postEdit']);
+	Route::post('/categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@postEdit']);
 
 
 

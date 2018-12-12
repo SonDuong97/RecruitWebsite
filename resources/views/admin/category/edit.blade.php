@@ -9,31 +9,25 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">Category
                            
-                            <small>Edit</small>
+                            <small> Cập nhật</small>
                             
                         </h1>
                     </div>
                     
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-
-                       
                         @if(session('thongbao'))
                         <div class="alert alert-success">
                             {{session('thongbao')}}
                         </div>
                         @endif
-                        <form action="/admin/categories/update/{{$categories->id}}" method="POST">
-                            
+                        <form action="/admin/categories/edit/{{$categories->id}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}" />
                             <div class="form-group">
                                 <label>Name</label>
-                                 
                                 <input class="form-control" name="name" placeholder="Nhập tên lĩnh vực" value="{{$categories->name}}" />
                             </div>
-                            
                             <button type="submit" class="btn btn-default">Cập nhật</button>
-                            <button type="reset" class="btn btn-default">Làm mới</button>
                         <form>
                          
                     </div>

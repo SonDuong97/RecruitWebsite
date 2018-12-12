@@ -22,7 +22,7 @@
                                     <a href="#">List Category</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
+                                    <a href="categories/create">Add Category</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
