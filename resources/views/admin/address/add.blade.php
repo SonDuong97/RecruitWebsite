@@ -14,14 +14,14 @@
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="" method="POST">
                             <div class="form-group">
-                                <label>ID</label>
+                                <label>Title</label>
                                 <select class="form-control">
                                     <option value="0">Please Choose Category</option>
                                     <option value="">Tin Tức</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Name</label>
+                                <label></label>
                                 <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
                             </div>
                             <div class="form-group">

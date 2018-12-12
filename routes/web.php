@@ -81,8 +81,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 
 
 	Route::get('/categories', ['as' => 'index', 'uses' => 'CategoryController@index']);
-	Route::get('/category/create', ['as' => 'create', 'uses' => 'CategoryController@create']);
+	Route::get('/categories/create', ['as' => 'create', 'uses' => 'CategoryController@create']);
+	Route::post('/categories/create/{name}', ['as' => 'create', 'uses' => 'CategoryController@update']);
+	
 	Route::post('/categories/destroy/{id}', ['as' => 'categories.destroy', 'uses' => 'CategoryController@destroy']);
+	
+	Route::get('/categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@getEdit']);
+	Route::post('/categories/update/{id}', ['as' => 'categories.update', 'uses' => 'CategoryController@postEdit']);
 
 
 
@@ -95,5 +100,4 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 	Route::get('/companies', ['as' => 'index', 'uses' => 'CompanyController@index']);
 	Route::get('/company/create', ['as' => 'create', 'uses' => 'CompanyController@create']);
 	Route::post('/companies/destroy/{id}', ['as' => 'companies.destroy', 'uses' => 'CompanyController@destroy']);
-
 });

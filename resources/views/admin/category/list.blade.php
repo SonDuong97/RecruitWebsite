@@ -31,7 +31,7 @@
                             @csrf
                                 <input id="delete" type="submit" name="Delete">
                             </form></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/categories/edit/{{$category}}">Edit</a></td>
                             </tr>
                             @endforeach
                     </table>
