@@ -23,17 +23,17 @@
                             {{session('thongbao')}}
                         </div>
                         @endif
-                        <form action="admin/categories/update/{{$categories->id}}" method="POST">
+                        <form action="/admin/categories/update/{{$categories->id}}" method="POST">
                             
                             <input type="hidden" name="_token" value="{{csrf_token()}}" />
                             <div class="form-group">
                                 <label>Name</label>
                                  
-                                <input class="form-control" name="name" placeholder="Please Enter Category Name" value="{{$categories->name}}" />
+                                <input class="form-control" name="name" placeholder="Nhập tên lĩnh vực" value="{{$categories->name}}" />
                             </div>
                             
-                            <button type="submit" class="btn btn-default">Category Edit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
+                            <button type="submit" class="btn btn-default">Cập nhật</button>
+                            <button type="reset" class="btn btn-default">Làm mới</button>
                         <form>
                          
                     </div>

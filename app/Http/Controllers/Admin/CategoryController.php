@@ -27,7 +27,7 @@ class CategoryController extends Controller
 	
 	public function getEdit($id){
     	$categories = Category::find($id);
-    // Load user/createOrUpdate.blade.php view
+    // Load user/createOrUpdate.blade.php vi	ew
     	return view('admin.category.edit', compact('categories'));
 	}
 	public function postEdit(Request $request,$id){
@@ -36,7 +36,7 @@ class CategoryController extends Controller
 		$categories -> name = $request -> name;
 		$categories -> save();
 
-		return redirect('admin/categories/edit'.$id)->with('thongbao','Sua thanh cong');
+		return redirect('admin/categories/edit/'.$id)->with('thongbao','Sửa thành công');
 	}
 
 

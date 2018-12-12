@@ -28,4 +28,6 @@ class JobSummary extends Model
     public function userApply(){
         return $this->belongsToMany('App\User', 'cv_apply', 'job_summary_id', 'user_id');
     }
+
+    
 }
