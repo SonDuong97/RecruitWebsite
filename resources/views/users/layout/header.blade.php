@@ -103,6 +103,10 @@
                   <a href="{{route('login')}}">
                     <i class="ti-lock"></i>Đăng nhập</a>
                   </li>
+                   <li class="right">
+                      <a href="{{route('showSignup')}}">
+                    <i class="ti-slice"></i>Đăng ký</a>
+                  </li>
                   @endif
                 </ul>
               </div>
