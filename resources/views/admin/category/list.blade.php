@@ -10,6 +10,7 @@
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
+                    
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
@@ -31,7 +32,7 @@
                             @csrf
                                 <input id="delete" type="submit" name="Delete">
                             </form></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/categories/edit/{{$category}}">Edit</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="categories/edit/{{ $category->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                     </table>
