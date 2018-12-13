@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\JobSummary;
+use App\JobDetail;
 class UserController extends Controller
 {
     public function index() {
@@ -31,7 +33,20 @@ class UserController extends Controller
 	}
 
 	public function destroy($id) {
-		User::destroy($id);
+		$user = User::find($id);
+		
+		$jobSummaries = JobSummary::where("user_id","=",$user->id)->get();
+		if($jobSummaries->length()>0){		
+			foreach ($jobSummaries as  $job) {
+			# code...
+				$jobDetail = $job->detail();
+				$jobDetail->delete();
+				$job->delete();
+		}
+	}
+
+		$user->delete();
+		
 		return redirect()->back();
 	}
 

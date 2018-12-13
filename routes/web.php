@@ -88,7 +88,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 	
 	Route::get('/categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@getEdit']);
 	Route::post('/categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@postEdit']);
-
+	
 
 
 	Route::get('/users', ['as' => 'index', 'uses' => 'UserController@index']);
