@@ -22,7 +22,7 @@
 					<td>
 						<a href="/job-detail/{{ $recruit->id }}"><span class="label label-success">Chi tiết</span></a>
 						<a href="/user-apply/{{ $recruit->id }}"><span class="label label-primary">Xem ứng viên</span></a>
-						<span class="label label-warning delete" id="{{ $recruit->id }}" style="cursor:pointer">Xóa</span>
+						<span class="label label-warning delete" id="{{ $recruit->id }}" style="cursor:pointer" onclick="return confirm('Bạn có chắc chắn muốn xóa')">Xóa</span>
 					</td>
 				</tr>
 				@endforeach
@@ -62,7 +62,6 @@
 				success:function(data){
 					if(data.message == true){
 						$('#tr'+data.idJob).remove();
-						alert('thành công');
 					}
 
 				}

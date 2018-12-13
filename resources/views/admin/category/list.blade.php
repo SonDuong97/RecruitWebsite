@@ -5,20 +5,19 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>List</small>
+                        <h1 class="page-header">Lĩnh vực
+                            <small>Danh sách</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
-                            <tr align="center">
-                                <th>ID</th>
-                                <th>name</th>
-                                <th>code</th>
-                                <th>Delete</th>
-                                <th>Edit</th>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Tên</th>
+                                <th class="text-center">Mã</th>
+                                <th class="text-center">Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,9 +29,9 @@
                                 <td>{{ $category->code }}</td>
                                 <td class="center"><form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
                             @csrf
-                                <input id="delete" type="submit" name="Delete">
+                                <input id="delete" type="submit" name="Delete" value="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
+                                 <a  href="/admin/categories/edit/{{$category->id}}"><span >Sửa</span></a>
                             </form></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="categories/edit/{{ $category->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                     </table>

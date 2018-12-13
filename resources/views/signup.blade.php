@@ -99,13 +99,13 @@
         <div class="form-group">
           <label class="control-label col-sm-3">Họ và tên<span class="text-danger">*</span></label>
           <div class="col-md-8 col-sm-9">
-            <input type="text" class="form-control" name="mem_name" id="mem_name" placeholder="Enter your Name here" value="" required>
+            <input type="text" class="form-control" name="mem_name" id="mem_name" placeholder="Nhập tên của bạn" value="" required>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-3">Email<span class="text-danger">*</span></label>
           <div class="col-md-8 col-sm-9">
-            <input type="email" class="form-control" name="emailid" id="emailid" placeholder="Enter your Email ID" value="" required>
+            <input type="email" class="form-control" name="emailid" id="emailid" placeholder="Nhập email của bạn" value="" required>
             <small> Địa chỉ email của bạn được sử dụng để đảm bảo tính bảo mật và khôi phục tài khoản của bạn. </small> </div>
           </div>
 
@@ -170,7 +170,7 @@
               <input type="text" class="form-control" id="nameCompany" placeholder="Nhập tên công ty" >
               <label for="">Link công ty</label>
               <input type="text" class="form-control" id="linkCompany" placeholder="Nhập link web công ty">
-              <label for="">Logo</label>
+             
               
               <label for="">Địa chỉ</label>
               <select name="address" id="addressCompany" class="form-control" >
@@ -181,12 +181,13 @@
                 @endforeach
 
               </select>
-              <input type="file" id="logoCompany" name="logo" >
+               <label for="">Logo</label>
+              <input type="file" id="logoCompany" class="form-control" name="logo" >
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
           <button type="button" class="btn btn-primary" id="signup_company">Lưu thông tin</button>
         </div>
 
