@@ -1,5 +1,18 @@
 <!-- Header Section Start -->
 <div class="header">
+  @if (count($errors) > 0)
+    @foreach($errors->all() as $error)
+      <script>
+        alert('{{$error}}');
+      </script>
+    @endforeach
+  @endif
+
+  @if (session('notification'))
+    <script>
+        alert('{{session('notification')}}');
+    </script>
+  @endif
   <!-- Start intro section -->
   <section id="intro" class="section-intro">
     <div class="logo-menu">

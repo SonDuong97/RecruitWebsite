@@ -76,8 +76,9 @@
                 </a>
               </div>
               <p>Để lại email để luôn cập nhật và nhận được thông báo về các bản phát hành mới của chúng tôi!</p>
-              <form class="subscribe-box">
-                <input type="text" placeholder="Email của bạn">
+              <form action="{{route('setEmail')}}" class="subscribe-box" method="POST">
+                {!! csrf_field() !!}
+                <input type="text" name="guestEmail" placeholder="Email của bạn">
                 <input type="submit" class="btn-system" value="Gửi">
               </form>
             </div>

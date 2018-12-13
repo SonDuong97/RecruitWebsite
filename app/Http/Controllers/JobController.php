@@ -9,6 +9,7 @@ use App\JobDetail;
 use App\Address;
 use App\Company;
 use App\ApplyCV;
+use App\Mail\NewPost;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
@@ -91,6 +92,10 @@ class JobController extends Controller
 		$listCategory = Category::all();
 		$listAddress = Address::all();
 		return view('users.post-job',['listCategory'=>$listCategory,'listAddress'=>$listAddress]);
+	}
+
+	public function sendMail($jobInfo){
+
 	}
 
 	public function addJob(Request $request){
