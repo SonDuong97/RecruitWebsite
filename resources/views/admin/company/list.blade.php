@@ -5,20 +5,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Company
-                            <small>List</small>
+                        <h1 class="page-header">Công ty
+                            <small>Danh sách</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
-                            <tr align="center">
-                                <th>id</th>
-                                <th>link</th>
-                                <th>logo</th>
-                                <th>name</th>
-                                <th>address</th>
-                                <th>Delete</th>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Tên công ty</th>
+                                <th class="text-center">Địa chỉ</th>
+                                <th class="text-center">Hành động</th>
                                 
                             </tr>
                         </thead>
@@ -27,13 +25,11 @@
                             <tr class="even gradeC" align="center">
 
                                 <td>{{ $company->id }}</td>
-                                <td>{{ $company->link }}</td>
-                                <td>{{ $company->logo }}</td>
-                                <td>{{ $company->name }}</td>
+                                <td><a href="{{ $company->link }}">{{ $company->name }}</a></td>
                                 <td>{{ $company->address->name }}</td>
                                 <td class="center"><form action="{{ route('admin.companies.destroy', $company->id) }}" method="POST">
                             @csrf
-                                <input id="delete" type="submit" name="Delete">
+                                <input id="delete" type="submit" name="Delete" class="btn-danger">
                             </form></td>
                                 
                             </tr>

@@ -29,13 +29,9 @@
                                 <td>{{ $category->code }}</td>
                                 <td class="center"><form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST">
                             @csrf
-                                <input id="delete" type="submit" name="Delete" value="Xóa" class="btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
-                                 <a class="btn-info" href="/admin/categories/edit/{{$category->id}}"><span >Sửa</span></a>
+                                <input id="delete" type="submit" name="Delete" value="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
+                                 <a  href="/admin/categories/edit/{{$category->id}}"><span >Sửa</span></a>
                             </form></td>
-<<<<<<< HEAD
-=======
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="categories/edit/{{ $category->id}}">Edit</a></td>
->>>>>>> 27f9faa19bc9ec30193b968d3e4f3cf45c9bd723
                             </tr>
                             @endforeach
                     </table>
