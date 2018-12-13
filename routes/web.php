@@ -76,16 +76,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], fu
 	Route::get('/categories', 'CategoryController@index')->name('categories');
 	Route::get('/categories/create', 'CategoryController@create')->name('create.category');
 	Route::post('/categories/create', 'CategoryController@update');
-	
-<<<<<<< HEAD
-	Route::get('/categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@getEdit']);
-	Route::post('/categories/edit/{id}', ['as' => 'categories.edit', 'uses' => 'CategoryController@postEdit']);
-	
-=======
 	Route::post('/categories/destroy/{id}','CategoryController@destroy')->name('categories.destroy');
 	Route::get('/categories/edit/{id}', 'CategoryController@getEdit');
 	Route::post('/categories/edit/{id}', 'CategoryController@postEdit');
->>>>>>> f449b990dde7b33e504a17a1bce88443f1e2aec8
 
 
 	Route::get('/users','UserController@index')->name('users');
