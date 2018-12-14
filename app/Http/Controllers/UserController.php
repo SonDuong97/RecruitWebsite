@@ -220,4 +220,5 @@ class UserController extends Controller
 		$user->update();
 		return response()->json(['error'=>false]);
 	}
+
 }

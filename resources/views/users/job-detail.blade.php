@@ -12,7 +12,7 @@
 				<div class="job-list">
 					<div class="thumb">
 						<a href="job-details.html">
-							<img src="{{ $jobSummary->company->logo }}" alt="">
+							<img src="{{ $jobSummary->company->logo }}" alt="" class="image-100-100">
 						</a>
 					</div>
 					<div class="job-list-content">
@@ -117,7 +117,9 @@
 							<div class="modal-body">
 								<form action="" role="form" enctype="multipart/form-data">
 									<input type="hidden" value="{{ $jobSummary->id }}" id="job_id">
-									<input type="hidden" value="{{ Auth::user()->id }}" id="user_id">
+									@if (Auth::check())
+										<input type="hidden" value="{{ Auth::user()->id }}" id="user_id">
+									@endif
 									<div class="file has-name">
 										<label class="file-label">
 											<input class="file-input" type="file" name="cv" id="cv">
