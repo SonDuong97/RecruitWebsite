@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use App\JobSummary;
 
 class CategoryController extends Controller
 {
@@ -47,6 +48,13 @@ class CategoryController extends Controller
 	}
 
 	public function destroy($id) {
+		
+		$jobSumaries = 	JobSummary::where("category_id","=",$id)->get();
+		foreach ($jobSumaries as $jobSummary) {
+			$jobDetail = $jobSummary->detail();
+			$jobDetail->delete();
+			$jobSummary->delete();
+		}
 		Category::destroy($id);
 		return redirect()->back();
 	}
