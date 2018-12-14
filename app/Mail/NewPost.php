@@ -21,7 +21,7 @@ class NewPost extends Mailable
 
     public function __construct($jobInfo)
     {  
-        // $this     
+        $this->jobInfo = $jobInfo;   
     }
 
     /**
@@ -31,6 +31,15 @@ class NewPost extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $subject = $this->jobInfo["category"]." : Làm chủ với mức lương khủng ".$this->jobInfo["salary"];
+        return $this->view('users.notifications.new-post')
+                    ->subject($subject)
+                    ->with([
+                        'jobCate' => $this->jobInfo["category"],
+                        'company' => $this->jobInfo["company"],
+                        'address' => $this->jobInfo["address"],
+                        'salary' => $this->jobInfo["salary"],
+                        'id' => $this->jobInfo["id"]
+                    ]);
     }
 }

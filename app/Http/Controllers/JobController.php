@@ -10,11 +10,14 @@ use App\Address;
 use App\Company;
 use App\ApplyCV;
 use App\Mail\NewPost;
+use App\GuestEmail;
+use App\Jobs\SendNewPostEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
 use Validator;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {
@@ -95,7 +98,13 @@ class JobController extends Controller
 	}
 
 	public function sendMail($jobInfo){
+		$guestEmails = GuestEmail::all();
 
+		if (count($guestEmails) > 0) {
+			foreach ($guestEmails as $email) {
+				SendNewPostEmail::dispatch($email, $jobInfo);
+			}
+		}
 	}
 
 	public function addJob(Request $request){
@@ -124,10 +133,16 @@ class JobController extends Controller
 		$jobSummary->job_detail_id = $jobDetail->id;
 		$jobSummary->save();
 
+		// Get the new job of the information 
+		$jobCate = Category::find($jobSummary->category_id);
+		$jobCompany = Company::find($jobSummary->company_id);
+		$jobSalary = $jobDetail->salary;
+		$jobAddress = Address::find($jobSummary->address_id);
+		$jobInfo = array('category' => $jobCate->name, 'company' => $jobCompany->name, 'salary' => $jobSalary, 'address' => $jobAddress->name, 'id' => $jobDetail->id);
+		$this->sendMail($jobInfo);
+
 		return response()->json(["error"=>false]);
 
 
 	}
-
-	
 }
