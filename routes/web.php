@@ -50,7 +50,7 @@ Route::get('/list-favorite', 'JobFavoriteController@listFavorite')->name('list-f
 
 Route::delete('/delete-job-favorite','JobFavoriteController@deleteJobFavorite');
 
-Route::get('/form-post-job','JobController@showPostJob')->name('form-post-job');
+Route::get('/form-post-job','JobController@showPostJob')->name('form-post-job')->middleware('recuiter');
 
 Route::post('/signup-company', 'CompanyController@signupCompany')->name('signupCompany');
 
@@ -58,18 +58,18 @@ Route::post('/add-job','JobController@addJob')->name('addJob');
 
 Route::post('/send-cv','UserApplyController@sendCV')->name('sendCV');
 
-Route::get('/my-recruit','UserController@getRecruit')->name('my-recruit');
+Route::get('/my-recruit','UserController@getRecruit')->name('my-recruit')->middleware('recuiter');
 
 Route::delete('/delete-recruit', 'UserController@deleteRecruit');
 
-Route::get('/user-apply/{jobID}','UserApplyController@listUserApply');
+Route::get('/user-apply/{jobID}','UserApplyController@listUserApply')->name('user-apply')->middleware('recuiter');
 
 Route::get('/edit-info','UserController@formEditInfo')->name('edit-info');
 
 Route::put('/update-info','UserController@updateInfo');
 Route::get('/test', 'UserApplyController@test');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'login','as' => 'admin.', 'namespace' => 'Admin'], function () {
 
 	Route::get('/jobs','JobController@index')->name('jobs');
 	Route::post('/jobs/destroy/{id}','JobController@destroy')->name('jobs.destroy');

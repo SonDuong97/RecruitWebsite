@@ -14,6 +14,8 @@ use Illuminate\Support\MessageBag;
 use Validator;
 use Hash;
 use Mail;
+use App\Jobs\SendNewPassword;
+
 class UserController extends Controller
 {
     //
@@ -49,6 +51,8 @@ class UserController extends Controller
 	public function logout(){
 		if(Auth::check()){
 			Auth::logout();
+			return redirect()->route('home');
+		} else {
 			return redirect()->route('home');
 		}
 	}
@@ -151,6 +155,7 @@ class UserController extends Controller
 
 		$npassword = str_random(8);
 		User::where('email',$request->email)->update(['password'=>bcrypt($npassword)]);
+		SendNewPassword::dispatch($npassword, $request->email);
 		return response()->json(['error'=>false,'message'=>'Lấy lại mật khẩu mới trong email của bạn.']);
 		
 	}
