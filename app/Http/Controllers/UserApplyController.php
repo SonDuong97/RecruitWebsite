@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendApplyNewJob;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Address;
 use App\ApplyCV;
 use App\JobSummary;
+use App\User;
 use Illuminate\Support\MessageBag;
 use Validator;
 
@@ -53,7 +55,15 @@ class UserApplyController extends Controller
 		$cv->job_summary_id = $request->job_id;
 		$cv->cv = "cv/".$request->file('cv')->getClientOriginalName();
 		$cv->save();
-		return response()->json(['error'=>false]);
+
+		// Get info
+		$idPost = $request->job_id;
+		$user = JobSummary::find($idPost)->user;
+		$cate = JobSummary::find($idPost)->category->name;
+
+		SendApplyNewJob::dispatch($user, $idPost, $cate);
+
+		return response()->json(['error'=>false, 'email' => $user->email]);
 
 	}
 

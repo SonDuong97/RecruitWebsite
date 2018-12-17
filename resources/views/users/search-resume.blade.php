@@ -12,7 +12,7 @@
 				<div class="job-list">
 					<div class="thumb">
 						<a href="job-details.html">
-							<img src="{{ $value->company->logo }}" alt="" style="width: 100px;height: 100px">
+							<img src="{{ $value->company->logo }}" alt="" class="image-100-100">
 						</a>
 					</div>
 					<div class="job-list-content">

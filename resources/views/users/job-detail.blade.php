@@ -12,7 +12,7 @@
 				<div class="job-list">
 					<div class="thumb">
 						<a href="job-details.html">
-							<img src="{{ $jobSummary->company->logo }}" alt="">
+							<img src="{{ $jobSummary->company->logo }}" alt="" class="image-100-100">
 						</a>
 					</div>
 					<div class="job-list-content">
@@ -33,25 +33,9 @@
 								<b>Hạn nộp hồ sơ: </b> <span >{{ $jobSummary->detail->expiration_date }}</span><br>
 								<b>Lĩnh vực: </b><a href="/category/{{$jobSummary->category->id}}"> <span >{{ $jobSummary->category->name}}</span></a><br>
 								<div>
-									<!-- <a href="button" class="btn btn-danger"><i class="ti-heart" ></i> 
-										@if(Auth::check())
-											@foreach (Auth::user()->jobFavorite as $favorite)
-												@if($favorite->id == $jobSummary->id)
-													Đã lưu 
-												@else
-													Lưu công việc
-												@endif	
-											@endforeach
-										@else
-											Lưu công việc
-										@endif
-									</a> -->
-									<a data-toggle="modal" 
-									@if (Auth::check())
-									href='#modal_cv' 
-									@else href="{{ route('login') }}" 
+									@if ((Auth::check()) && (Auth::user()->role->id == 3))
+									<a data-toggle="modal" href='#modal_cv' class="btn btn-info"><i class="ti-bookmark"></i> Ứng tuyển ngay</a> 
 									@endif
-									class="btn btn-info"><i class="ti-bookmark"></i> Ứng tuyển ngay</a> 
 								</div>
 							</p>
 
@@ -117,7 +101,9 @@
 							<div class="modal-body">
 								<form action="" role="form" enctype="multipart/form-data">
 									<input type="hidden" value="{{ $jobSummary->id }}" id="job_id">
-									<input type="hidden" value="{{ Auth::user()->id }}" id="user_id">
+									@if (Auth::check())
+										<input type="hidden" value="{{ Auth::user()->id }}" id="user_id">
+									@endif
 									<div class="file has-name">
 										<label class="file-label">
 											<input class="file-input" type="file" name="cv" id="cv">

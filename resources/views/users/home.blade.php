@@ -12,7 +12,7 @@
         <div class="job-list">
           <div class="thumb">
             <a href="job-details.html">
-              <img src="{{ $value->company->logo }}" alt="" style="width: 100px;height: 100px">
+              <img src="{{ $value->company->logo }}" alt="" class="image-100-100">
             </a>
           </div>
           <div class="job-list-content">
@@ -65,6 +65,7 @@
         <div class="container">
           <div class="row">
             <div class="touch-slider" class="owl-carousel owl-theme">
+
               <div class="item active text-center">
                 <img class="img-member" src="user_assets/img/clients/sonduong.jpg" alt="">
                 <div class="client-info">
@@ -73,141 +74,147 @@
                   </h2>
                 </div>
                 <p>
-                  <i class="fa fa-quote-left quote-left"></i> Trang web hết sức tuyệt vời
+                  <i class="fa fa-quote-left quote-left"></i> Bơm, Bơm nữa, Bơm mãi!!!
                   <i class="fa fa-quote-right quote-right"></i>
-                </div>
-                <div class="item text-center">
-                  <img class="img-member" src="user_assets/img/clients/trung.jpg" alt="">
-                  <div class="client-info">
-                    <h2 class="client-name">Nguyễn Ngọc Trung <br>
-                      <span>(Thạch Thất)</span>
-                    </h2>
-                  </div>
-                  <p>
-                    <i class="fa fa-quote-left quote-left"></i> Trang web đã giúp tôi tìm được công việc phù hợp
-                    <i class="fa fa-quote-right quote-right"></i>
-                  </div>
-                  <div class="item text-center">
-                    <img class="img-member" src="user_assets/img/clients/hai.jpg" alt="">
-                    <div class="client-info">
-                      <h2 class="client-name">Đỗ Thị Hải <br>
-                        <span>(Hải Ngáo)</span>
-                      </h2>
-                    </div>
-                    <p>
-                      <i class="fa fa-quote-left quote-left"></i>Cảm ơn trang web
-                      <i class="fa fa-quote-right quote-right"></i>
-                    </div>
-                  </div>
-                </div>
+                </p>              
               </div>
-            </section>
-            <!-- Testimonial Section End -->
+              <div class="item text-center">
+                <img class="img-member" src="user_assets/img/clients/trung.jpg" alt="">
+                <div class="client-info">
+                  <h2 class="client-name">Nguyễn Ngọc Trung <br>
+                    <span>(Thạch Thất)</span>
+                  </h2>
+                </div>
+                <p>
+                  <i class="fa fa-quote-left quote-left"></i> Đẹp trai từ bé 
+                  <i class="fa fa-quote-right quote-right"></i>
+                </p>
+              </div>
+              <div class="item text-center">
+                <img class="img-member" src="user_assets/img/clients/hai.jpg" alt="">
+                <div class="client-info">
+                  <h2 class="client-name">Đỗ Thị Hải <br>
+                    <span>(Hải No Hope)</span>
+                  </h2>
+                </div>
+                <p>
+                  <i class="fa fa-quote-left quote-left"></i> Đôi khi hơi ngáo
+                  <i class="fa fa-quote-right quote-right"></i>
+                </p>
+              </div>
 
-            <!-- Clients Section -->
-            <section class="clients section">
-              <div class="container">
-                <h2 class="section-title">
-                  Đối tác liên kết
-                </h2>
-                <div class="row">
-                  <div id="clients-scroller">
-                    <div class="items">
-                      <img src="user_assets/img/clients/img1.png" alt="">
-                    </div>
-                    <div class="items">
-                      <img src="user_assets/img/clients/img2.png" alt="">
-                    </div>
-                    <div class="items">
-                      <img src="user_assets/img/clients/img3.png" alt="">
-                    </div>
-                    <div class="items">
-                      <img src="user_assets/img/clients/img4.png" alt="">
-                    </div>
-                    <div class="items">
-                      <img src="user_assets/img/clients/img5.png" alt="">
-                    </div>
-                    <div class="items">
-                      <img src="user_assets/img/clients/img6.png" alt="">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <!-- Client Section End -->
+            </div>
 
-            <!-- Counter Section Start -->
-            <section id="counter">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4 col-xs-12">
-                    <div class="counting">
-                      <div class="icon">
-                        <i class="ti-briefcase"></i>
-                      </div>
-                      <div class="desc">
-                        <h2>Công việc</h2>
-                        <h1 class="counter">{{ $cJob }}</h1>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 col-xs-12">
-                    <div class="counting">
-                      <div class="icon">
-                        <i class="ti-user"></i>
-                      </div>
-                      <div class="desc">
-                        <h2>Thành viên</h2>
-                        <h1 class="counter" id="member">{{ $cmember }}</h1>
-                      </div>
-                    </div>
-                  </div>
-                
-                  <div class="col-md-4 col-xs-12">
-                    <div class="counting">
-                      <div class="icon">
-                        <i class="ti-heart"></i>
-                      </div>
-                      <div class="desc">
-                        <h2>Công ty</h2>
-                        <h1 class="counter">{{ $ccompany }}</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonial Section End -->
+
+    <!-- Clients Section -->
+    <section class="clients section">
+      <div class="container">
+        <h2 class="section-title">
+          Đối tác liên kết
+        </h2>
+        <div class="row">
+          <div id="clients-scroller">
+            <div class="items">
+              <img src="user_assets/img/clients/img1.png" alt="">
+            </div>
+            <div class="items">
+              <img src="user_assets/img/clients/img2.png" alt="">
+            </div>
+            <div class="items">
+              <img src="user_assets/img/clients/img3.png" alt="">
+            </div>
+            <div class="items">
+              <img src="user_assets/img/clients/img4.png" alt="">
+            </div>
+            <div class="items">
+              <img src="user_assets/img/clients/img5.png" alt="">
+            </div>
+            <div class="items">
+              <img src="user_assets/img/clients/img6.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Client Section End -->
+
+    <!-- Counter Section Start -->
+    <section id="counter">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-xs-12">
+            <div class="counting">
+              <div class="icon">
+                <i class="ti-briefcase"></i>
               </div>
-            </section>
-            <!-- Counter Section End -->
-            <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>
-            <script>
-              $(document).ready(function() {
-                $('.icon').click(function(event) {
-                  /* Act on the event */
-                  $.ajaxSetup({
-                    headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                  });
-                  $.ajax({
-                    'url': '/favorite',
-                    'type': 'post',
-                    'data': {'idJob': $(this).attr('id')},
-                    success:function(data){
-                      if(data.error==true){
-                        window.location="/login";
-                      }
-                      else{
-                        if(data.message == true){
-                           $('#'+data.idJob).css({'background-color':'red','color':'white'});
-                        }
-                        else{
-                          $('#'+data.idJob).css({'background-color':'#f1f1f1','color':'#FF4F57'});
-                        }
-                      }
-                    }
-                  })
-                });  
-              });
-            </script>
-            @endsection
+              <div class="desc">
+                <h2>Công việc</h2>
+                <h1 class="counter">{{ $cJob }}</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-xs-12">
+            <div class="counting">
+              <div class="icon">
+                <i class="ti-user"></i>
+              </div>
+              <div class="desc">
+                <h2>Thành viên</h2>
+                <h1 class="counter" id="member">{{ $cmember }}</h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-xs-12">
+            <div class="counting">
+              <div class="icon">
+                <i class="ti-heart"></i>
+              </div>
+              <div class="desc">
+                <h2>Công ty</h2>
+                <h1 class="counter">{{ $ccompany }}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Counter Section End -->
+    <script type="text/javascript" src="user_assets/js/jquery-min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.icon').click(function(event) {
+          /* Act on the event */
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+          $.ajax({
+            'url': '/favorite',
+            'type': 'post',
+            'data': {'idJob': $(this).attr('id')},
+            success:function(data){
+              if(data.error==true){
+                window.location="/login";
+              }
+              else{
+                if(data.message == true){
+                 $('#'+data.idJob).css({'background-color':'red','color':'white'});
+               }
+               else{
+                $('#'+data.idJob).css({'background-color':'#f1f1f1','color':'#FF4F57'});
+              }
+            }
+          }
+        })
+        });  
+      });
+    </script>
+    @endsection
 

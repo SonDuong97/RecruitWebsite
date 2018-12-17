@@ -4,6 +4,12 @@
 
 
 <section class="find-job section">
+	@if(session('success'))
+		<div class="alert alert-success">{{session('success')}}</div>
+	@endif
+	@if (session('error'))
+		<div class="alert alert-danger">{{session('error')}}</div>
+	@endif
 	<div class="container">
 		<h2 class="section-title">Danh sách ứng viên công việc mã ID {{ $jobID }}</h2>
 		<input type="hidden" value="{{ $jobID }}">
@@ -52,17 +58,17 @@
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">
-					<form action="" method="POST" role="form">
+					<form action="{{route('reply')}}" method="POST" role="form">
+						{!! csrf_field() !!}
 						<h3>Liên hệ</h3>
 
 						<div class="form-group">
 							<label for="">Người nhận</label>
-							<input type="email" class="form-control" id="email" value="" readonly>
+							<input type="email" class="form-control" name="email" id="email" value="" readonly>
 							<label for="">Nội dung</label>
-							<textarea name="" id="content_mail"></textarea>
+							<textarea name="content_email" id="content_mail"></textarea>
+							<input type="hidden" id="jobID" value="{{$jobID}}">
 						</div>
-
-						
 
 						<button type="submit" class="btn btn-primary">Liên hệ</button>
 					</form>

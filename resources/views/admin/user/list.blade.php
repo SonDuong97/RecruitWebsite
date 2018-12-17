@@ -22,17 +22,18 @@
                         </thead>
                         <tbody>
                             @foreach($users as $user)
-                            <tr class="even gradeC" align="center">
-                                                            <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td class="center"><form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
-                            @csrf
-                                <input id="delete" type="submit" name="Delete" class="btn btn-danger" value="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
-                            </form></td>
-                                
-                            </tr>
-
+                                @if ($user->role_id > 1)  
+                                    <tr class="even gradeC" align="center">
+                                                                    <td>{{ $user->id }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td class="center"><form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                                    @csrf
+                                        <input id="delete" type="submit" name="Delete" class="btn btn-danger" value="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
+                                    </form></td>
+                                        
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

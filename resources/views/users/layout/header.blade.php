@@ -78,7 +78,7 @@
                 <a href="{{ route('form-post-job') }}">
                   <i class="ti-pencil-alt"></i>Đăng tin</a>
                 </li>
-                @endif
+              @endif
                 <li >
                   <a href="">
                     {{Auth::user()->name}}<i class="fa fa-angle-down" ></i>
@@ -99,11 +99,13 @@
                         Bài đăng
                       </a>
                     </li>
+                    @if(Auth::user()->role_id == 3)
                     <li>
                       <a href="{{ route('list-favorite') }}">
                         Yêu thích
                       </a>
                     </li>
+                    @endif
                     @if (Auth::user()->role_id == 1)
                     <li>
                       <a href="{{ route('admin.users') }}">
