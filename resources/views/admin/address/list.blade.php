@@ -27,8 +27,8 @@
                                 <td>{{ $address->name }}</td>
                                 <td class="center"><form action="{{ route('admin.addresses.destroy', $address->id) }}" method="POST">
                             @csrf
-                                <input id="delete" type="submit" name="Delete">
-                            </form></td>
+                                <input id="delete" type="submit" name="Delete" class="btn btn-danger" value="Xóa" onclick="return confirm('Bạn có chắc chắn muốn xóa')">
+                                </form></td>
                                 
                             </tr>
                             @endforeach
