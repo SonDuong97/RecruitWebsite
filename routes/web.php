@@ -19,7 +19,7 @@ Route::post('setEmail', 'MailController@setEmail')->name('setEmail');
 // Reply to applying user
 Route::post('reply', 'MailController@replyEmail')->name('reply');
 
-Route::get('/login', 'UserController@showLogin')->name('login');
+Route::get('/login', 'UserController@showLogin')->name('login')->middleware('isLogined');
 
 Route::post('/auth', 'UserController@login')->name('auth');
 
