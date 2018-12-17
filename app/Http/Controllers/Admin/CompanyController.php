@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Company;
 use App\JobSummary;
-
+use App\JobDetail;
 class CompanyController extends Controller
 {
 	public function index() {
@@ -34,7 +34,7 @@ class CompanyController extends Controller
 
 	public function destroy($id) {
 		$jobSummaries = JobSummary::where("company_id","=",$id)->get();
-		if($jobSummaries->length()>0){		
+		if($jobSummaries->count()>0){		
 			foreach ($jobSummaries as  $job) {
 			# code...
 				$jobDetail = $job->detail();

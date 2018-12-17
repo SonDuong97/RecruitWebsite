@@ -40,6 +40,8 @@ class JobController extends Controller
 	}
 
 	public function destroy(Request $request, $id) {
+		$jobDetail = JobSummary::find($id)->detail();
+		$jobDetail->delete();
 		JobSummary::destroy($id);
 		return redirect()->back();
 	}

@@ -27,9 +27,9 @@ class CategoryController extends Controller
 
 	
 	public function getEdit($id){
-    	$categories = Category::find($id);
+		$categories = Category::find($id);
     // Load user/createOrUpdate.blade.php vi	ew
-    	return view('admin.category.edit', compact('categories'));
+		return view('admin.category.edit', compact('categories'));
 	}
 	
 	public function postEdit(Request $request,$id){
@@ -50,10 +50,12 @@ class CategoryController extends Controller
 	public function destroy($id) {
 		
 		$jobSumaries = 	JobSummary::where("category_id","=",$id)->get();
-		foreach ($jobSumaries as $jobSummary) {
-			$jobDetail = $jobSummary->detail();
-			$jobDetail->delete();
-			$jobSummary->delete();
+		if($jobSummaries->count()>0){
+			foreach ($jobSumaries as $jobSummary) {
+				$jobDetail = $jobSummary->detail();
+				$jobDetail->delete();
+				$jobSummary->delete();
+			}
 		}
 		Category::destroy($id);
 		return redirect()->back();

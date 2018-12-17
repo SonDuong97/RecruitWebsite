@@ -36,7 +36,7 @@ class UserController extends Controller
 		$user = User::find($id);
 		
 		$jobSummaries = JobSummary::where("user_id","=",$user->id)->get();
-		if($jobSummaries->length()>0){		
+		if($jobSummaries->count()>0){		
 			foreach ($jobSummaries as  $job) {
 			# code...
 				$jobDetail = $job->detail();

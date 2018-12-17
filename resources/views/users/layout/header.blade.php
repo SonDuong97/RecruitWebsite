@@ -94,11 +94,14 @@
                         Đổi thông tin
                       </a>
                     </li>
-                    <li>
-                      <a href="{{ route('my-recruit') }}">
-                        Bài đăng
-                      </a>
-                    </li>
+                    @if (Auth::user()->role_id < 3)
+                   
+                      <li>
+                        <a href="{{ route('my-recruit') }}">
+                          Bài đăng
+                        </a>
+                      </li>
+                     @endif
                     @if(Auth::user()->role_id == 3)
                     <li>
                       <a href="{{ route('list-favorite') }}">
