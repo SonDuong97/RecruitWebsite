@@ -21,7 +21,7 @@ class JobSummaries extends Migration
         $table->integer('category_id');
         $table->integer('company_id');
         $table->integer('address_id')->default(1);
-        $table->integer('user_id')->default(1);
+        $table->integer('user_id')->default(2);
         $table->integer('job_detail_id')->unsigned()->nullable();
         
         $table->timestamps();
