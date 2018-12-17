@@ -8,7 +8,7 @@ use App\Company;
 
 class CompanyController extends Controller
 {
-    public function index() {
+	public function index() {
 		$companies = Company::all();
 		return view('admin.company.list', compact('companies'));
 	}
@@ -32,6 +32,15 @@ class CompanyController extends Controller
 	}
 
 	public function destroy($id) {
+		$jobSummaries = JobSummary::where("company_id","=",$id)->get();
+		if($jobSummaries->length()>0){		
+			foreach ($jobSummaries as  $job) {
+			# code...
+				$jobDetail = $job->detail();
+				$jobDetail->delete();
+				$job->delete();
+			}
+		}
 		Company::destroy($id);
 		return redirect()->back();
 	}
