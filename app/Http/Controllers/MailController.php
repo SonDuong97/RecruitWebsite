@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ReplyToApplyingUser;
 use Illuminate\Http\Request;
 use Validator;
 use App\GuestEmail;
@@ -33,5 +34,10 @@ class MailController extends Controller
     	} else {
     		return redirect()->back()->with('notification', 'Email is empty!!');
     	}
+    }
+
+    public function replyEmail(Request $request) {
+    	ReplyToApplyingUser::dispatch($request->email, $request->content_email);
+    	return redirect()->back()->with('success', 'Successfully!!!');
     }
 }

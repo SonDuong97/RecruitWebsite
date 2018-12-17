@@ -16,6 +16,9 @@ Route::get('/','UserController@home')->name('home');
 // Set email of a guest into "mail-guest" table.
 Route::post('setEmail', 'MailController@setEmail')->name('setEmail');
 
+// Reply to applying user
+Route::post('reply', 'MailController@replyEmail')->name('reply');
+
 Route::get('/login', 'UserController@showLogin')->name('login');
 
 Route::post('/auth', 'UserController@login')->name('auth');
